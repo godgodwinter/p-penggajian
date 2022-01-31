@@ -1,0 +1,309 @@
+:root {
+    --davys-grey: #595959;
+    --grey-web: #7F7F7F;
+    --quick-silver: #A5A5A5;
+    --light-gray: #CCCCCC;
+    --cultured: #F2F2F2;
+    --monza: #6b0007;
+    --wax-flower: rgb(255, 202, 189);
+    --radical-red: #f62459;
+    --sunglo: #ffaaaa;
+    --dark-sunglo: #b14c4c;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Rubik', sans-serif;
+    background-color: var(--wax-flower);
+}
+
+
+/* admin login*/
+
+#container {
+    display: flex;
+    /* background-color: var(--light-gray); */
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+#wrapper {
+    display: flex;
+    align-items: flex-start;
+    background-color: var(--sunglo);
+    height: max-content;
+    width: 600px;
+    border-radius: 5px;
+    box-shadow: 0 10px 6px -6px;
+}
+
+#loginForm {
+    background-color: var(--sunglo);
+    height: 100%;
+    width: 300px;
+    color: var(--monza);
+}
+
+#loginForm h1 {
+    /* background-color: red; */
+    padding: 35px 35px 0 35px;
+    margin: 0;
+    font-weight: 500;
+    display: block;
+}
+
+#loginForm span {
+    /* background-color: blue; */
+    margin: 0;
+    padding-left: 35px;
+    padding-top: 5px;
+    font-size: 14px;
+    display: block;
+    /* font-style: italic; */
+}
+
+#inputField {
+    /* background-color: blueviolet; */
+    padding-left: 35px;
+    padding-right: 35px;
+    margin-top: 20px;
+}
+
+#inputField input {
+    background-color: var(--sunglo);
+    width: 100%;
+    display: block;
+    outline: none;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border: 0;
+    /* border-radius: 5px; */
+    border-bottom: 1px solid var(--dark-sunglo);
+    box-sizing: border-box;
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s;
+}
+
+::placeholder{
+    color: var(--monza);
+}
+
+#inputFiled input:focus::placeholder{
+    color: transparent;
+}
+
+#inputField input:focus {
+    border-bottom: 1px solid var(--dark-sunglo);
+    border-radius: 5px;
+}
+
+#inputSignIn {
+    padding-left: 35px;
+    padding-right: 35px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+#inputSignIn input {
+    cursor: pointer;
+    margin: auto;
+    background-color: var(--sunglo);
+    width: 100%;
+    display: block;
+    outline: none;
+    padding: 0.75rem;
+    border: 1px solid #747474;
+    border-color: var(--dark-sunglo);
+    border-radius: 3px;
+    inline-size: 100%;
+    font-family: 'Rubik', sans-serif;
+    font-size: 14px;
+    transition: all 0.3s;
+    text-transform: uppercase;
+    color: var(--monza);
+}
+
+#inputSignIn input:hover {
+    background-color: var(--dark-sunglo);
+    border-color: var(--dark-sunglo);
+    color: var(--cultured);
+}
+
+#loginForm p {
+    font-size: .65em;
+    padding-left: 35px;
+    margin-bottom: 2rem;
+    color: var(--davys-grey);
+}
+
+#loginForm a {
+    text-decoration: none;
+    outline: none;
+    color: var(--davys-grey);
+    font-weight: 800;
+}
+
+#loginForm a:visited {
+    color: var(--davys-grey);
+}
+
+#loginForm a:hover {
+    color: black;
+}
+
+#loginForm #wrong {
+    color: red;
+    font-size: 0.7em;
+    font-weight: 800;
+}
+
+
+/* logo */
+
+#logoCompany {
+    height: 100%;
+    width: 300px;
+    background-image: url('../img/kopek/company.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+#opacity {
+    height: inherit;
+    width: inherit;
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: all 0.3s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+}
+
+#wrapper:hover #opacity {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+#opacity img {
+    filter: drop-shadow(3px 3px 3px black);
+}
+
+#linkLogo {
+    display: block;
+    margin: auto;
+}
+
+#opacity p {
+    font-weight: 500;
+    color: white;
+    font-size: 1.25em;
+    display: inline-block;
+}
+
+
+/* credit */
+
+#credit {
+    display: block;
+    margin-top: 20px;
+    padding: 0;
+    text-align: center;
+    color: var(--davys-grey);
+}
+
+#credit p {
+    padding: 0;
+    margin: 0;
+}
+
+#credit a {
+    text-decoration: none;
+    outline: none;
+    color: var(--davys-grey);
+    transition: 0.2s;
+    font-weight: 800;
+}
+
+#credit a:visited {
+    color: var(--davys-grey);
+}
+
+#credit a:hover {
+    color: black;
+}
+
+#icon {
+    margin-top: 5px;
+}
+
+
+/* responsive */
+
+@media screen and (max-width: 600px) {
+    #container {
+        display: flex;
+        background-color: var(--wax-flower);
+        height: 100vh;
+        justify-content: center;
+        align-items: center;
+        flex-flow: column-reverse;
+    }
+    #wrapper {
+        display: flex;
+        align-items: flex-start;
+        background-color: var(--sunglo);
+        height: max-content;
+        width: 80%;
+        border-radius: 5px;
+        box-shadow: 0 10px 6px -6px;
+        justify-content: center;
+        flex-flow: column-reverse;
+    }
+    #loginForm {
+        background-color: var(--sunglo);
+        height: max-content;
+        width: 100%;
+        border-radius: 5px;
+    }
+    #loginForm h1 {
+        padding: 35px 35px 0 35px;
+        margin: 0;
+        font-weight: 500;
+        display: block;
+    }
+    #logoCompany {
+        height: 100%;
+        width: 100%;
+        background-image: url('../img/kopek/company.jpg');
+        background-repeat: no-repeat;
+        /* background-position: -300px -30px; */
+    }
+    #opacity {
+        border-radius: 5px;
+    }
+    #opacity img {
+        width: 80px;
+        height: 80px;
+        margin-top: 1.5em;
+        margin-bottom: 1em;
+    }
+    #opacity p {
+        font-weight: 500;
+        color: white;
+        font-size: 1.25em;
+        display: inline-block;
+    }
+    #credit p {
+        font-size: 0.8em;
+    }
+    #loginForm p#wrong {
+        margin-bottom: 0;
+    }
+    #loginForm #inputSignIn {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+}

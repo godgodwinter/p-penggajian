@@ -4,11 +4,19 @@
       <ul class="nav side-menu">
         <li><a href="{{route('dashboard')}}"><i class="fa fa-home"></i> Beranda </a></li>
         @if (Auth::user()->tipeuser=='admin')
-        <li><a href="{{route('settings')}}"><i class="fas fa-cogs"></i> Pengaturan </a></li>
-        <li><a href="{{route('divisi')}}"><i class="fas fa-users"></i>Divisi </a></li>
-      <li><a href="{{route('users')}}"><i class="fas fa-user-secret"></i> Users </a></li>
+        {{-- <li><a href="{{route('settings')}}"><i class="fas fa-cogs"></i> Pengaturan </a></li> --}}
 
-      <li><a><i class="fas fa-envelope"></i> Surat Masuk <span class="fa fa-chevron-down"></span></a>
+      <li><a><i class="fas fa-envelope-open-text"></i> Pengaturan <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="{{route('kategori')}}">Aplikasi</a></li>
+          <li><a href="{{route('suratkeluar')}}">Gaji</a></li>
+        </ul>
+      </li>
+        <li><a href="{{route('divisi')}}"><i class="fas fa-users"></i> Jabatan </a></li>
+      <li><a href="{{route('users')}}"><i class="fas fa-user-secret"></i> Pegawai / Guru </a></li>
+
+      <li><a href="{{route('users')}}"><i class="fas fa-user-secret"></i> Penggajian </a></li>
+      {{-- <li><a><i class="fas fa-envelope"></i> Surat Masuk <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="{{route('kategori')}}">Kategori</a></li>
           <li><a href="{{route('suratmasuk')}}">Surat Masuk</a></li>
@@ -20,7 +28,7 @@
           <li><a href="{{route('kategori')}}">Kategori</a></li>
           <li><a href="{{route('suratkeluar')}}">Surat Keluar</a></li>
         </ul>
-      </li>
+      </li> --}}
       @endif
 
       @if (Auth::user()->tipeuser=='divisi')

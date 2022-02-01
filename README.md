@@ -31,15 +31,15 @@
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">SI Administrasi Surat</h3>
+  <h3 align="center">SI Penggajian</h3>
 
   <p align="center">
-   SI Administrasi Surat
+   SI Penggajian
     <br />
-    <a href="https://github.com/godgodwinter/t-surat"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/godgodwinter/p-penggajian"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://treatment.baemon.web.id/">View Demo</a>
+    <a href="#">View Demo</a>
     ·
     <a href="https://twitter.com/kakadlz">Report Bug</a>
     ·
@@ -74,13 +74,13 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot-ss1]](https://github.com/godgodwinter/t-surat)
-[![Product Name Screen Shot][product-screenshot-ss2]](https://github.com/godgodwinter/t-surat)
-[![Product Name Screen Shot][product-screenshot-ss3]](https://github.com/godgodwinter/t-surat)
-[![Product Name Screen Shot][product-screenshot-ss4]](https://github.com/godgodwinter/t-surat)
-<!-- [![Product Name Screen Shot][product-screenshot-ss5]](https://github.com/godgodwinter/t-surat) -->
+[![Product Name Screen Shot][product-screenshot-ss1]](https://github.com/godgodwinter/p-penggajian)
+[![Product Name Screen Shot][product-screenshot-ss2]](https://github.com/godgodwinter/p-penggajian)
+[![Product Name Screen Shot][product-screenshot-ss3]](https://github.com/godgodwinter/p-penggajian)
+[![Product Name Screen Shot][product-screenshot-ss4]](https://github.com/godgodwinter/p-penggajian)
+<!-- [![Product Name Screen Shot][product-screenshot-ss5]](https://github.com/godgodwinter/p-penggajian) -->
 
-Sistem Administrasi Surat
+Sistem Penggajian
 
 ### Built With
 
@@ -135,7 +135,7 @@ This is an example of how to list things you need to use the software and how to
 <!-- 1. Get a free API Key at [https://example.com](https://example.com) -->
 1. Clone the repo
    ```sh
-   git clone https://github.com/godgodwinter/t-surat.git
+   git clone https://github.com/godgodwinter/p-penggajian.git
    ```
 2. Install menggunakan composer
    ```sh
@@ -193,7 +193,7 @@ Distributed under the MIT License. See `LICENSE` for more information.
 Kukuh Setya Nugraha - [@kakadlz](https://twitter.com/kakadlz) 
 Kukuh Setya Nugraha - [@kukuh.sn](https://www.instagram.com/kukuh.sn/) 
 
-Project Link: [https://github.com/godgodwinter/t-surat](https://github.com/godgodwinter/t-surat)
+Project Link: [https://github.com/godgodwinter/p-penggajian](https://github.com/godgodwinter/p-penggajian)
 
 
 
@@ -202,16 +202,16 @@ Project Link: [https://github.com/godgodwinter/t-surat](https://github.com/godgo
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/godgodwinter/t-surat.svg?style=for-the-badge
-[contributors-url]: https://github.com/godgodwinter/t-surat/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/godgodwinter/t-surat.svg?style=for-the-badge
-[forks-url]: https://github.com/godgodwinter/t-surat/network/members
-[stars-shield]: https://img.shields.io/github/stars/godgodwinter/t-surat.svg?style=for-the-badge
-[stars-url]: https://github.com/godgodwinter/t-surat/stargazers
-[issues-shield]: https://img.shields.io/github/issues/godgodwinter/t-surat.svg?style=for-the-badge
-[issues-url]: https://github.com/godgodwinter/t-surat/issues
-[license-shield]: https://img.shields.io/github/license/godgodwinter/t-surat.svg?style=for-the-badge
-[license-url]: https://github.com/godgodwinter/t-surat/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/godgodwinter/p-penggajian.svg?style=for-the-badge
+[contributors-url]: https://github.com/godgodwinter/p-penggajian/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/godgodwinter/p-penggajian.svg?style=for-the-badge
+[forks-url]: https://github.com/godgodwinter/p-penggajian/network/members
+[stars-shield]: https://img.shields.io/github/stars/godgodwinter/p-penggajian.svg?style=for-the-badge
+[stars-url]: https://github.com/godgodwinter/p-penggajian/stargazers
+[issues-shield]: https://img.shields.io/github/issues/godgodwinter/p-penggajian.svg?style=for-the-badge
+[issues-url]: https://github.com/godgodwinter/p-penggajian/issues
+[license-shield]: https://img.shields.io/github/license/godgodwinter/p-penggajian.svg?style=for-the-badge
+[license-url]: https://github.com/godgodwinter/p-penggajian/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://www.instagram.com/kukuh.sn/
 [product-screenshot-ss1]: images/ss1.png

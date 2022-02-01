@@ -8,46 +8,17 @@
 
       <li><a><i class="fas fa-envelope-open-text"></i>Pengaturan<span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="{{route('kategori')}}">Aplikasi</a></li>
-          <li><a href="{{route('suratkeluar')}}">Gaji</a></li>
-          <li><a href="{{route('suratkeluar')}}">Jabatan</a></li>
+          <li><a href="{{route('settings')}}">Aplikasi</a></li>
+          <li><a href="{{route('settings')}}">Gaji</a></li>
+          <li><a href="{{route('settings')}}">Jabatan</a></li>
         </ul>
       </li>
-      <li><a href="{{route('users')}}"><i class="fas fa-user-secret"></i> Pegawai  </a></li>
-      <li><a href="{{route('users')}}"><i class="fas fa-user-secret"></i> Penggajian Pegawai </a></li>
-      <li><a href="{{route('users')}}"><i class="fas fa-user-secret"></i> Guru  </a></li>
-      <li><a href="{{route('users')}}"><i class="fas fa-user-secret"></i> Penggajian Guru </a></li>
-
-      {{-- <li><a><i class="fas fa-envelope"></i> Surat Masuk <span class="fa fa-chevron-down"></span></a>
-        <ul class="nav child_menu">
-          <li><a href="{{route('kategori')}}">Kategori</a></li>
-          <li><a href="{{route('suratmasuk')}}">Surat Masuk</a></li>
-        </ul>
-      </li>
-
-      <li><a><i class="fas fa-envelope-open-text"></i> Surat Keluar <span class="fa fa-chevron-down"></span></a>
-        <ul class="nav child_menu">
-          <li><a href="{{route('kategori')}}">Kategori</a></li>
-          <li><a href="{{route('suratkeluar')}}">Surat Keluar</a></li>
-        </ul>
-      </li> --}}
-      @endif
-
-      @if (Auth::user()->tipeuser=='divisi')
-
-      <li><a href="{{route('divisi.suratmasuk')}}"><i class="fas fa-envelope"></i>  Surat Masuk</a></li>
-      {{-- <li><a href="{{route('divisi.suratkeluar')}}"><i class="fas fa-envelope-open-text"></i> Surat Keluar</a></li> --}}
+      <li><a href="{{route('settings')}}"><i class="fas fa-user-secret"></i> Pegawai  </a></li>
+      <li><a href="{{route('settings')}}"><i class="fas fa-user-secret"></i> Penggajian Pegawai </a></li>
+      <li><a href="{{route('settings')}}"><i class="fas fa-user-secret"></i> Guru  </a></li>
+      <li><a href="{{route('settings')}}"><i class="fas fa-user-secret"></i> Penggajian Guru </a></li>
 
       @endif
-
-      @if (Auth::user()->tipeuser=='direksi')
-
-      <li><a href="{{route('direksi.suratmasuk')}}"><i class="fas fa-envelope"></i>  Surat Masuk</a></li>
-      <li><a href="{{route('direksi.suratkeluar')}}"><i class="fas fa-envelope-open-text"></i> Surat Keluar</a></li>
-
-      @endif
-
-      {{-- <li><a href="javascript:void(0)"><i class="fa fa-laptop"></i> Buat Surat </a></li> --}}
 
       </ul>
 

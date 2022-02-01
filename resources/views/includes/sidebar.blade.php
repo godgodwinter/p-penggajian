@@ -10,12 +10,13 @@
         <ul class="nav child_menu">
           <li><a href="{{route('kategori')}}">Aplikasi</a></li>
           <li><a href="{{route('suratkeluar')}}">Gaji</a></li>
+          <li><a href="{{route('suratkeluar')}}">Jabatan</a></li>
         </ul>
       </li>
-        <li><a href="{{route('divisi')}}"><i class="fas fa-users"></i> Jabatan </a></li>
-      <li><a href="{{route('users')}}"><i class="fas fa-user-secret"></i> Pegawai / Guru </a></li>
-
-      <li><a href="{{route('users')}}"><i class="fas fa-user-secret"></i> Penggajian </a></li>
+      <li><a href="{{route('users')}}"><i class="fas fa-user-secret"></i> Pegawai  </a></li>
+      <li><a href="{{route('users')}}"><i class="fas fa-user-secret"></i> Penggajian Pegawai </a></li>
+      <li><a href="{{route('users')}}"><i class="fas fa-user-secret"></i> Guru  </a></li>
+      <li><a href="{{route('users')}}"><i class="fas fa-user-secret"></i> Penggajian Guru </a></li>
 
       {{-- <li><a><i class="fas fa-envelope"></i> Surat Masuk <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">

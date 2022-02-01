@@ -16,7 +16,7 @@ class CreateGajipegawaiTable extends Migration
         Schema::create('gajipegawai', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('tahunbulan');
-            $table->string('guru_id');
+            $table->string('pegawai_id');
             $table->string('gajipokok')->nullable();
             $table->string('tunjangankerja')->nullable();
             $table->string('hari')->nullable();

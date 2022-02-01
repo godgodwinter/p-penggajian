@@ -15,10 +15,12 @@ class CreatePegawaiTable extends Migration
     {
         Schema::create('pegawai', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nomerinduk');
             $table->string('nama');
             $table->string('jk');;
             $table->string('alamat');
             $table->string('telp');
+            $table->string('gajipokok')->nullable();
             $table->string('simkoperasi')->nullable();
             $table->string('bansos')->nullable();
             $table->string('tunjangankerja')->nullable();

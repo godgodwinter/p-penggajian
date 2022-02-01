@@ -16,6 +16,7 @@
       <li><a href="{{route('users')}}"><i class="fas fa-user-secret"></i> Pegawai / Guru </a></li>
 
       <li><a href="{{route('users')}}"><i class="fas fa-user-secret"></i> Penggajian </a></li>
+
       {{-- <li><a><i class="fas fa-envelope"></i> Surat Masuk <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="{{route('kategori')}}">Kategori</a></li>

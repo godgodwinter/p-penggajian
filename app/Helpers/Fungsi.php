@@ -337,13 +337,15 @@ class Fungsi {
     }
     public static function rupiah($angka){
 
-        $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        $hasil = (int) filter_var($angka, FILTER_SANITIZE_NUMBER_INT);
+        $hasil_rupiah = "Rp " . number_format($hasil,2,',','.');
         return $hasil_rupiah;
 
     }
     public static function rupiahtanpanol($angka){
 
-        $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
+        $hasil = (int) filter_var($angka, FILTER_SANITIZE_NUMBER_INT);
+        $hasil_rupiah = "Rp " . number_format($hasil,0,',','.');
         return $hasil_rupiah;
 
     }

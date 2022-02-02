@@ -178,7 +178,7 @@ Pegawai
                                     <select class="js-example-basic-single form-control-sm @error('tujuan')
                                         is-invalid
                                     @enderror" name="tujuan[]"  style="width: 100%" multiple="multiple">
-                                        <option disabled  value=""> Pilih Divisi</option>
+                                        <option disabled  value=""> Pilih Jabatan</option>
                                         @foreach ($items as $item)
                                             <option value="{{ $item->id }}"> {{ $item->nama }}</option>
                                         @endforeach

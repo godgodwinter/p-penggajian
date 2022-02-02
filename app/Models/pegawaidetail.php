@@ -6,21 +6,21 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class gurudetail extends Model
+class pegawaidetail extends Model
 {
-        public $table = "gurudetail";
+        public $table = "pegawaidetail";
 
         use SoftDeletes;
         use HasFactory;
 
         protected $fillable = [
-            'guru_id',
+            'pegawai_id',
             'jabatan_id',
         ];
 
-        public function guru()
+        public function pegawai()
         {
-            return $this->belongsTo('App\Models\guru');
+            return $this->belongsTo('App\Models\pegawai');
         }
 
         public function jabatan()

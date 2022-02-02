@@ -47,7 +47,7 @@ class oneseeder extends Seeder
             'updated_at' => Carbon::now()
          ]);
 
-         DB::table('settingsgaji')->insertGetId(
+         DB::table('settingsgaji')->insert(
             array(
                    'id'     =>  1,
                    'transport'     =>   20000,
@@ -57,6 +57,61 @@ class oneseeder extends Seeder
                    'created_at'=>date("Y-m-d H:i:s"),
                    'updated_at'=>date("Y-m-d H:i:s")
             ));
+
+DB::table('jabatan')->insert(
+    array(
+            'nama'     =>   'Kepala Sekolah',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+    ));
+DB::table('jabatan')->insert(
+    array(
+            'nama'     =>   'Waka Kesiswaan',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+    ));
+DB::table('jabatan')->insert(
+    array(
+            'nama'     =>   'Operator',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+    ));
+DB::table('jabatan')->insert(
+    array(
+            'nama'     =>   'Guru',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+    ));
+DB::table('jabatan')->insert(
+    array(
+            'nama'     =>   'TU',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+    ));
+DB::table('jabatan')->insert(
+    array(
+            'nama'     =>   'Pelatih Bela Diri',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+    ));
+DB::table('jabatan')->insert(
+    array(
+            'nama'     =>   'Bendahara',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+    ));
+DB::table('jabatan')->insert(
+    array(
+            'nama'     =>   'Pelatih Pramuka',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+    ));
+DB::table('jabatan')->insert(
+    array(
+            'nama'     =>   'Pelatih Futsal',
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now()
+    ));
 
           $faker = Faker::create('id_ID');
 

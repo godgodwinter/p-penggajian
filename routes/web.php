@@ -84,11 +84,6 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
 
     //settingsgaji
     Route::get('/admin/settingsgaji', [adminsettingsgajicontroller::class, 'index'])->name('settingsgaji');
-    Route::get('/admin/settingsgaji/{id}', [adminsettingsgajicontroller::class, 'edit'])->name('settingsgaji.edit');
-    Route::put('/admin/settingsgaji/{id}', [adminsettingsgajicontroller::class, 'update'])->name('settingsgaji.update');
-    Route::delete('/admin/settingsgaji/{id}', [adminsettingsgajicontroller::class, 'destroy'])->name('settingsgaji.destroy');
-    Route::get('/admin/datasettingsgaji/cari', [adminsettingsgajicontroller::class, 'cari'])->name('settingsgaji.cari');
-    Route::get('/admin/datasettingsgaji/create', [adminsettingsgajicontroller::class, 'create'])->name('settingsgaji.create');
     Route::post('/admin/datasettingsgaji', [adminsettingsgajicontroller::class, 'store'])->name('settingsgaji.store');
 
 

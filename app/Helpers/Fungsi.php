@@ -14,6 +14,10 @@ class Fungsi {
     //     $user = DB::table('users')->where('userid', $user_id)->first();
     //     return (isset($user->username) ? $user->username : '');
     // }
+    public static function angka($angka){
+        $hasil = (int) filter_var($angka, FILTER_SANITIZE_NUMBER_INT);
+        return $hasil;
+    }
     public static function wa_status(){
 
         $settings = DB::table('settings')->first();
@@ -334,6 +338,12 @@ class Fungsi {
     public static function rupiah($angka){
 
         $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+        return $hasil_rupiah;
+
+    }
+    public static function rupiahtanpanol($angka){
+
+        $hasil_rupiah = "Rp " . number_format($angka,0,',','.');
         return $hasil_rupiah;
 
     }

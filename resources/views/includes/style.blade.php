@@ -7,9 +7,9 @@
 
 
     <!-- NProgress -->
-    <link href="{{asset('/')}}assets/gentella/vendors/nprogress/nprogress.css" rel="stylesheet">
+    {{-- <link href="{{asset('/')}}assets/gentella/vendors/nprogress/nprogress.css" rel="stylesheet"> --}}
     <!-- jQuery custom content scroller -->
-    <link href="{{asset('/')}}assets/gentella/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet"/>
+    {{-- <link href="{{asset('/')}}assets/gentella/vendors/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.min.css" rel="stylesheet"/> --}}
 
     <!-- Custom Theme Style -->
     <link href="{{asset('/')}}assets/gentella/build/css/custom.min.css" rel="stylesheet">

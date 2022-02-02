@@ -4,11 +4,16 @@ use App\Http\Controllers\adminapicontroller;
 use App\Http\Controllers\admincetakcontroller;
 use App\Http\Controllers\admindashboardcontroller;
 use App\Http\Controllers\admindivisicontroller;
+use App\Http\Controllers\admingajigurucontroller;
+use App\Http\Controllers\admingajipegawaicontroller;
 use App\Http\Controllers\admingrafikcontroller;
+use App\Http\Controllers\admingurucontroller;
+use App\Http\Controllers\adminjabatancontroller;
 use App\Http\Controllers\adminkategoricontroller;
 use App\Http\Controllers\adminkriteriacontroller;
 use App\Http\Controllers\adminkriteriadetailcontroller;
 use App\Http\Controllers\adminnotifcontroller;
+use App\Http\Controllers\adminpegawaicontroller;
 use App\Http\Controllers\adminpelatihcontroller;
 use App\Http\Controllers\adminpemaincontroller;
 use App\Http\Controllers\adminpemainseleksicontroller;
@@ -20,6 +25,7 @@ use App\Http\Controllers\adminprosesperhitungancontroller;
 use App\Http\Controllers\adminseedercontroller;
 use App\Http\Controllers\adminseederthcontroller;
 use App\Http\Controllers\adminsettingscontroller;
+use App\Http\Controllers\adminsettingsgajicontroller;
 use App\Http\Controllers\adminsuratkeluarcontroller;
 use App\Http\Controllers\adminsuratmasukcontroller;
 use App\Http\Controllers\admintahunpenilaiancontroller;
@@ -74,6 +80,65 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     Route::get('/admin/datakategori/create', [adminkategoricontroller::class, 'create'])->name('kategori.create');
     Route::post('/admin/datakategori', [adminkategoricontroller::class, 'store'])->name('kategori.store');
 
+
+
+    //settingsgaji
+    Route::get('/admin/settingsgaji', [adminsettingsgajicontroller::class, 'index'])->name('settingsgaji');
+    Route::get('/admin/settingsgaji/{id}', [adminsettingsgajicontroller::class, 'edit'])->name('settingsgaji.edit');
+    Route::put('/admin/settingsgaji/{id}', [adminsettingsgajicontroller::class, 'update'])->name('settingsgaji.update');
+    Route::delete('/admin/settingsgaji/{id}', [adminsettingsgajicontroller::class, 'destroy'])->name('settingsgaji.destroy');
+    Route::get('/admin/datasettingsgaji/cari', [adminsettingsgajicontroller::class, 'cari'])->name('settingsgaji.cari');
+    Route::get('/admin/datasettingsgaji/create', [adminsettingsgajicontroller::class, 'create'])->name('settingsgaji.create');
+    Route::post('/admin/datasettingsgaji', [adminsettingsgajicontroller::class, 'store'])->name('settingsgaji.store');
+
+
+    //jabatan
+    Route::get('/admin/jabatan', [adminjabatancontroller::class, 'index'])->name('jabatan');
+    Route::get('/admin/jabatan/{id}', [adminjabatancontroller::class, 'edit'])->name('jabatan.edit');
+    Route::put('/admin/jabatan/{id}', [adminjabatancontroller::class, 'update'])->name('jabatan.update');
+    Route::delete('/admin/jabatan/{id}', [adminjabatancontroller::class, 'destroy'])->name('jabatan.destroy');
+    Route::get('/admin/datajabatan/cari', [adminjabatancontroller::class, 'cari'])->name('jabatan.cari');
+    Route::get('/admin/datajabatan/create', [adminjabatancontroller::class, 'create'])->name('jabatan.create');
+    Route::post('/admin/datajabatan', [adminjabatancontroller::class, 'store'])->name('jabatan.store');
+
+
+
+    //pegawai
+    Route::get('/admin/pegawai', [adminpegawaicontroller::class, 'index'])->name('pegawai');
+    Route::get('/admin/pegawai/{id}', [adminpegawaicontroller::class, 'edit'])->name('pegawai.edit');
+    Route::put('/admin/pegawai/{id}', [adminpegawaicontroller::class, 'update'])->name('pegawai.update');
+    Route::delete('/admin/pegawai/{id}', [adminpegawaicontroller::class, 'destroy'])->name('pegawai.destroy');
+    Route::get('/admin/datapegawai/cari', [adminpegawaicontroller::class, 'cari'])->name('pegawai.cari');
+    Route::get('/admin/datapegawai/create', [adminpegawaicontroller::class, 'create'])->name('pegawai.create');
+    Route::post('/admin/datapegawai', [adminpegawaicontroller::class, 'store'])->name('pegawai.store');
+
+
+    //gajipegawai
+    Route::get('/admin/gajipegawai', [admingajipegawaicontroller::class, 'index'])->name('gajipegawai');
+    Route::get('/admin/gajipegawai/{id}', [admingajipegawaicontroller::class, 'edit'])->name('gajipegawai.edit');
+    Route::put('/admin/gajipegawai/{id}', [admingajipegawaicontroller::class, 'update'])->name('gajipegawai.update');
+    Route::delete('/admin/gajipegawai/{id}', [admingajipegawaicontroller::class, 'destroy'])->name('gajipegawai.destroy');
+    Route::get('/admin/datagajipegawai/cari', [admingajipegawaicontroller::class, 'cari'])->name('gajipegawai.cari');
+    Route::get('/admin/datagajipegawai/create', [admingajipegawaicontroller::class, 'create'])->name('gajipegawai.create');
+    Route::post('/admin/datagajipegawai', [admingajipegawaicontroller::class, 'store'])->name('gajipegawai.store');
+
+    //guru
+    Route::get('/admin/guru', [admingurucontroller::class, 'index'])->name('guru');
+    Route::get('/admin/guru/{id}', [admingurucontroller::class, 'edit'])->name('guru.edit');
+    Route::put('/admin/guru/{id}', [admingurucontroller::class, 'update'])->name('guru.update');
+    Route::delete('/admin/guru/{id}', [admingurucontroller::class, 'destroy'])->name('guru.destroy');
+    Route::get('/admin/dataguru/cari', [admingurucontroller::class, 'cari'])->name('guru.cari');
+    Route::get('/admin/dataguru/create', [admingurucontroller::class, 'create'])->name('guru.create');
+    Route::post('/admin/dataguru', [admingurucontroller::class, 'store'])->name('guru.store');
+
+    //gajiguru
+    Route::get('/admin/gajiguru', [admingajigurucontroller::class, 'index'])->name('gajiguru');
+    Route::get('/admin/gajiguru/{id}', [admingajigurucontroller::class, 'edit'])->name('gajiguru.edit');
+    Route::put('/admin/gajiguru/{id}', [admingajigurucontroller::class, 'update'])->name('gajiguru.update');
+    Route::delete('/admin/gajiguru/{id}', [admingajigurucontroller::class, 'destroy'])->name('gajiguru.destroy');
+    Route::get('/admin/datagajiguru/cari', [admingajigurucontroller::class, 'cari'])->name('gajiguru.cari');
+    Route::get('/admin/datagajiguru/create', [admingajigurucontroller::class, 'create'])->name('gajiguru.create');
+    Route::post('/admin/datagajiguru', [admingajigurucontroller::class, 'store'])->name('gajiguru.store');
 
     //API
     Route::get('/admin/api/kriteriadetail/{tahunpenilaian}', [admintahunpenilaiandetailcontroller::class, 'apikriteriadetail'])->name('api.kriteriadetail');

@@ -78,6 +78,7 @@ Pegawai
                   <tr>
                     <th class="babeng-min-row">No</th>
                     <th>Nama</th>
+                    <th>Jabatan</th>
                     <th>Telp</th>
                     <th>Gaji Pokok</th>
                     <th>Tunjangan Kerja</th>
@@ -93,6 +94,13 @@ Pegawai
                   <tr>
                     <td class="text-center">{{$loop->index+1}}</td>
                     <td>{{$data->nama}}</td>
+                    <td>
+                        @forelse ($data->pegawaidetail as $item)
+                            <button class="btn btn-sm btn-primary">{{$item->jabatan?$item->jabatan->nama:''}}</button>
+                        @empty
+
+                        @endforelse
+                    </td>
                     <td>{{$data->telp}}</td>
                     <td>{{Fungsi::rupiah($data->gajipokok)}}</td>
                     <td>{{Fungsi::rupiah($data->tunjangankerja)}}</td>

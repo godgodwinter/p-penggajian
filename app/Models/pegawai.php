@@ -25,4 +25,9 @@ class pegawai extends Model
             'tunjangankerja',
         ];
 
+        function pegawaidetail()
+        {
+            return $this->hasMany('App\Models\pegawaidetail');
+        }
+
 }

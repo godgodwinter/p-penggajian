@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Helpers\Fungsi;
 use App\Models\jabatan;
 use App\Models\pegawai;
+use App\Models\pegawaidetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -14,7 +15,7 @@ class adminpegawaicontroller extends Controller
     {
         #WAJIB
         $pages='pegawai';
-        $datas=pegawai::paginate(Fungsi::paginationjml());
+        $datas=pegawai::with('pegawaidetail')->paginate(Fungsi::paginationjml());
 
         return view('pages.admin.pegawai.index',compact('datas','request','pages'));
     }
@@ -37,7 +38,7 @@ class adminpegawaicontroller extends Controller
 
     public function store(Request $request)
     {
-
+        // dd($request,$request->jabatan[0]);
             $request->validate([
                 'nama'=>'required',
 
@@ -46,10 +47,10 @@ class adminpegawaicontroller extends Controller
                 'nama.require'=>'Nama harus diisi',
             ]);
 
-            DB::table('pegawai')->insertGetId(
+            $id=DB::table('pegawai')->insertGetId(
                 array(
                        'nama'     =>   $request->nama,
-                       'jk'     =>   $request->nama,
+                       'jk'     =>   $request->jk,
                        'alamat'     =>   $request->alamat,
                        'nomerinduk'     =>   $request->nomerinduk,
                        'simkoperasi'     =>   $request->simkoperasi,
@@ -61,6 +62,16 @@ class adminpegawaicontroller extends Controller
                        'updated_at'=>date("Y-m-d H:i:s")
                 ));
 
+            for($i=0;$i<count($request->jabatan);$i++){
+                DB::table('pegawaidetail')->insert(
+                    array(
+                           'pegawai_id'     =>   $id,
+                           'jabatan_id'     =>   $request->jabatan[$i],
+                           'created_at'=>date("Y-m-d H:i:s"),
+                           'updated_at'=>date("Y-m-d H:i:s")
+                    ));
+            }
+
     return redirect()->route('pegawai')->with('status','Data berhasil tambahkan!')->with('tipe','success')->with('icon','fas fa-feather');
 
     }
@@ -68,8 +79,9 @@ class adminpegawaicontroller extends Controller
     public function edit(pegawai $id)
     {
         $pages='pegawai';
+        $items=jabatan::get();
 
-        return view('pages.admin.pegawai.edit',compact('pages','id'));
+        return view('pages.admin.pegawai.edit',compact('pages','id','items'));
     }
     public function update(pegawai $id,Request $request)
     {
@@ -86,8 +98,32 @@ class adminpegawaicontroller extends Controller
             pegawai::where('id',$id->id)
             ->update([
                 'nama'     =>   $request->nama,
+                'jk'     =>   $request->jk,
+                'alamat'     =>   $request->alamat,
+                'nomerinduk'     =>   $request->nomerinduk,
+                'simkoperasi'     =>   $request->simkoperasi,
+                'telp'     =>   $request->telp,
+                'dansos'     =>   $request->dansos,
+                'gajipokok'     =>   Fungsi::angka($request->gajipokok),
+                'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
                'updated_at'=>date("Y-m-d H:i:s")
             ]);
+
+            //laravel destroy where id example
+            DB::table('pegawaidetail')->where('pegawai_id',$id->id)->delete();
+
+            for($i=0;$i<count($request->jabatan);$i++){
+                $periksa=pegawaidetail::where('jabatan_id',$request->jabatan[$i])->where('pegawai_id',$id->id)->count();
+                if($periksa==0){
+                DB::table('pegawaidetail')->insert(
+                    array(
+                           'pegawai_id'     =>   $id->id,
+                           'jabatan_id'     =>   $request->jabatan[$i],
+                           'created_at'=>date("Y-m-d H:i:s"),
+                           'updated_at'=>date("Y-m-d H:i:s")
+                    ));
+                }
+            }
 
 
     return redirect()->route('pegawai')->with('status','Data berhasil diubah!')->with('tipe','success')->with('icon','fas fa-feather');
@@ -95,6 +131,7 @@ class adminpegawaicontroller extends Controller
     public function destroy(pegawai $id){
 
         pegawai::destroy($id->id);
+        pegawaidetail::where('pegawai_id',$id->id)->delete();
         return redirect()->route('pegawai')->with('status','Data berhasil dihapus!')->with('tipe','warning')->with('icon','fas fa-feather');
 
     }

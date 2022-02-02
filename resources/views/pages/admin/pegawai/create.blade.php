@@ -175,9 +175,9 @@ Pegawai
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Jabatan<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <select class="js-example-basic-single form-control-sm @error('tujuan')
+                                    <select class="js-example-basic-single form-control-sm @error('jabatan')
                                         is-invalid
-                                    @enderror" name="tujuan[]"  style="width: 100%" multiple="multiple">
+                                    @enderror" name="jabatan[]"  style="width: 100%" multiple="multiple" required>
                                         <option disabled  value=""> Pilih Jabatan</option>
                                         @foreach ($items as $item)
                                             <option value="{{ $item->id }}"> {{ $item->nama }}</option>

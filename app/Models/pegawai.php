@@ -21,7 +21,7 @@ class pegawai extends Model
             'telp',
             'gajipokok',
             'simkoperasi',
-            'bansos',
+            'dansos',
             'tunjangankerja',
         ];
 

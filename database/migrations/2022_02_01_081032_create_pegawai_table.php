@@ -22,7 +22,7 @@ class CreatePegawaiTable extends Migration
             $table->string('telp');
             $table->string('gajipokok')->nullable();
             $table->string('simkoperasi')->nullable();
-            $table->string('bansos')->nullable();
+            $table->string('dansos')->nullable();
             $table->string('tunjangankerja')->nullable();
             $table->softDeletes();
             $table->timestamps();

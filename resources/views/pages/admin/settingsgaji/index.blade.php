@@ -18,7 +18,7 @@ Pengaturan
             <div class="title_left">
                 <h3>@yield('title')</h3>
             </div>
-            <div class="title_right">
+            {{-- <div class="title_right">
                 <div class="col-md-5 col-sm-5 form-group pull-right top_search">
                     <div class="input-group">
                         <input type="text" class="form-control" placeholder="Search for...">
@@ -27,7 +27,7 @@ Pengaturan
                         </span>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="clearfix"></div>
         <div class="row">
@@ -53,9 +53,9 @@ Pengaturan
                                     simkoperasi.addEventListener('keyup', function(e){
                                         simkoperasi.value = babengRupiah(this.value, 'Rp. ');
                                     });
-                                    let bansos = document.getElementById('bansos');
-                                    bansos.addEventListener('keyup', function(e){
-                                        bansos.value = babengRupiah(this.value, 'Rp. ');
+                                    let dansos = document.getElementById('dansos');
+                                    dansos.addEventListener('keyup', function(e){
+                                        dansos.value = babengRupiah(this.value, 'Rp. ');
                                     });
                                     let walikelas = document.getElementById('walikelas');
                                     walikelas.addEventListener('keyup', function(e){
@@ -82,10 +82,10 @@ Pengaturan
                                     <input class="form-control"  name="simkoperasi"  id="simkoperasi"type="text"  required="required"  value="{{$id->transport?Fungsi::rupiahtanpanol($id->simkoperasi):''}}" /></div>
                             </div>
                             <div class="field item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3  label-align">Bantuan Sosial<span
+                                <label class="col-form-label col-md-3 col-sm-3  label-align">Dana Sosial<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <input class="form-control"  name="bansos"  id="bansos"type="text"  required="required"  value="{{$id->transport?Fungsi::rupiahtanpanol($id->bansos):''}}" /></div>
+                                    <input class="form-control"  name="dansos"  id="dansos"type="text"  required="required"  value="{{$id->transport?Fungsi::rupiahtanpanol($id->dansos):''}}" /></div>
                             </div>
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Walikelas<span

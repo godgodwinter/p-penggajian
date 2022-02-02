@@ -21,7 +21,7 @@ class jabatan extends Model
             'telp',
             'gajipokok',
             'simkoperasi',
-            'bansos',
+            'dansos',
             'tunjanganjabatan',
             'tunjangankerja',
             'walikelas',

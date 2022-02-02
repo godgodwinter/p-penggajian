@@ -47,6 +47,16 @@ class oneseeder extends Seeder
             'updated_at' => Carbon::now()
          ]);
 
+         DB::table('settingsgaji')->insertGetId(
+            array(
+                   'id'     =>  1,
+                   'transport'     =>   20000,
+                   'simkoperasi'     =>  20000,
+                   'dansos'     =>   10000,
+                   'walikelas'     =>   75000,
+                   'created_at'=>date("Y-m-d H:i:s"),
+                   'updated_at'=>date("Y-m-d H:i:s")
+            ));
 
           $faker = Faker::create('id_ID');
 

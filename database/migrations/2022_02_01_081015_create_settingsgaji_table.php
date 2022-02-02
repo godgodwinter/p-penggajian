@@ -17,7 +17,7 @@ class CreateSettingsgajiTable extends Migration
             $table->bigIncrements('id');
             $table->string('transport')->nullable();
             $table->string('simkoperasi')->nullable();
-            $table->string('bansos')->nullable();
+            $table->string('dansos')->nullable();
             $table->string('walikelas')->nullable();
             $table->softDeletes();
             $table->timestamps();

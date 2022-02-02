@@ -17,7 +17,7 @@ class settingsgaji extends Model
             'transport',
             'walikelas',
             'simkoperasi',
-            'bansos',
+            'dansos',
         ];
 
 }

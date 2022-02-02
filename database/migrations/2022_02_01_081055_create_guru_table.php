@@ -22,7 +22,7 @@ class CreateGuruTable extends Migration
             $table->string('telp');
             $table->string('gajipokok')->nullable();
             $table->string('simkoperasi')->nullable();
-            $table->string('bansos')->nullable();
+            $table->string('dansos')->nullable();
             $table->string('tunjanganjabatan')->nullable();
             $table->string('tunjangankerja')->nullable();
             $table->string('walikelas')->nullable();

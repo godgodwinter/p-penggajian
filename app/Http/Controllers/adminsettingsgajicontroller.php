@@ -38,7 +38,7 @@ class adminsettingsgajicontroller extends Controller
             ->update([
                 'transport'     =>   Fungsi::angka($request->transport),
                 'simkoperasi'     =>   Fungsi::angka($request->simkoperasi),
-                'bansos'     =>   Fungsi::angka($request->bansos),
+                'dansos'     =>   Fungsi::angka($request->dansos),
                 'walikelas'     =>   Fungsi::angka($request->walikelas),
                'updated_at'=>date("Y-m-d H:i:s")
             ]);
@@ -49,7 +49,7 @@ class adminsettingsgajicontroller extends Controller
                        'id'     =>  1,
                        'transport'     =>   Fungsi::angka($request->transport),
                        'simkoperasi'     =>   Fungsi::angka($request->simkoperasi),
-                       'bansos'     =>   Fungsi::angka($request->bansos),
+                       'dansos'     =>   Fungsi::angka($request->dansos),
                        'walikelas'     =>   Fungsi::angka($request->walikelas),
                        'created_at'=>date("Y-m-d H:i:s"),
                        'updated_at'=>date("Y-m-d H:i:s")

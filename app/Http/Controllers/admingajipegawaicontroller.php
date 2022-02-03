@@ -10,6 +10,7 @@ use App\Models\pegawaidetail;
 use App\Models\settingsgaji;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class admingajipegawaicontroller extends Controller
 {
@@ -93,6 +94,16 @@ class admingajipegawaicontroller extends Controller
 
     return redirect()->route('gajipegawai')->with('status','Proses generate gaji berhasil!')->with('tipe','success')->with('icon','fas fa-feather');
 
+    }
+
+
+    public function cetak(){
+        $datas=gajipegawai::whereMonth('tahunbulan',date('m'))->whereYear('tahunbulan',date('Y'))->get();
+        $cari=null;
+        $getsettingsgaji=settingsgaji::first();
+        $tgl=date("YmdHis");
+        $pdf = PDF::loadview('pages.admin.gajipegawai.cetak',compact('datas','getsettingsgaji','tgl'))->setPaper('a4', 'landscape');
+        return $pdf->stream('hrpegawai'.$tgl.'-pdf');
     }
     public function cari(Request $request)
     {

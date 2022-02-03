@@ -117,6 +117,7 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     Route::get('/admin/datagajipegawai/create', [admingajipegawaicontroller::class, 'create'])->name('gajipegawai.create');
     Route::post('/admin/datagajipegawai', [admingajipegawaicontroller::class, 'store'])->name('gajipegawai.store');
     Route::post('/admin/datagajipegawai/generate', [admingajipegawaicontroller::class, 'generate'])->name('gajipegawai.generate');
+    Route::get('/admin/datagajipegawai/cetak', [admingajipegawaicontroller::class, 'cetak'])->name('gajipegawai.cetak');
 
     //guru
     Route::get('/admin/guru', [admingurucontroller::class, 'index'])->name('guru');

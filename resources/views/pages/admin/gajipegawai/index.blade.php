@@ -69,10 +69,14 @@ Penggajian Pegawai
                   <form action="{{route('gajipegawai.generate')}}" method="post" class="d-inline">
                     @csrf
 
-                <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"  onclick="return  confirm('Anda yakin generate data bulan ini? Y/N')"  data-toggle="tooltip" data-placement="top"
+                <input  data-toggle="tooltip" data-placement="top" title="Data yang sudah di generate akan di skip!" class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"  onclick="return  confirm('Anda yakin generate data bulan ini? Y/N')"  data-toggle="tooltip" data-placement="top"
                 value="Generate Gaji">
                 </form>
-                  <a class="btn btn-sm btn-primary" href="{{route('pegawai.create')}}"> Cetak </a>
+                <form action="{{route('gajipegawai.cetak')}}" method="get" class="d-inline">
+                  @csrf
+              <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"  onclick="return  confirm('Anda yakin mencetak data bulan ini? Y/N')"  data-toggle="tooltip" data-placement="top"
+              value="Cetak">
+              </form>
                   @else
                   <form action="{{route('gajipegawai.generate')}}" method="post" class="d-inline">
                     @csrf

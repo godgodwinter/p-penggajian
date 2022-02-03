@@ -4,6 +4,11 @@
     <head>
         <title></title>
     <style type="text/css">
+    @page {
+  /* size: 21cm 29.7cm; */
+  size: 29.7cm 21cm;
+  margin: 0;
+}
         table {
             border-spacing: 0;
             margin: 2px;

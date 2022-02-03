@@ -1,7 +1,7 @@
 @extends('layouts.gentella')
 
 @section('title')
-Penggajian Pegawai
+Guru
 @endsection
 
 @push('before-script')
@@ -42,16 +42,15 @@ Penggajian Pegawai
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <form  action="{{route('pegawai.store')}}" method="post" >
+                        <form  action="{{route('guru.update',$id->id)}}" method="post" >
+                            @method('put')
                             @csrf
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Nama<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <input class="form-control  @error('nama') is-invalid @enderror"
-                                        name="nama" id="nama"  required="required" value="{{old('nama')}}"  />
-                                        @error('nama')<div class="invalid-feedback"> {{$message}}</div>
-                                        @enderror
+                                    <input class="form-control"
+                                        name="nama" id="nama"  required="required" value="{{old('nama')?old('nama'):$id->nama}}" />
                                 </div>
                             </div>
                             <div class="field item form-group">
@@ -59,8 +58,18 @@ Penggajian Pegawai
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control  @error('nomerinduk') is-invalid @enderror"
-                                        name="nomerinduk" id="nomerinduk"  required="required" value="{{old('nomerinduk')}}"  />
+                                    name="nomerinduk" id="nomerinduk"  required="required" value="{{old('nomerinduk')?old('nomerinduk'):$id->nomerinduk}}" />
                                         @error('nomerinduk')<div class="invalid-feedback"> {{$message}}</div>
+                                        @enderror
+                                </div>
+                            </div>
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align">Jadwal Kehadiran<span
+                                        class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control  @error('hadir') is-invalid @enderror"
+                                    name="hadir" id="hadir"  required="required" value="{{old('hadir')?old('hadir'):$id->hadir}}" />
+                                        @error('hadir')<div class="invalid-feedback"> {{$message}}</div>
                                         @enderror
                                 </div>
                             </div>
@@ -69,7 +78,7 @@ Penggajian Pegawai
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <select id="heard" class="form-control @error('jk') is-invalid @enderror" required name="jk">
-                                        <option value="" selected disabled>Pilih  ...</option>
+                                        <option  selected >{{$id->jk}}</option>
                                         <option >Laki-laki</option>
                                         <option >Perempuan</option>
                                     </select>
@@ -82,7 +91,7 @@ Penggajian Pegawai
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control  @error('alamat') is-invalid @enderror"
-                                        name="alamat" id="alamat"  required="required" value="{{old('alamat')}}"  />
+                                    name="alamat" id="alamat"  required="required" value="{{old('alamat')?old('alamat'):$id->alamat}}" />
                                         @error('alamat')<div class="invalid-feedback"> {{$message}}</div>
                                         @enderror
                                 </div>
@@ -92,7 +101,7 @@ Penggajian Pegawai
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control  @error('telp') is-invalid @enderror"
-                                        name="telp" id="telp" type="text"  required="required" value="{{old('telp')}}"  />
+                                    name="telp" id="telp"  required="required" value="{{old('telp')?old('telp'):$id->telp}}" />
                                         @error('telp')<div class="invalid-feedback"> {{$message}}</div>
                                         @enderror
                                 </div>
@@ -119,7 +128,7 @@ Penggajian Pegawai
                                 class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
                             <input class="form-control"
-                                name="gajipokok" id="gajipokok"  required="required" />
+                            name="gajipokok" id="gajipokok"  required="required" value="{{old('gajipokok')?old('gajipokok'):Fungsi::rupiahtanpanol($id->gajipokok)}}" />
                         </div>
                     </div>
                     <div class="field item form-group">
@@ -127,7 +136,7 @@ Penggajian Pegawai
                                 class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
                             <input class="form-control"
-                                name="tunjangankerja" id="tunjangankerja"  required="required" />
+                            name="tunjangankerja" id="tunjangankerja"  required="required" value="{{old('tunjangankerja')?old('tunjangankerja'):Fungsi::rupiahtanpanol($id->tunjangankerja)}}" />
                         </div>
                     </div>
                     <div class="field item form-group">
@@ -135,7 +144,7 @@ Penggajian Pegawai
                                 class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
                             <select id="heard" class="form-control @error('simkoperasi') is-invalid @enderror" required name="simkoperasi">
-                                <option value="" selected disabled>Pilih  ...</option>
+                                <option  selected >{{$id->simkoperasi}}</option>
                                 <option >Ya</option>
                                 <option >Tidak</option>
                             </select>
@@ -149,7 +158,7 @@ Penggajian Pegawai
                                 class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
                             <select id="heard" class="form-control @error('dansos') is-invalid @enderror" required name="dansos">
-                                <option value="" selected disabled>Pilih  ...</option>
+                                <option  selected >{{$id->dansos}}</option>
                                 <option >Ya</option>
                                 <option >Tidak</option>
                             </select>
@@ -180,12 +189,14 @@ Penggajian Pegawai
                                     @enderror" name="jabatan[]"  style="width: 100%" multiple="multiple" required>
                                         <option disabled  value=""> Pilih Jabatan</option>
                                         @foreach ($items as $item)
-                                            <option value="{{ $item->id }}"> {{ $item->nama }}</option>
+                                        @php
+                                            $periksa=\App\Models\gurudetail::where('guru_id',$id->id)->where('jabatan_id',$item->id)->count();
+                                        @endphp
+                                            <option value="{{ $item->id }}" {{$periksa>0?'selected':''}}> {{ $item->nama }}</option>
                                         @endforeach
                                       </select>
                                 </div>
                             </div>
-
                             <div class="ln_solid">
                                 <div class="form-group">
                                     <div class="col-md-6 offset-md-3">

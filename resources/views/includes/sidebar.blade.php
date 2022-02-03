@@ -17,6 +17,7 @@
       <li><a href="{{route('gajipegawai')}}"><i class="fas fa-user-secret"></i> Penggajian Pegawai </a></li>
       <li><a href="{{route('guru')}}"><i class="fas fa-user-secret"></i> Guru  </a></li>
       <li><a href="{{route('gajiguru')}}"><i class="fas fa-user-secret"></i> Penggajian Guru </a></li>
+      <li><a href="{{route('gajiguru')}}"><i class="fas fa-user-secret"></i> Rekap Penggajian </a></li>
 
       @endif
 

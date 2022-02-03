@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class jabatan extends Model
+class guru extends Model
 {
-        public $table = "jabatan";
+        public $table = "guru";
 
         use SoftDeletes;
         use HasFactory;

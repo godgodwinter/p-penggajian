@@ -19,9 +19,13 @@ class CreateGajipegawaiTable extends Migration
             $table->string('pegawai_id');
             $table->string('gajipokok')->nullable();
             $table->string('tunjangankerja')->nullable();
-            $table->string('hari')->nullable();
+            $table->string('hadir')->nullable();
             $table->string('status')->nullable();
             $table->string('tgl_diberikan')->nullable();
+            $table->string('transport')->nullable();
+            $table->string('simkoperasi')->nullable();
+            $table->string('dansos')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -1,7 +1,7 @@
 @extends('layouts.gentella')
 
 @section('title')
-Pegawai
+Penggajian Pegawai
 @endsection
 
 @push('before-script')
@@ -60,16 +60,6 @@ Pegawai
                                     <input class="form-control  @error('nomerinduk') is-invalid @enderror"
                                     name="nomerinduk" id="nomerinduk"  required="required" value="{{old('nomerinduk')?old('nomerinduk'):$id->nomerinduk}}" />
                                         @error('nomerinduk')<div class="invalid-feedback"> {{$message}}</div>
-                                        @enderror
-                                </div>
-                            </div>
-                            <div class="field item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3  label-align">Jadwal Kehadiran<span
-                                        class="required">*</span></label>
-                                <div class="col-md-6 col-sm-6">
-                                    <input class="form-control  @error('hadir') is-invalid @enderror"
-                                    name="hadir" id="hadir"  required="required" value="{{old('hadir')?old('hadir'):$id->hadir}}" />
-                                        @error('hadir')<div class="invalid-feedback"> {{$message}}</div>
                                         @enderror
                                 </div>
                             </div>

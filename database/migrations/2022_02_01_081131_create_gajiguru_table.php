@@ -21,7 +21,7 @@ class CreateGajiguruTable extends Migration
             $table->string('tunjanganjabatan')->nullable();
             $table->string('tunjangankerja')->nullable();
             $table->string('walikelas')->nullable();
-            $table->string('hari')->nullable();
+            $table->string('hadir')->nullable();
             $table->string('status')->nullable();
             $table->string('tgl_diberikan')->nullable();
             $table->softDeletes();

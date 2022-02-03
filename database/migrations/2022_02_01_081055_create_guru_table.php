@@ -26,6 +26,7 @@ class CreateGuruTable extends Migration
             $table->string('tunjanganjabatan')->nullable();
             $table->string('tunjangankerja')->nullable();
             $table->string('walikelas')->nullable();
+            $table->string('hadir')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

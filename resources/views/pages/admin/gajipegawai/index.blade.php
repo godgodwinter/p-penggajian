@@ -1,7 +1,7 @@
 @extends('layouts.gentella')
 
 @section('title')
-Pegawai
+Penggajian Pegawai
 @endsection
 
 @push('before-script')
@@ -57,11 +57,32 @@ Pegawai
         <div class="col-md-12 col-sm-12 ">
           <div class="x_panel">
             <div class="x_title">
-              <a class="btn btn-sm btn-primary" href="{{route('pegawai.create')}}"> Tambah </a>
-              <ul class="nav navbar-right panel_toolbox">
-                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                </li>
-                <li><a class="close-link"><i class="fa fa-close"></i></a>
+              <form action="#" method="post" class="d-inline">
+
+                <input type="month" class="babeng babeng-select  ml-0" name="cari" value="{{$cari!==null?$cari:date('Y-m')}}">
+                <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"
+                    value="Pilih Bulan">
+
+              <ul class="nav navbar-right panel_toolbox ">
+            </form>
+                  @if($datas->count()>0)
+                  <form action="{{route('gajipegawai.generate')}}" method="post" class="d-inline">
+                    @csrf
+
+                <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"  onclick="return  confirm('Anda yakin generate data bulan ini? Y/N')"  data-toggle="tooltip" data-placement="top"
+                value="Generate Gaji">
+                </form>
+                  <a class="btn btn-sm btn-primary" href="{{route('pegawai.create')}}"> Cetak </a>
+                  @else
+                  <form action="{{route('gajipegawai.generate')}}" method="post" class="d-inline">
+                    @csrf
+                <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"  onclick="return  confirm('Anda yakin generate data bulan ini? Y/N')"  data-toggle="tooltip" data-placement="top"
+                value="Generate Gaji">
+                </form>
+                  @endif
+                {{-- <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li> --}}
+                {{-- <li><a class="close-link"><i class="fa fa-close"></i></a> --}}
                 </li>
               </ul>
               <div class="clearfix"></div>
@@ -70,6 +91,7 @@ Pegawai
                 <div class="row">
                     <div class="col-sm-12">
                       <div class="card-box table-responsive">
+
               {{-- <p class="text-muted font-13 m-b-30">
                 DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
               </p> --}}
@@ -79,12 +101,13 @@ Pegawai
                     <th class="babeng-min-row">No</th>
                     <th>Nama</th>
                     <th>Jabatan</th>
-                    <th>Telp</th>
-                    <th>Gaji Pokok</th>
-                    <th>Jadwal Kehadiran</th>
-                    <th>Tunjangan Kerja</th>
-                    <th class="text-center">Sim Koperasi</th>
-                    <th class="text-center">Dansos</th>
+                    <th >Gaji Pokok</th>
+                    <th >Tunjangan Kerja</th>
+                    <th data-toggle="tooltip" data-placement="top" title="hadir * {{Fungsi::rupiah($getsettingsgaji->transport)}}">Transport</th>
+                    <th data-toggle="tooltip" data-placement="top" title="Kehadiran">Hadir</th>
+                    <th data-toggle="tooltip" data-placement="top" title="Gajipokok + Tunjuangan + transport">Jumlah</th>
+                    <th class="text-center" data-toggle="tooltip" data-placement="top" title="{{Fungsi::rupiah($getsettingsgaji->simkoperasi)}}">Sim Koperasi</th>
+                    <th class="text-center" data-toggle="tooltip" data-placement="top" title="{{Fungsi::rupiah($getsettingsgaji->dansos)}}">Dansos</th>
                     <th class="text-center">Aksi</th>
                   </tr>
                 </thead>
@@ -94,39 +117,42 @@ Pegawai
                     @forelse ($datas as $data)
                   <tr>
                     <td class="text-center">{{$loop->index+1}}</td>
-                    <td>{{$data->nama}}</td>
+                    <td>{{$data->pegawai?$data->pegawai->nama:'Data Pegawai tidak ditemukan'}}</td>
                     <td>
-                        @forelse ($data->pegawaidetail as $item)
+                        @if($data->pegawai)
+                        @forelse ($data->pegawai->pegawaidetail as $item)
                             <button class="btn btn-sm btn-primary">{{$item->jabatan?$item->jabatan->nama:''}}</button>
                         @empty
 
                         @endforelse
+                        @endif
                     </td>
-                    <td>{{$data->telp}}</td>
                     <td>{{Fungsi::rupiah($data->gajipokok)}}</td>
-                    <td>{{$data->hadir}}</td>
                     <td>{{Fungsi::rupiah($data->tunjangankerja)}}</td>
+                    <td>{{Fungsi::rupiah($data->transport)}}</td>
+                    <td>{{$data->hadir}}</td>
+                    @php
+                        $jumlah=0;
+                        $jumlah=$data->gajipokok+$data->tunjangankerja+$data->transport;
+                    @endphp
+                    <td>{{Fungsi::rupiah($jumlah)}}</td>
                     <td class="text-center">
                         @php
-                            $warna='info';
-                            $hasil='Ya';
-                            if($data->simkoperasi!='Ya'){
-                                $warna='danger';
-                                $hasil='Tidak';
+                        $hasil='-';
+                            if($data->simkoperasi>0){
+                                $hasil=Fungsi::rupiah($jumlah-$data->simkoperasi);
                             }
                         @endphp
-                        <button class="btn btn-sm btn-{{$warna}}">{{$hasil}}</button>
+                        {{$hasil}}
                     </td>
                     <td class="text-center">
                         @php
-                            $warna='info';
-                            $hasil='Ya';
-                            if($data->dansos!='Ya'){
-                                $warna='danger';
-                                $hasil='Tidak';
+                        $hasil='-';
+                            if($data->dansos>0){
+                                $hasil=Fungsi::rupiah($jumlah-$data->dansos);
                             }
                         @endphp
-                        <button class="btn btn-sm btn-{{$warna}}">{{$hasil}}</button>
+                        {{$hasil}}
                     </td>
                     <td class="babeng-min-row">
 <x-button-edit link="{{route('pegawai.edit',$data->id)}}" />

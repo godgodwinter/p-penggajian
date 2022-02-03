@@ -6,9 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class jabatan extends Model
+class gajipegawai extends Model
 {
-        public $table = "jabatan";
+        public $table = "gajipegawai";
 
         use SoftDeletes;
         use HasFactory;
@@ -22,6 +22,9 @@ class jabatan extends Model
             'hari',
             'status',
             'tgl_diberikan',
+            'transport',
+            'simkoperasi',
+            'dansos',
         ];
 
         public function pegawai()

@@ -65,6 +65,16 @@ Pegawai
                                 </div>
                             </div>
                             <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align">Jadwal Kehadiran<span
+                                        class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control  @error('hadir') is-invalid @enderror"
+                                        name="hadir" id="hadir"  type="number" min="0" required="required" value="{{old('hadir')}}"  />
+                                        @error('hadir')<div class="invalid-feedback"> {{$message}}</div>
+                                        @enderror
+                                </div>
+                            </div>
+                            <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Jenis Kelamin<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">

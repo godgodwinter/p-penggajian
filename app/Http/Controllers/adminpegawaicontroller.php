@@ -15,7 +15,7 @@ class adminpegawaicontroller extends Controller
     {
         #WAJIB
         $pages='pegawai';
-        $datas=pegawai::with('pegawaidetail')->paginate(Fungsi::paginationjml());
+        $datas=pegawai::with('pegawaidetail')->get();
 
         return view('pages.admin.pegawai.index',compact('datas','request','pages'));
     }
@@ -54,6 +54,7 @@ class adminpegawaicontroller extends Controller
                        'alamat'     =>   $request->alamat,
                        'nomerinduk'     =>   $request->nomerinduk,
                        'simkoperasi'     =>   $request->simkoperasi,
+                       'hadir'     =>   $request->hadir,
                        'telp'     =>   $request->telp,
                        'dansos'     =>   $request->dansos,
                        'gajipokok'     =>   Fungsi::angka($request->gajipokok),
@@ -104,6 +105,7 @@ class adminpegawaicontroller extends Controller
                 'simkoperasi'     =>   $request->simkoperasi,
                 'telp'     =>   $request->telp,
                 'dansos'     =>   $request->dansos,
+                'hadir'     =>   $request->hadir,
                 'gajipokok'     =>   Fungsi::angka($request->gajipokok),
                 'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
                'updated_at'=>date("Y-m-d H:i:s")

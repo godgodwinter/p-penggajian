@@ -23,6 +23,7 @@ class pegawai extends Model
             'simkoperasi',
             'dansos',
             'tunjangankerja',
+            'hadir', //harus hadir /jadwal kehadiran
         ];
 
         function pegawaidetail()

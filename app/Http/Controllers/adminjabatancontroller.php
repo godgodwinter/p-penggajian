@@ -13,7 +13,7 @@ class adminjabatancontroller extends Controller
     {
         #WAJIB
         $pages='jabatan';
-        $datas=jabatan::paginate(Fungsi::paginationjml());
+        $datas=jabatan::get();
 
         return view('pages.admin.jabatan.index',compact('datas','request','pages'));
     }

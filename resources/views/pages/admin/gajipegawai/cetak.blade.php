@@ -67,18 +67,20 @@
         </td>
         <td align="center">{{Fungsi::rupiah($data->gajipokok)}}</td>
         <td align="center">{{Fungsi::rupiah($data->tunjangankerja)}}</td>
-        <td  align="center">{{Fungsi::rupiah($data->transport)}}</td>
+        <td  align="center">{{Fungsi::rupiah($data->transport*$data->hadir)}}</td>
         <td  align="center">{{$data->hadir}}</td>
         @php
             $jumlah=0;
-            $jumlah=$data->gajipokok+$data->tunjangankerja+$data->transport;
+                        $jumlah=$data->gajipokok+$data->tunjangankerja+($data->transport*$data->hadir);
         @endphp
         <td>{{Fungsi::rupiah($jumlah)}}</td>
         <td align="center">
             @php
             $hasil='-';
+            $sim=$jumlah;
                 if($data->simkoperasi>0){
-                    $hasil=Fungsi::rupiah($jumlah-$data->simkoperasi);
+                    $sim=$jumlah-$data->simkoperasi;
+                    $hasil=Fungsi::rupiah($sim);
                 }
             @endphp
             {{$hasil}}
@@ -87,7 +89,7 @@
             @php
             $hasil='-';
                 if($data->dansos>0){
-                    $hasil=Fungsi::rupiah($jumlah-$data->dansos);
+                    $hasil=Fungsi::rupiah($sim-$data->dansos);
                 }
             @endphp
             {{$hasil}}

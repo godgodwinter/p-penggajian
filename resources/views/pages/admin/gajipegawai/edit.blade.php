@@ -42,57 +42,34 @@ Penggajian Pegawai
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <form  action="{{route('pegawai.update',$id->id)}}" method="post" >
+                        <form  action="{{route('gajipegawai.update',$id->id)}}" method="post" >
                             @method('put')
                             @csrf
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Nama<span
-                                        class="required">*</span></label>
+                                        class="required"></span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control"
-                                        name="nama" id="nama"  required="required" value="{{old('nama')?old('nama'):$id->nama}}" />
+                                        name="nama" id="nama"   value="{{old('nama')?old('nama'):$id->pegawai->nama}}" readonly />
                                 </div>
                             </div>
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Nomerinduk<span
-                                        class="required">*</span></label>
+                                        class="required"></span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control  @error('nomerinduk') is-invalid @enderror"
-                                    name="nomerinduk" id="nomerinduk"  required="required" value="{{old('nomerinduk')?old('nomerinduk'):$id->nomerinduk}}" />
+                                    name="nomerinduk" id="nomerinduk"   value="{{old('nomerinduk')?old('nomerinduk'):$id->pegawai->nomerinduk}}" readonly/>
                                         @error('nomerinduk')<div class="invalid-feedback"> {{$message}}</div>
                                         @enderror
                                 </div>
                             </div>
                             <div class="field item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3  label-align">Jenis Kelamin<span
+                                <label class="col-form-label col-md-3 col-sm-3  label-align"> Kehadiran<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <select id="heard" class="form-control @error('jk') is-invalid @enderror" required name="jk">
-                                        <option  selected >{{$id->jk}}</option>
-                                        <option >Laki-laki</option>
-                                        <option >Perempuan</option>
-                                    </select>
-                                    @error('jk')<div class="invalid-feedback"> {{$message}}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="field item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3  label-align">Alamat<span
-                                        class="required">*</span></label>
-                                <div class="col-md-6 col-sm-6">
-                                    <input class="form-control  @error('alamat') is-invalid @enderror"
-                                    name="alamat" id="alamat"  required="required" value="{{old('alamat')?old('alamat'):$id->alamat}}" />
-                                        @error('alamat')<div class="invalid-feedback"> {{$message}}</div>
-                                        @enderror
-                                </div>
-                            </div>
-                            <div class="field item form-group">
-                                <label class="col-form-label col-md-3 col-sm-3  label-align">No Telp<span
-                                        class="required">*</span></label>
-                                <div class="col-md-6 col-sm-6">
-                                    <input class="form-control  @error('telp') is-invalid @enderror"
-                                    name="telp" id="telp"  required="required" value="{{old('telp')?old('telp'):$id->telp}}" />
-                                        @error('telp')<div class="invalid-feedback"> {{$message}}</div>
+                                    <input class="form-control  @error('hadir') is-invalid @enderror"
+                                    name="hadir" id="hadir"  required="required" value="{{old('hadir')?old('hadir'):$id->hadir}}" />
+                                        @error('hadir')<div class="invalid-feedback"> {{$message}}</div>
                                         @enderror
                                 </div>
                             </div>
@@ -134,7 +111,15 @@ Penggajian Pegawai
                                 class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
                             <select id="heard" class="form-control @error('simkoperasi') is-invalid @enderror" required name="simkoperasi">
-                                <option  selected >{{$id->simkoperasi}}</option>
+                                @php
+                                    $hasil='Tidak';
+                                @endphp
+                                @if($id->simkoperasi>0)
+                                    @php
+                                        $hasil='Ya';
+                                    @endphp
+                                @endif
+                                <option  selected >{{$hasil}}</option>
                                 <option >Ya</option>
                                 <option >Tidak</option>
                             </select>
@@ -148,7 +133,15 @@ Penggajian Pegawai
                                 class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
                             <select id="heard" class="form-control @error('dansos') is-invalid @enderror" required name="dansos">
-                                <option  selected >{{$id->dansos}}</option>
+                                @php
+                                    $hasil='Tidak';
+                                @endphp
+                                @if($id->dansos>0)
+                                    @php
+                                        $hasil='Ya';
+                                    @endphp
+                                @endif
+                                <option  selected >{{$hasil}}</option>
                                 <option >Ya</option>
                                 <option >Tidak</option>
                             </select>
@@ -172,15 +165,15 @@ Penggajian Pegawai
                        </script>
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Jabatan<span
-                                        class="required">*</span></label>
+                                        class="required"></span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <select class="js-example-basic-single form-control-sm @error('jabatan')
                                         is-invalid
-                                    @enderror" name="jabatan[]"  style="width: 100%" multiple="multiple" required>
+                                    @enderror" name="jabatan[]"  style="width: 100%" multiple="multiple"  disabled>
                                         <option disabled  value=""> Pilih Jabatan</option>
                                         @foreach ($items as $item)
                                         @php
-                                            $periksa=\App\Models\pegawaidetail::where('pegawai_id',$id->id)->where('jabatan_id',$item->id)->count();
+                                            $periksa=\App\Models\pegawaidetail::where('pegawai_id',$id->pegawai_id)->where('jabatan_id',$item->id)->count();
                                         @endphp
                                             <option value="{{ $item->id }}" {{$periksa>0?'selected':''}}> {{ $item->nama }}</option>
                                         @endforeach

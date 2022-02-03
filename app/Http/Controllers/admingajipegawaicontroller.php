@@ -185,17 +185,17 @@ class admingajipegawaicontroller extends Controller
 
     }
 
-    public function edit(pegawai $id)
+    public function edit(gajipegawai $id)
     {
-        $pages='pegawai';
+        $pages='gajipegawai';
         $items=jabatan::get();
 
-        return view('pages.admin.pegawai.edit',compact('pages','id','items'));
+        return view('pages.admin.gajipegawai.edit',compact('pages','id','items'));
     }
-    public function update(pegawai $id,Request $request)
+    public function update(gajipegawai $id,Request $request)
     {
 
-
+        // dd($request);
         $request->validate([
             'nama'=>'required',
         ],
@@ -203,39 +203,30 @@ class admingajipegawaicontroller extends Controller
             'nama.required'=>'name harus diisi',
         ]);
 
+        $simkoperasi=0;
+        $dansos=0;
+        $getsettingsgaji=settingsgaji::first();
+        if($request->simkoperasi=='Ya'){
+            $simkoperasi=$getsettingsgaji->simkoperasi;
+        }
+        if($request->dansos=='Ya'){
+            $dansos=$getsettingsgaji->dansos;
+        }
 
-            pegawai::where('id',$id->id)
+            gajipegawai::where('id',$id->id)
             ->update([
-                'nama'     =>   $request->nama,
-                'jk'     =>   $request->jk,
-                'alamat'     =>   $request->alamat,
-                'nomerinduk'     =>   $request->nomerinduk,
-                'simkoperasi'     =>   $request->simkoperasi,
-                'telp'     =>   $request->telp,
-                'dansos'     =>   $request->dansos,
+                'hadir'     =>   Fungsi::angka($request->hadir),
+                'simkoperasi'     =>   $simkoperasi,
+                'dansos'     =>   $dansos,
                 'gajipokok'     =>   Fungsi::angka($request->gajipokok),
                 'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
                'updated_at'=>date("Y-m-d H:i:s")
             ]);
 
-            //laravel destroy where id example
-            DB::table('pegawaidetail')->where('pegawai_id',$id->id)->delete();
-
-            for($i=0;$i<count($request->jabatan);$i++){
-                $periksa=pegawaidetail::where('jabatan_id',$request->jabatan[$i])->where('pegawai_id',$id->id)->count();
-                if($periksa==0){
-                DB::table('pegawaidetail')->insert(
-                    array(
-                           'pegawai_id'     =>   $id->id,
-                           'jabatan_id'     =>   $request->jabatan[$i],
-                           'created_at'=>date("Y-m-d H:i:s"),
-                           'updated_at'=>date("Y-m-d H:i:s")
-                    ));
-                }
-            }
 
 
-    return redirect()->route('pegawai')->with('status','Data berhasil diubah!')->with('tipe','success')->with('icon','fas fa-feather');
+
+    return redirect()->route('gajipegawai')->with('status','Data berhasil diubah!')->with('tipe','success')->with('icon','fas fa-feather');
     }
     public function destroy(gajipegawai $id){
 

@@ -113,9 +113,6 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     Route::get('/admin/gajipegawai/{id}', [admingajipegawaicontroller::class, 'edit'])->name('gajipegawai.edit');
     Route::put('/admin/gajipegawai/{id}', [admingajipegawaicontroller::class, 'update'])->name('gajipegawai.update');
     Route::delete('/admin/gajipegawai/{id}', [admingajipegawaicontroller::class, 'destroy'])->name('gajipegawai.destroy');
-    Route::get('/admin/datagajipegawai/cari', [admingajipegawaicontroller::class, 'cari'])->name('gajipegawai.cari');
-    Route::get('/admin/datagajipegawai/create', [admingajipegawaicontroller::class, 'create'])->name('gajipegawai.create');
-    Route::post('/admin/datagajipegawai', [admingajipegawaicontroller::class, 'store'])->name('gajipegawai.store');
     Route::post('/admin/datagajipegawai/generate', [admingajipegawaicontroller::class, 'generate'])->name('gajipegawai.generate');
     Route::get('/admin/datagajipegawai/cetak', [admingajipegawaicontroller::class, 'cetak'])->name('gajipegawai.cetak');
 

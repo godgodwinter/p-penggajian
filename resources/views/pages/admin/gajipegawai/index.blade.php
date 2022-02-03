@@ -161,8 +161,8 @@ Penggajian Pegawai
                         {{$hasil}}
                     </td>
                     <td class="babeng-min-row">
-<x-button-edit link="{{route('pegawai.edit',$data->id)}}" />
-<x-button-delete link="{{route('pegawai.destroy',$data->id)}}" />
+<x-button-edit link="{{route('gajipegawai.edit',$data->id)}}" />
+<x-button-delete link="{{route('gajipegawai.destroy',$data->id)}}" />
                     </td>
                   </tr>
                     @empty

@@ -237,11 +237,10 @@ class admingajipegawaicontroller extends Controller
 
     return redirect()->route('pegawai')->with('status','Data berhasil diubah!')->with('tipe','success')->with('icon','fas fa-feather');
     }
-    public function destroy(pegawai $id){
+    public function destroy(gajipegawai $id){
 
-        pegawai::destroy($id->id);
-        pegawaidetail::where('pegawai_id',$id->id)->delete();
-        return redirect()->route('pegawai')->with('status','Data berhasil dihapus!')->with('tipe','warning')->with('icon','fas fa-feather');
+        gajipegawai::destroy($id->id);
+        return redirect()->back()->with('status','Data berhasil dihapus!')->with('tipe','warning')->with('icon','fas fa-feather');
 
     }
 }

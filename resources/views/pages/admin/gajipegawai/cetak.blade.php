@@ -3,7 +3,7 @@
 <x-cetak-kop></x-cetak-kop>
 
     <div style="margin-bottom: 0;text-align:center" id="judul">
-        <h2>RINCIAN HR PEGAWAI BULAN : {{Fungsi::tanggalindo(date('Y-m-d'))}}</h2>
+        <h2>RINCIAN HR PEGAWAI BULAN : {{strtoupper(Fungsi::bulanindo($month))}} {{$year}}</h2>
         <p for=""></p>
     </div>
 

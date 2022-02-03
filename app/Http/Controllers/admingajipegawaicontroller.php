@@ -18,22 +18,38 @@ class admingajipegawaicontroller extends Controller
     {
         #WAJIB
         $pages='pegawai';
-        $datas=gajipegawai::whereMonth('tahunbulan',date('m'))->whereYear('tahunbulan',date('Y'))->get();
-        $cari=null;
+        $month = date("m");
+        $year = date("Y");
+        $cari=$request->cari;
+        if($cari){
+        $month = date("m",strtotime($cari));
+        $year = date("Y",strtotime($cari));
+        }
+        $datas=gajipegawai::whereMonth('tahunbulan',$month)->whereYear('tahunbulan',$year)->get();
 
         $getsettingsgaji=settingsgaji::first();
         return view('pages.admin.gajipegawai.index',compact('datas','request','pages','cari','getsettingsgaji'));
     }
     public function generate(Request $request)
     {
+        // dd($request);
+        $month = date("m");
+        $year = date("Y");
+        $cari=$request->cari;
+        if($cari){
+        $month = date("m",strtotime($cari));
+        $year = date("Y",strtotime($cari));
+        }
+        // dd($month);
+
         // 1.get data from settingsgaji
         $getsettingsgaji=settingsgaji::first();
         // 2.get data from pegawai where id
         $getpegawai=pegawai::get();
         foreach($getpegawai as $pegawai){
             $periksa=gajipegawai::where('pegawai_id',$pegawai->id)
-            ->whereMonth('tahunbulan',date('m'))
-            ->whereYear('tahunbulan',date('Y'))
+            ->whereMonth('tahunbulan',$month)
+            ->whereYear('tahunbulan',$year)
             ->count();
             // dd($periksa,date('m'),date('Y'),$pegawai->id);
             if($periksa<1){
@@ -60,7 +76,7 @@ class admingajipegawaicontroller extends Controller
                 //insert gajipegawai
                 gajipegawai::insert([
                     'pegawai_id'=>$pegawai->id,
-                    'tahunbulan'=>date('Y-m-d'),
+                    'tahunbulan'=>$year.'-'.$month.'-01',
                     'gajipokok'=>$pegawai->gajipokok,
                     'tunjangankerja'=>$pegawai->tunjangankerja,
                     'hadir'=>$hadir,
@@ -92,17 +108,24 @@ class admingajipegawaicontroller extends Controller
             //     ));
 
 
-    return redirect()->route('gajipegawai')->with('status','Proses generate gaji berhasil!')->with('tipe','success')->with('icon','fas fa-feather');
+    return redirect()->back()->with('status','Proses generate gaji berhasil!')->with('tipe','success')->with('icon','fas fa-feather');
 
     }
 
 
-    public function cetak(){
-        $datas=gajipegawai::whereMonth('tahunbulan',date('m'))->whereYear('tahunbulan',date('Y'))->get();
-        $cari=null;
+    public function cetak(Request $request){
+        $month = date("m");
+        $year = date("Y");
+        $cari=$request->cari;
+        if($cari){
+        $month = date("m",strtotime($cari));
+        $year = date("Y",strtotime($cari));
+        }
+        $datas=gajipegawai::whereMonth('tahunbulan',$month)->whereYear('tahunbulan',$year)->get();
+
         $getsettingsgaji=settingsgaji::first();
         $tgl=date("YmdHis");
-        $pdf = PDF::loadview('pages.admin.gajipegawai.cetak',compact('datas','getsettingsgaji','tgl'))->setPaper('a4', 'landscape');
+        $pdf = PDF::loadview('pages.admin.gajipegawai.cetak',compact('datas','getsettingsgaji','tgl','year','month'))->setPaper('a4', 'landscape');
         return $pdf->stream('hrpegawai'.$tgl.'-pdf');
     }
     public function cari(Request $request)

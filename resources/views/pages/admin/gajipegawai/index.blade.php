@@ -57,7 +57,7 @@ Penggajian Pegawai
         <div class="col-md-12 col-sm-12 ">
           <div class="x_panel">
             <div class="x_title">
-              <form action="#" method="post" class="d-inline">
+              <form action="{{route('gajipegawai')}}" method="get" class="d-inline">
 
                 <input type="month" class="babeng babeng-select  ml-0" name="cari" value="{{$cari!==null?$cari:date('Y-m')}}">
                 <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"
@@ -68,18 +68,20 @@ Penggajian Pegawai
                   @if($datas->count()>0)
                   <form action="{{route('gajipegawai.generate')}}" method="post" class="d-inline">
                     @csrf
-
+                    <input type="hidden" name="cari" value="{{$cari}}">
                 <input  data-toggle="tooltip" data-placement="top" title="Data yang sudah di generate akan di skip!" class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"  onclick="return  confirm('Anda yakin generate data bulan ini? Y/N')"  data-toggle="tooltip" data-placement="top"
                 value="Generate Gaji">
                 </form>
                 <form action="{{route('gajipegawai.cetak')}}" method="get" class="d-inline">
                   @csrf
+                  <input type="hidden" name="cari" value="{{$cari}}">
               <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"  onclick="return  confirm('Anda yakin mencetak data bulan ini? Y/N')"  data-toggle="tooltip" data-placement="top"
               value="Cetak">
               </form>
                   @else
                   <form action="{{route('gajipegawai.generate')}}" method="post" class="d-inline">
                     @csrf
+                    <input type="hidden" name="cari" value="{{$cari}}">
                 <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"  onclick="return  confirm('Anda yakin generate data bulan ini? Y/N')"  data-toggle="tooltip" data-placement="top"
                 value="Generate Gaji">
                 </form>

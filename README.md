@@ -39,7 +39,7 @@
     <a href="https://github.com/godgodwinter/p-penggajian"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="#">View Demo</a>
+    <a href="https://penggajian.baemon.web.id/">View Demo</a>
     ·
     <a href="https://twitter.com/kakadlz">Report Bug</a>
     ·

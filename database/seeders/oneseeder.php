@@ -54,6 +54,7 @@ class oneseeder extends Seeder
                    'simkoperasi'     =>  20000,
                    'dansos'     =>   10000,
                    'walikelas'     =>   75000,
+                   'gajipokok'     =>   20000,
                    'created_at'=>date("Y-m-d H:i:s"),
                    'updated_at'=>date("Y-m-d H:i:s")
             ));

@@ -61,6 +61,10 @@ Pengaturan
                                     walikelas.addEventListener('keyup', function(e){
                                         walikelas.value = babengRupiah(this.value, 'Rp. ');
                                     });
+                                    let gajipokok = document.getElementById('gajipokok');
+                                    gajipokok.addEventListener('keyup', function(e){
+                                        gajipokok.value = babengRupiah(this.value, 'Rp. ');
+                                    });
                                 });
                             </script>
                             <script src="{{asset('/assets/js/babeng.js')}}"></script>
@@ -79,19 +83,25 @@ Pengaturan
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Simpanan Koperasi<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <input class="form-control"  name="simkoperasi"  id="simkoperasi"type="text"  required="required"  value="{{$id->transport?Fungsi::rupiahtanpanol($id->simkoperasi):''}}" /></div>
+                                    <input class="form-control"  name="simkoperasi"  id="simkoperasi"type="text"  required="required"  value="{{$id->simkoperasi?Fungsi::rupiahtanpanol($id->simkoperasi):''}}" /></div>
                             </div>
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Dana Sosial<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <input class="form-control"  name="dansos"  id="dansos"type="text"  required="required"  value="{{$id->transport?Fungsi::rupiahtanpanol($id->dansos):''}}" /></div>
+                                    <input class="form-control"  name="dansos"  id="dansos"type="text"  required="required"  value="{{$id->dansos?Fungsi::rupiahtanpanol($id->dansos):''}}" /></div>
                             </div>
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Walikelas<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <input class="form-control"  name="walikelas"  id="walikelas"type="text"  required="required"  value="{{$id->transport?Fungsi::rupiahtanpanol($id->walikelas):''}}" /></div>
+                                    <input class="form-control"  name="walikelas"  id="walikelas"type="text"  required="required"  value="{{$id->walikelas?Fungsi::rupiahtanpanol($id->walikelas):''}}" /></div>
+                            </div>
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align">Gaji Pokok (HR Guru)<span
+                                        class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control"  name="gajipokok"  id="gajipokok"type="text"  required="required"  value="{{$id->gajipokok?Fungsi::rupiahtanpanol($id->gajipokok):''}}" /></div>
                             </div>
                             <div class="ln_solid">
                                 <div class="form-group">

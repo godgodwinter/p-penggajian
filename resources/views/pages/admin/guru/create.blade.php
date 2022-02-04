@@ -75,6 +75,16 @@ Guru
                                 </div>
                             </div>
                             <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align">Jam<span
+                                        class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control  @error('jam') is-invalid @enderror"
+                                        name="jam" id="jam"  type="number" min="0" required="required" value="{{old('jam')}}"  />
+                                        @error('jam')<div class="invalid-feedback"> {{$message}}</div>
+                                        @enderror
+                                </div>
+                            </div>
+                            <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Jenis Kelamin<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
@@ -111,33 +121,59 @@ Guru
                         @push('before-script')
                         <script>
                             $(function () {
-                                let gajipokok = document.getElementById('gajipokok');
-                                gajipokok.addEventListener('keyup', function(e){
-                                    gajipokok.value = babengRupiah(this.value, 'Rp. ');
-                                });
+                                // let gajipokok = document.getElementById('gajipokok');
+                                // gajipokok.addEventListener('keyup', function(e){
+                                //     gajipokok.value = babengRupiah(this.value, 'Rp. ');
+                                // });
                                 let tunjangankerja = document.getElementById('tunjangankerja');
                                 tunjangankerja.addEventListener('keyup', function(e){
                                     tunjangankerja.value = babengRupiah(this.value, 'Rp. ');
+                                });
+                                let tunjanganjabatan = document.getElementById('tunjanganjabatan');
+                                tunjanganjabatan.addEventListener('keyup', function(e){
+                                    tunjanganjabatan.value = babengRupiah(this.value, 'Rp. ');
                                 });
                             });
                         </script>
                         <script src="{{asset('/assets/js/babeng.js')}}"></script>
                     @endpush
 
-                    <div class="field item form-group">
+                    {{-- <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Gaji Pokok<span
                                 class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
                             <input class="form-control"
                                 name="gajipokok" id="gajipokok"  required="required" />
                         </div>
-                    </div>
+                    </div> --}}
                     <div class="field item form-group">
                         <label class="col-form-label col-md-3 col-sm-3  label-align">Tunjangan Kerja<span
                                 class="required">*</span></label>
                         <div class="col-md-6 col-sm-6">
                             <input class="form-control"
                                 name="tunjangankerja" id="tunjangankerja"  required="required" />
+                        </div>
+                    </div>
+                    <div class="field item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3  label-align">Tunjangan Jabatan<span
+                                class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6">
+                            <input class="form-control"
+                                name="tunjanganjabatan" id="tunjanganjabatan"  required="required" />
+                        </div>
+                    </div>
+
+                    <div class="field item form-group">
+                        <label class="col-form-label col-md-3 col-sm-3  label-align">Wali kelas<span
+                                class="required">*</span></label>
+                        <div class="col-md-6 col-sm-6">
+                            <select id="heard" class="form-control @error('walikelas') is-invalid @enderror" required name="walikelas">
+                                <option value="" selected disabled>Pilih  ...</option>
+                                <option >Ya</option>
+                                <option >Tidak</option>
+                            </select>
+                            @error('walikelas')<div class="invalid-feedback"> {{$message}}</div>
+                            @enderror
                         </div>
                     </div>
                     <div class="field item form-group">

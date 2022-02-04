@@ -40,6 +40,7 @@ class adminsettingsgajicontroller extends Controller
                 'simkoperasi'     =>   Fungsi::angka($request->simkoperasi),
                 'dansos'     =>   Fungsi::angka($request->dansos),
                 'walikelas'     =>   Fungsi::angka($request->walikelas),
+                'gajipokok'     =>   Fungsi::angka($request->gajipokok),
                'updated_at'=>date("Y-m-d H:i:s")
             ]);
             }else{
@@ -51,6 +52,7 @@ class adminsettingsgajicontroller extends Controller
                        'simkoperasi'     =>   Fungsi::angka($request->simkoperasi),
                        'dansos'     =>   Fungsi::angka($request->dansos),
                        'walikelas'     =>   Fungsi::angka($request->walikelas),
+                       'gajipokok'     =>   Fungsi::angka($request->gajipokok),
                        'created_at'=>date("Y-m-d H:i:s"),
                        'updated_at'=>date("Y-m-d H:i:s")
                 ));

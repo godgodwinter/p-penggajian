@@ -20,13 +20,14 @@ class CreateGuruTable extends Migration
             $table->string('jk');;
             $table->string('alamat');
             $table->string('telp');
-            $table->string('gajipokok')->nullable();
+            // $table->string('gajipokok')->nullable();
             $table->string('simkoperasi')->nullable();
             $table->string('dansos')->nullable();
             $table->string('tunjanganjabatan')->nullable();
             $table->string('tunjangankerja')->nullable();
             $table->string('walikelas')->nullable();
             $table->string('hadir')->nullable();
+            $table->string('jam')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

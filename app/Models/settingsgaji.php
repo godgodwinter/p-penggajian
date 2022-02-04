@@ -18,6 +18,7 @@ class settingsgaji extends Model
             'walikelas',
             'simkoperasi',
             'dansos',
+            'gajipokok', //guru
         ];
 
 }

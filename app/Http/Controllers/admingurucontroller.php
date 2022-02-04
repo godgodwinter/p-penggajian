@@ -6,6 +6,7 @@ use App\Helpers\Fungsi;
 use App\Models\guru;
 use App\Models\gurudetail;
 use App\Models\jabatan;
+use App\Models\settingsgaji;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -16,8 +17,9 @@ class admingurucontroller extends Controller
         #WAJIB
         $pages='guru';
         $datas=guru::with('gurudetail')->get();
+        $getsettingsgaji=settingsgaji::first();
 
-        return view('pages.admin.guru.index',compact('datas','request','pages'));
+        return view('pages.admin.guru.index',compact('datas','request','pages','getsettingsgaji'));
     }
     public function cari(Request $request)
     {
@@ -57,8 +59,11 @@ class admingurucontroller extends Controller
                        'hadir'     =>   $request->hadir,
                        'telp'     =>   $request->telp,
                        'dansos'     =>   $request->dansos,
-                       'gajipokok'     =>   Fungsi::angka($request->gajipokok),
+                       'walikelas'     =>   $request->walikelas,
+                    //    'gajipokok'     =>   Fungsi::angka($request->gajipokok),
                        'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
+                       'tunjanganjabatan'     =>   Fungsi::angka($request->tunjanganjabatan),
+                       'jam'     =>   Fungsi::angka($request->jam),
                        'created_at'=>date("Y-m-d H:i:s"),
                        'updated_at'=>date("Y-m-d H:i:s")
                 ));
@@ -106,8 +111,9 @@ class admingurucontroller extends Controller
                 'telp'     =>   $request->telp,
                 'dansos'     =>   $request->dansos,
                 'hadir'     =>   $request->hadir,
-                'gajipokok'     =>   Fungsi::angka($request->gajipokok),
+                // 'gajipokok'     =>   Fungsi::angka($request->gajipokok),
                 'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
+                'jam'     =>   Fungsi::angka($request->jam),
                'updated_at'=>date("Y-m-d H:i:s")
             ]);
 

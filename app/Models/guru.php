@@ -19,12 +19,17 @@ class guru extends Model
             'jk',
             'alamat',
             'telp',
-            'gajipokok',
+            // 'gajipokok',
             'simkoperasi',
             'dansos',
             'tunjanganjabatan',
             'tunjangankerja',
             'walikelas',
+            'jam',
         ];
 
+        function gurudetail()
+        {
+            return $this->hasMany('App\Models\gurudetail');
+        }
 }

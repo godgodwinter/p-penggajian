@@ -79,10 +79,13 @@ Guru
                     <th class="babeng-min-row">No</th>
                     <th>Nama</th>
                     <th>Jabatan</th>
-                    <th>Telp</th>
+                    {{-- <th>Telp</th> --}}
+                    <th>Tunjangan Jabatan</th>
+                    <th>Wali kellas</th>
+                    <th>Tunjangan Kerja</th>
+                    <th>Jam</th>
                     <th>Gaji Pokok</th>
                     <th>Jadwal Kehadiran</th>
-                    <th>Tunjangan Kerja</th>
                     <th class="text-center">Sim Koperasi</th>
                     <th class="text-center">Dansos</th>
                     <th class="text-center">Aksi</th>
@@ -102,10 +105,23 @@ Guru
 
                         @endforelse
                     </td>
-                    <td>{{$data->telp}}</td>
-                    <td>{{Fungsi::rupiah($data->gajipokok)}}</td>
-                    <td>{{$data->hadir}}</td>
+                    {{-- <td>{{$data->telp}}</td> --}}
+                    <td>{{Fungsi::rupiah($data->tunjanganjabatan)}}</td>
+                    <td class="text-center">
+                        @php
+                            $warna='info';
+                            $hasil='Ya';
+                            if($data->walikelas!='Ya'){
+                                $warna='danger';
+                                $hasil='Tidak';
+                            }
+                        @endphp
+                        <button class="btn btn-sm btn-{{$warna}}">{{$hasil}}</button>
+                    </td>
                     <td>{{Fungsi::rupiah($data->tunjangankerja)}}</td>
+                    <td>{{$data->jam}}</td>
+                    <td>{{Fungsi::rupiah(Fungsi::angka($data->jam*$getsettingsgaji->gajipokok))}}</td>
+                    <td>{{$data->hadir}}</td>
                     <td class="text-center">
                         @php
                             $warna='info';

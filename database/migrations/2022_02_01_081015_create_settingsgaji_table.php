@@ -19,6 +19,7 @@ class CreateSettingsgajiTable extends Migration
             $table->string('simkoperasi')->nullable();
             $table->string('dansos')->nullable();
             $table->string('walikelas')->nullable();
+            $table->string('gajipokok')->nullable(); //guru
             $table->softDeletes();
             $table->timestamps();
         });

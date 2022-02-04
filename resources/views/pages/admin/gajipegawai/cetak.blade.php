@@ -50,7 +50,7 @@
         </tr>
         @forelse ($datas as $data)
         <tr>
-        <td>
+        <td align="center">
             {{$loop->index+1}}
         </td>
         <td>

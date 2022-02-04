@@ -9,6 +9,7 @@ use App\Models\jabatan;
 use App\Models\settingsgaji;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PDF;
 
 class admingajigurucontroller extends Controller
 {

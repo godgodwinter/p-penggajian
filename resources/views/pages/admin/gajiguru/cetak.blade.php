@@ -27,16 +27,25 @@
                 JABATAN
             </th>
             <th>
-                GAJI POKOK
+                TUNJANGAN JABATAN
+            </th>
+            <th>
+                WALIKELAS
             </th>
             <th>
                 TUNJANGAN KERJA
             </th>
             <th>
-                TRANSPORT
+                JAM
+            </th>
+            <th>
+                GAJI POKOK
             </th>
             <th>
                 HADIR
+            </th>
+            <th>
+                TRANSPORT
             </th>
             <th>
                 JUMLAH
@@ -50,7 +59,7 @@
         </tr>
         @forelse ($datas as $data)
         <tr>
-        <td>
+        <td align="center">
             {{$loop->index+1}}
         </td>
         <td>
@@ -65,35 +74,38 @@
                 @endforelse
             @endif
         </td>
-        <td align="center">{{Fungsi::rupiah($data->gajipokok)}}</td>
+        <td align="center">{{Fungsi::rupiah($data->tunjanganjabatan)}}</td>
+        <td align="center">{{Fungsi::rupiah($data->walikelas)}}</td>
         <td align="center">{{Fungsi::rupiah($data->tunjangankerja)}}</td>
+        <td align="center">{{$data->jam}}</td>
+        <td align="center">{{Fungsi::rupiah($data->gajipokok*$data->jam)}}</td>
+        <td align="center">{{$data->hadir}}</td>
         <td  align="center">{{Fungsi::rupiah($data->transport*$data->hadir)}}</td>
-        <td  align="center">{{$data->hadir}}</td>
         @php
-            $jumlah=0;
-                        $jumlah=$data->gajipokok+$data->tunjangankerja+($data->transport*$data->hadir);
+        $jumlah=0;
+        $jumlah=$data->tunjanganjabatan+$data->walikelas+$data->tunjangankerja+($data->gajipokok*$data->jam)+($data->transport*$data->hadir);
+    @endphp
+    <td>{{Fungsi::rupiah($jumlah)}}</td>
+    <td  align="center">
+        @php
+        $hasil='-';
+        $sim=$jumlah;
+            if($data->simkoperasi>0){
+    $sim=$jumlah-$data->simkoperasi;
+                $hasil=Fungsi::rupiah($sim);
+            }
         @endphp
-        <td>{{Fungsi::rupiah($jumlah)}}</td>
-        <td align="center">
-            @php
-            $hasil='-';
-            $sim=$jumlah;
-                if($data->simkoperasi>0){
-                    $sim=$jumlah-$data->simkoperasi;
-                    $hasil=Fungsi::rupiah($sim);
-                }
-            @endphp
-            {{$hasil}}
-        </td>
-        <td align="center">
-            @php
-            $hasil='-';
-                if($data->dansos>0){
-                    $hasil=Fungsi::rupiah($sim-$data->dansos);
-                }
-            @endphp
-            {{$hasil}}
-        </td>
+        {{$hasil}}
+    </td>
+    <td  align="center">
+        @php
+        $hasil='-';
+            if($data->dansos>0){
+                $hasil=Fungsi::rupiah($sim-$data->dansos);
+            }
+        @endphp
+        {{$hasil}}
+    </td>
         </tr>
 
         @empty

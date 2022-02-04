@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.gentella')
 
 @section('title')
  Profile
@@ -15,11 +15,10 @@
         <section class="section">
             <div class="section-header">
             <h1>@yield('title')</h1>
-            <div class="section-header-breadcrumb">
+            {{-- <div class="section-header-breadcrumb">
                 <div class="breadcrumb-item active"><a href="{{route('dashboard')}}">Dashboard</a></div>
-                {{-- <div class="breadcrumb-item"><a href="#">Layout</a></div> --}}
                 <div class="breadcrumb-item">@yield('title')</div>
-            </div>
+            </div> --}}
             </div>
 
             <div class="section-body">
@@ -45,7 +44,7 @@
 
                         <div class="form-group col-md-5 col-5 mt-0 ml-5">
                             <label for="email">Email <code>*)</code></label>
-                            <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{$datas->email}}" required>
+                            <input type="email" name="email" id="email" class="form-control @error('email') is-invalid @enderror" value="{{$datas->email}}" required readonly>
                             @error('email')<div class="invalid-feedback"> {{$message}}</div>
                             @enderror
                         </div>

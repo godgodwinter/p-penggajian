@@ -84,8 +84,8 @@
                       <img src="{{asset('assets/img/avatar/avatar-1.png')}}" alt="">{{ Auth::user()->name }}
                     </a>
                     <div class="dropdown-menu dropdown-usermenu pull-right" aria-labelledby="navbarDropdown">
-                      {{-- <a class="dropdown-item"  href="{{route('settings')}}">
-                        <span class="badge bg-red pull-right">Edit</span>Profile</a> --}}
+                      <a class="dropdown-item"  href="{{route('profile')}}">
+                        <span class="badge bg-red pull-right">Edit</span>Profile</a>
 
                     {{-- <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger"
                     onclick="event.preventDefault();

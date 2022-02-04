@@ -107,10 +107,13 @@ Penggajian Guru
                     <th class="babeng-min-row">No</th>
                     <th>Nama</th>
                     <th>Jabatan</th>
-                    <th >Gaji Pokok</th>
+                    <th >Tunjangan Jabatan</th>
+                    <th >Walikelas</th>
                     <th >Tunjangan Kerja</th>
-                    <th data-toggle="tooltip" data-placement="top" title="hadir * {{Fungsi::rupiah($getsettingsgaji->transport)}}">Transport</th>
+                    <th >Jam</th>
+                    <th data-toggle="tooltip" data-placement="top" title="jam * {{Fungsi::rupiah($getsettingsgaji->gajipokok)}}">Gajipokok</th>
                     <th data-toggle="tooltip" data-placement="top" title="Kehadiran">Hadir</th>
+                    <th data-toggle="tooltip" data-placement="top" title="hadir * {{Fungsi::rupiah($getsettingsgaji->transport)}}">Transport</th>
                     <th data-toggle="tooltip" data-placement="top" title="Gajipokok + Tunjuangan + transport">Jumlah</th>
                     <th class="text-center" data-toggle="tooltip" data-placement="top" title="{{Fungsi::rupiah($getsettingsgaji->simkoperasi)}}">Sim Koperasi</th>
                     <th class="text-center" data-toggle="tooltip" data-placement="top" title="{{Fungsi::rupiah($getsettingsgaji->dansos)}}">Dansos</th>
@@ -133,13 +136,16 @@ Penggajian Guru
                         @endforelse
                         @endif
                     </td>
-                    <td>{{Fungsi::rupiah($data->gajipokok)}}</td>
+                    <td>{{Fungsi::rupiah($data->tunjanganjabatan)}}</td>
+                    <td>{{Fungsi::rupiah($data->walikelas)}}</td>
                     <td>{{Fungsi::rupiah($data->tunjangankerja)}}</td>
-                    <td>{{Fungsi::rupiah($data->transport*$data->hadir)}}</td>
+                    <td>{{$data->jam}}</td>
+                    <td>{{Fungsi::rupiah($data->gajipokok*$data->jam)}}</td>
                     <td>{{$data->hadir}}</td>
+                    <td>{{Fungsi::rupiah($data->transport*$data->hadir)}}</td>
                     @php
                         $jumlah=0;
-                        $jumlah=$data->gajipokok+$data->tunjangankerja+($data->transport*$data->hadir);
+                        $jumlah=$data->tunjanganjabatan+$data->walikelas+$data->tunjangankerja+($data->gajipokok*$data->jam)+($data->transport*$data->hadir);
                     @endphp
                     <td>{{Fungsi::rupiah($jumlah)}}</td>
                     <td class="text-center">

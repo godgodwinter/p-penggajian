@@ -20,7 +20,8 @@ class gajiguru extends Model
             'tunjanganjabatan',
             'tunjangankerja',
             'walikelas',
-            'hari',
+            'hadir',
+            'jam',
             'status',
             'tgl_diberikan',
         ];

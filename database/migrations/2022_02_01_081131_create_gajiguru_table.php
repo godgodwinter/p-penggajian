@@ -22,8 +22,12 @@ class CreateGajiguruTable extends Migration
             $table->string('tunjangankerja')->nullable();
             $table->string('walikelas')->nullable();
             $table->string('hadir')->nullable();
+            $table->string('jam')->nullable();
             $table->string('status')->nullable();
             $table->string('tgl_diberikan')->nullable();
+            $table->string('transport')->nullable();
+            $table->string('simkoperasi')->nullable();
+            $table->string('dansos')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

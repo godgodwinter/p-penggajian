@@ -69,16 +69,32 @@ class admingajigurucontroller extends Controller
                     $transport=0;
                 }
 
+                if(($guru->jam)>0){
+                    $jam=$guru->jam;
+                    $gajipokok=$getsettingsgaji->gajipokok;
+                }else{
+                    $jam=0;
+                    $gajipokok=0;
+                }
+
+                if($guru->walikelas=='Ya'){
+                    $walikelas=$getsettingsgaji->walikelas;
+                }else{
+                    $walikelas=0;
+                }
 
                 $transport=$getsettingsgaji->transport;
                 //insert gajiguru
                 gajiguru::insert([
                     'guru_id'=>$guru->id,
                     'tahunbulan'=>$year.'-'.$month.'-01',
-                    'gajipokok'=>$guru->gajipokok,
+                    'tunjanganjabatan'=>$guru->tunjanganjabatan,
                     'tunjangankerja'=>$guru->tunjangankerja,
                     'hadir'=>$hadir,
                     'status'=>'belum',
+                    'jam'=>$jam,
+                    'gajipokok'=>$gajipokok,
+                    'walikelas'=>$walikelas,
                     'transport'=>$transport,
                     'simkoperasi'=>$simkoperasi,
                     'dansos'=>$dansos,
@@ -203,6 +219,7 @@ class admingajigurucontroller extends Controller
 
         $simkoperasi=0;
         $dansos=0;
+        $walikelas=0;
         $getsettingsgaji=settingsgaji::first();
         if($request->simkoperasi=='Ya'){
             $simkoperasi=$getsettingsgaji->simkoperasi;
@@ -210,14 +227,22 @@ class admingajigurucontroller extends Controller
         if($request->dansos=='Ya'){
             $dansos=$getsettingsgaji->dansos;
         }
+        if($request->walikelas=='Ya'){
+            $walikelas=$getsettingsgaji->walikelas;
+        }
 
             gajiguru::where('id',$id->id)
             ->update([
                 'hadir'     =>   Fungsi::angka($request->hadir),
+                'jam'     =>   Fungsi::angka($request->jam),
                 'simkoperasi'     =>   $simkoperasi,
                 'dansos'     =>   $dansos,
-                'gajipokok'     =>   Fungsi::angka($request->gajipokok),
+                // 'gajipokok'     =>   Fungsi::angka($request->gajipokok),
+                // 'tunjanganjabatan'=>$guru->tunjanganjabatan,
+                'walikelas'     =>   Fungsi::angka($walikelas),
+                'gajipokok'     =>   Fungsi::angka($getsettingsgaji->gajipokok),
                 'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
+                'tunjanganjabatan'     =>   Fungsi::angka($request->tunjanganjabatan),
                'updated_at'=>date("Y-m-d H:i:s")
             ]);
 

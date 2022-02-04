@@ -113,6 +113,7 @@ class admingurucontroller extends Controller
                 'hadir'     =>   $request->hadir,
                 // 'gajipokok'     =>   Fungsi::angka($request->gajipokok),
                 'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
+                'tunjanganjabatan'     =>   Fungsi::angka($request->tunjanganjabatan),
                 'jam'     =>   Fungsi::angka($request->jam),
                'updated_at'=>date("Y-m-d H:i:s")
             ]);

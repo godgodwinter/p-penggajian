@@ -78,7 +78,7 @@
 [![Product Name Screen Shot][product-screenshot-ss2]](https://github.com/godgodwinter/p-penggajian)
 [![Product Name Screen Shot][product-screenshot-ss3]](https://github.com/godgodwinter/p-penggajian)
 [![Product Name Screen Shot][product-screenshot-ss4]](https://github.com/godgodwinter/p-penggajian)
-<!-- [![Product Name Screen Shot][product-screenshot-ss5]](https://github.com/godgodwinter/p-penggajian) -->
+[![Product Name Screen Shot][product-screenshot-ss5]](https://github.com/godgodwinter/p-penggajian)
 
 Sistem Penggajian
 

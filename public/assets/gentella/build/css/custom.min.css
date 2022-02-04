@@ -3,7 +3,7 @@
     --cyan: #00AFB9;
     --pastel: #FDFCDC;
     --browny: #FED9B7;
-    --maggy: #F07167;
+    --maggy: #FFFFFA;
     --pastel-light: #f7f6eb;
 }
 
@@ -1125,7 +1125,7 @@
 }
 
 .site_title i {
-    color : #F07167;
+    color : #FFFFFA;
     padding: 5px 6px;
     border-radius: 50%
 }

@@ -47,15 +47,15 @@
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-              <a data-toggle="tooltip" data-placement="top" title="Settings">
+            <div class="sidebar-footer hidden-small text-white">
+              <a href="{{route('settings')}}" data-toggle="tooltip" data-placement="top" title="Settings Aplikasi">
                 <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
               </a>
-               <a data-toggle="tooltip" data-placement="top" title="FullScreen">
-                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              <a href="{{route('settingsgaji')}}" data-toggle="tooltip" data-placement="top" title="Settings Gaji">
+                <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
               </a>
-              <a data-toggle="tooltip" data-placement="top" title="Lock">
-                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              <a href="{{route('jabatan')}}" data-toggle="tooltip" data-placement="top" title="Jabatan">
+                <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
               </a>
               <form method="POST" action="{{ route('logout') }}">
                 @csrf

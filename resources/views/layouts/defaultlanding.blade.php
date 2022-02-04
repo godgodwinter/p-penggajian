@@ -19,7 +19,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="{{url('/')}}/assets/img/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="{{url('/')}}/assets/img/favicons/favicon-16x16.png">
     <link rel="shortcut icon" type="image/x-icon" href="{{url('/')}}/assets/img/favicons/favicon.ico">
-    <link rel="manifest" href="{{url('/')}}/assets/img/favicons/manifest.json">
+    {{-- <link rel="manifest" href="{{url('/')}}/assets/img/favicons/manifest.json"> --}}
     <meta name="msapplication-TileImage" content="{{url('/')}}/assets/img/favicons/mstile-150x150.png">
     <meta name="theme-color" content="#ffffff">
 
@@ -27,7 +27,10 @@
     <!-- ===============================================-->
     <!--    Stylesheets-->
     <!-- ===============================================-->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link href="{{url('/')}}/assets/css/theme.css" rel="stylesheet" />
+    <link href="{{url('/')}}/assets/css/babeng.css" rel="stylesheet" />
+
 
   </head>
 
@@ -58,6 +61,11 @@
     <!-- ===============================================-->
     <!--    JavaScripts-->
     <!-- ===============================================-->
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <script>
+    AOS.init();
+  </script>
+  <script src="https://technext.github.io/arsha/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="{{url('/')}}/assets/vendor/@popperjs/popper.min.js"></script>
     <script src="{{url('/')}}/assets/vendor/bootstrap/bootstrap.min.js"></script>
     <script src="{{url('/')}}/assets/vendor/is/is.min.js"></script>

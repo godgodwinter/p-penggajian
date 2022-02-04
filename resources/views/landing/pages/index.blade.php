@@ -13,20 +13,26 @@ Beranda
 
 @section('content')
 
-<section class="py-xxl-10 pb-0" id="home">
+  <section id="hero" class="d-flex align-items-center">
     <div class="bg-holder bg-size" style="background-image:url({{asset('/')}}assets/img/bg/hero-bg.png);background-position:top center;background-size:cover;">
     </div>
-    <!--/.bg-holder-->
 
     <div class="container">
-      <div class="row min-vh-xl-100 min-vh-xxl-25">
-        <div class="col-md-5 col-xl-6 col-xxl-7 order-0 order-md-1 text-end"><img class="pt-7 pt-md-0 w-100" src="{{url('/')}}/assets/img/undraw/undraw_confidential_letter_w6ux.svg" alt="hero-header" /></div>
-        <div class="col-md-75 col-xl-6 col-xxl-5 text-md-start text-center py-6">
-          <h1 class="fw-light font-base fs-6 fs-xxl-7">SI <strong>Administrasi Surat</strong> .</strong></h1>
-          {{-- <p class="fs-1 mb-5">Menggunakan Metode MFEP dengan tambahan notifikasi Whatsapp. </p><a class="btn btn-lg btn-primary rounded-pill" href="{{route('login')}}" role="button">Login</a> --}}
+      <div class="row">
+        <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1" data-aos="fade-up" data-aos-delay="200">
+            <h1 class="fw-light font-base fs-6 fs-xxl-7"><strong>{{Fungsi::app_nama()}}</strong> .</strong></h1>
+          {{-- <h2>We are team of talented designers making websites with Bootstrap</h2> --}}
+          <div class="d-flex justify-content-center justify-content-lg-start">
+            <a href="{{route('login')}}" class="btn-get-started scrollto">Get Started</a>
+            {{-- <a href="https://www.youtube.com/watch?v=jDDaplaOz7Q" class="glightbox btn-watch-video"><i class="bi bi-play-circle"></i><span>Watch Video</span></a> --}}
+          </div>
+        </div>
+        <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
+          <img src="{{url('/')}}/assets/img/undraw/undraw_pay_online_b-1-hk__.svg" class="img-fluid animated" alt="">
         </div>
       </div>
     </div>
+
   </section>
 
 @endsection

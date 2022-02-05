@@ -36,7 +36,7 @@ Pengaturan
 
                         <div class="form-group col-md-5 col-5 mt-0 ml-5">
                             <label for="app_namapendek">Singkatan Aplikasi <code>*)</code></label>
-                            <input type="text" name="app_namapendek" id="app_namapendek" class="form-control @error('app_namapendek') is-invalid @enderror" value="{{$datas->app_namapendek}}" maxlength="3" required>
+                            <input type="text" name="app_namapendek" id="app_namapendek" class="form-control @error('app_namapendek') is-invalid @enderror" value="{{$datas->app_namapendek}}" maxlength="5" required>
                             @error('app_namapendek')<div class="invalid-feedback"> {{$message}}</div>
                             @enderror
                         </div>
@@ -55,7 +55,7 @@ Pengaturan
 
                 </div>
             </div>
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-header">
                 <h4>Informasi </h4>
                 </div>
@@ -105,7 +105,7 @@ Pengaturan
                         </div>
 
                 </div>
-            </div>
+            </div> --}}
             <div class="card">
                 <div class="card-header">
                 {{-- <h4>Simpan</h4> --}}
@@ -173,7 +173,7 @@ Pengaturan
             </div>
             <div class="card">
                 <div class="card-header">
-                <h4>Seeder dan Reset Data</h4>
+                {{-- <h4>Seeder dan Reset Data</h4> --}}
                 </div>
                 <div class="card-body">
 
@@ -222,10 +222,10 @@ Pengaturan
                         <button class="btn btn-danger">Hard Reset</button>
                     </form> --}}
 
-                    <form action="{{route('cleartemp')}}" method="post"  class="d-inline ">
+                    {{-- <form action="{{route('cleartemp')}}" method="post"  class="d-inline ">
                         @csrf
                         <button class="btn btn-danger">Clear Temporary</button>
-                    </form>
+                    </form> --}}
 
                 </div>
             </div>

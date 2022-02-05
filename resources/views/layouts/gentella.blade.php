@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{Fungsi::app_nama()}}</title>
+    <title>{{Fungsi::app_namapendek()}}</title>
     @stack('before-style')
     @include('includes.style')
     @stack('after-style')

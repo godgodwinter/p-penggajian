@@ -143,6 +143,24 @@ class admingajigurucontroller extends Controller
         $pdf = PDF::loadview('pages.admin.gajiguru.cetak',compact('datas','getsettingsgaji','tgl','year','month'))->setPaper('a4', 'landscape');
         return $pdf->stream('hrguru'.$tgl.'-pdf');
     }
+    public function cetakperid(gajiguru $id,Request $request){
+        $month = date("m");
+        $year = date("Y");
+        $cari=$request->cari;
+        if($cari){
+        $month = date("m",strtotime($cari));
+        $year = date("Y",strtotime($cari));
+        }
+        $datas=gajiguru::with('guru')
+        ->where('id',$id->id)
+        // whereMonth('tahunbulan',$month)->whereYear('tahunbulan',$year)
+        ->first();
+        // dd($datas);
+        $getsettingsgaji=settingsgaji::first();
+        $tgl=date("YmdHis");
+        $pdf = PDF::loadview('pages.admin.gajiguru.cetakperid',compact('datas','getsettingsgaji','tgl','year','month'))->setPaper('a4', 'landscape');
+        return $pdf->stream('hrguru'.$tgl.'-pdf');
+    }
     public function cari(Request $request)
     {
         $cari=$request->cari;

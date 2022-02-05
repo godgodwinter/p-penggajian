@@ -17,15 +17,26 @@
     <br>
     <table width="99%" border="0" style="margin-left:200px;padding:10px">
         <tr>
-            <td width="200px">NAMA</td>
+            <td width="300px">NAMA</td>
             <td width="10px">:</td>
-            <td>{{$datas->pegawai?$datas->pegawai->nama:'Data tidak ditemukan'}}</td>
+            <td>{{$datas->guru?$datas->guru->nama:'Data tidak ditemukan'}}</td>
         </tr>
 
         <tr>
-            <td width="100px">GAJI POKOK  </td>
+            <td width="100px">JAM/MINGGU</td>
             <td width="10px">:</td>
-            <td>{{Fungsi::rupiah($datas->gajipokok)}}</td>
+            <td>{{$datas->jam}}</td>
+        </tr>
+        <tr>
+            <td width="100px">HADIR 1 BULAN</td>
+            <td width="10px">:</td>
+            <td>{{$datas->hadir}}</td>
+        </tr>
+
+        <tr>
+            <td width="100px">TUNJANGAN JABATAN</td>
+            <td width="10px">:</td>
+            <td>{{Fungsi::rupiah($datas->tunjanganjabatan)}}</td>
         </tr>
 
         <tr>
@@ -35,29 +46,29 @@
         </tr>
 
         <tr>
+            <td width="100px">TUNJANGAN WALIKELAS</td>
+            <td width="10px">:</td>
+            <td>{{$datas->walikelas!=0?Fungsi::rupiah($datas->walikelas):'-'}}</td>
+        </tr>
+        <tr>
+            <td width="100px">GAJI POKOK  (JAM/MINGGU * {{Fungsi::rupiah($datas->gajipokok)}})</td>
+            <td width="10px">:</td>
+            <td>{{Fungsi::rupiah($datas->gajipokok*$datas->jam)}}</td>
+        </tr>
+
+
+        <tr>
             <td width="100px">TRANSPORT (HADIR * {{Fungsi::rupiah($datas->transport)}})</td>
             <td width="10px">:</td>
             <td>{{Fungsi::rupiah($datas->transport*$datas->hadir)}}</td>
         </tr>
 
 
-        <tr>
-            <td width="100px">HADIR 1 BULAN</td>
-            <td width="10px">:</td>
-            <td>{{$datas->hadir}}</td>
-        </tr>
 
         @php
         $jumlah=0;
-        $jumlah=$datas->gajipokok+$datas->tunjangankerja+($datas->transport*$datas->hadir);
+        $jumlah=$datas->tunjanganjabatan+$datas->walikelas+$datas->tunjangankerja+($datas->gajipokok*$datas->jam)+($datas->transport*$datas->hadir);
     @endphp
-        {{-- <tr>
-            <td width="100px">TUNJANGAN JABATAN</td>
-            <td width="10px">:</td>
-            <td>{{$datas->pegawai?$datas->pegawai->nama:'Data tidak ditemukan'}}</td>
-        </tr> --}}
-
-
 
         <tr>
             <td width="100px">JUMLAH</td>

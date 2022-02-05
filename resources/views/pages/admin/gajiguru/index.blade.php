@@ -137,7 +137,8 @@ Penggajian Guru
                         @endif
                     </td>
                     <td>{{Fungsi::rupiah($data->tunjanganjabatan)}}</td>
-                    <td>{{Fungsi::rupiah($data->walikelas)}}</td>
+                    <td>{{$data->walikelas!=0?Fungsi::rupiah($data->walikelas):'-'}}</td>
+                    {{-- <td>{{$data->walikelas!=0?Fungsi::rupiah($data->walikelas):'-'}}</td> --}}
                     <td>{{Fungsi::rupiah($data->tunjangankerja)}}</td>
                     <td>{{$data->jam}}</td>
                     <td>{{Fungsi::rupiah($data->gajipokok*$data->jam)}}</td>
@@ -169,6 +170,7 @@ Penggajian Guru
                         {{$hasil}}
                     </td>
                     <td class="babeng-min-row">
+                        <a href="{{route('gajiguru.cetakperid',$data->id)}}" class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title="Cetak PDF" ><i class="far fa-file-pdf"></i></a>
 <x-button-edit link="{{route('gajiguru.edit',$data->id)}}" />
 <x-button-delete link="{{route('gajiguru.destroy',$data->id)}}" />
                     </td>

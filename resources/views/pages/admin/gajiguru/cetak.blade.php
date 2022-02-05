@@ -75,7 +75,7 @@
             @endif
         </td>
         <td align="center">{{Fungsi::rupiah($data->tunjanganjabatan)}}</td>
-        <td align="center">{{Fungsi::rupiah($data->walikelas)}}</td>
+        <td align="center">{{$data->walikelas!=0?Fungsi::rupiah($data->walikelas):'-'}}</td>
         <td align="center">{{Fungsi::rupiah($data->tunjangankerja)}}</td>
         <td align="center">{{$data->jam}}</td>
         <td align="center">{{Fungsi::rupiah($data->gajipokok*$data->jam)}}</td>

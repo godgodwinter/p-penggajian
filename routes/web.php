@@ -133,6 +133,7 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     Route::delete('/admin/gajiguru/{id}', [admingajigurucontroller::class, 'destroy'])->name('gajiguru.destroy');
     Route::post('/admin/datagajiguru/generate', [admingajigurucontroller::class, 'generate'])->name('gajiguru.generate');
     Route::get('/admin/datagajiguru/cetak', [admingajigurucontroller::class, 'cetak'])->name('gajiguru.cetak');
+    Route::get('/admin/datagajiguru/cetakperid/{id}', [admingajigurucontroller::class, 'cetakperid'])->name('gajiguru.cetakperid');
 
     //API
     Route::get('/admin/api/kriteriadetail/{tahunpenilaian}', [admintahunpenilaiandetailcontroller::class, 'apikriteriadetail'])->name('api.kriteriadetail');

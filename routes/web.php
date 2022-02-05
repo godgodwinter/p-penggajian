@@ -115,6 +115,7 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     Route::delete('/admin/gajipegawai/{id}', [admingajipegawaicontroller::class, 'destroy'])->name('gajipegawai.destroy');
     Route::post('/admin/datagajipegawai/generate', [admingajipegawaicontroller::class, 'generate'])->name('gajipegawai.generate');
     Route::get('/admin/datagajipegawai/cetak', [admingajipegawaicontroller::class, 'cetak'])->name('gajipegawai.cetak');
+    Route::get('/admin/datagajipegawai/cetakperid/{id}', [admingajipegawaicontroller::class, 'cetakperid'])->name('gajipegawai.cetakperid');
 
     //guru
     Route::get('/admin/guru', [admingurucontroller::class, 'index'])->name('guru');

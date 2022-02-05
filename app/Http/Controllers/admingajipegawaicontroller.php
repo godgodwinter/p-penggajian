@@ -128,6 +128,25 @@ class admingajipegawaicontroller extends Controller
         $pdf = PDF::loadview('pages.admin.gajipegawai.cetak',compact('datas','getsettingsgaji','tgl','year','month'))->setPaper('a4', 'landscape');
         return $pdf->stream('hrpegawai'.$tgl.'-pdf');
     }
+
+    public function cetakperid(gajipegawai $id,Request $request){
+        $month = date("m");
+        $year = date("Y");
+        $cari=$request->cari;
+        if($cari){
+        $month = date("m",strtotime($cari));
+        $year = date("Y",strtotime($cari));
+        }
+        $datas=gajipegawai::with('pegawai')
+        ->where('id',$id->id)
+        // whereMonth('tahunbulan',$month)->whereYear('tahunbulan',$year)
+        ->first();
+        // dd($datas);
+        $getsettingsgaji=settingsgaji::first();
+        $tgl=date("YmdHis");
+        $pdf = PDF::loadview('pages.admin.gajipegawai.cetakperid',compact('datas','getsettingsgaji','tgl','year','month'))->setPaper('a4', 'landscape');
+        return $pdf->stream('hrpegawai'.$tgl.'-pdf');
+    }
     public function cari(Request $request)
     {
         $cari=$request->cari;

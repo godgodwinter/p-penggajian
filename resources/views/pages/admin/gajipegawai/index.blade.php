@@ -163,6 +163,7 @@ Penggajian Pegawai
                         {{$hasil}}
                     </td>
                     <td class="babeng-min-row">
+                        <a href="{{route('gajipegawai.cetakperid',$data->id)}}" class="btn btn-info btn-sm"data-toggle="tooltip" data-placement="top" title="Cetak PDF" ><i class="far fa-file-pdf"></i></a>
 <x-button-edit link="{{route('gajipegawai.edit',$data->id)}}" />
 <x-button-delete link="{{route('gajipegawai.destroy',$data->id)}}" />
                     </td>

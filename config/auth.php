@@ -40,6 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'bendahara' => [
+            'driver' => 'session',
+            'provider' => 'bendahara',
+        ],
+        'kepsek' => [
+            'driver' => 'session',
+            'provider' => 'kepsek',
+        ],
 
         'api' => [
             'driver' => 'token',
@@ -70,6 +78,14 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
+        'bendahara' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Bendahara::class,
+        ],
+        'kepsek' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Kepsek::class,
+        ],
 
         // 'users' => [
         //     'driver' => 'database',
@@ -95,6 +111,18 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'bendahara' => [
+            'provider' => 'bendahara',
+            'table' => 'password_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'kepsek' => [
+            'provider' => 'kepsek',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,

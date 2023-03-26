@@ -49,7 +49,7 @@ Route::get('/', [landingcontroller::class, 'index']);
 
 
 //halaman admin fixed
-Route::group(['middleware' => ['auth:web', 'verified']], function() {
+Route::group(['middleware' => ['auth:web', 'verified']], function () {
 
     //DASHBOARD-MENU
     Route::get('/dashboard', [admindashboardcontroller::class, 'index'])->name('dashboard');
@@ -154,9 +154,18 @@ Route::group(['middleware' => ['auth:web', 'verified']], function() {
     Route::post('/admin/seeder/kriteriadetail', [adminseedercontroller::class, 'kriteriadetail'])->name('seeder.kriteriadetail');
     Route::post('/admin/seeder/posisi', [adminseedercontroller::class, 'posisi'])->name('seeder.posisi');
     Route::post('/admin/seeder/hard', [adminseedercontroller::class, 'hard'])->name('seeder.hard');
-
-
 });
 
 
 
+// !menu bendahara
+Route::group(['middleware' => ['auth:bendahara', 'verified']], function () {
+    // Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
+    Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
+});
+
+// !menu kepsek
+Route::group(['middleware' => ['auth:kepsek', 'verified']], function () {
+    // Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
+    Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
+});

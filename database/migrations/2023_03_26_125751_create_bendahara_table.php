@@ -21,6 +21,7 @@ class CreateBendaharaTable extends Migration
             $table->string('username')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->rememberToken();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });

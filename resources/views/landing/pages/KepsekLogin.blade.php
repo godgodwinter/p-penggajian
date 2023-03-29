@@ -22,8 +22,17 @@
                     data-aos="fade-up" data-aos-delay="200">
 
                     <div class="col-lg-12 z-index-2">
-                        <h4>LOGIN ADMINISTRATOR</h4>
-                        <form class="row g-3" action="{{ route('login') }}" method="POST">
+                        <h4>LOGIN KEPALA SEKOLAH</h4>
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form class="row g-3" action="{{ route('kepsek.login.do') }}" method="POST">
                             @csrf
                             <div class="col-md-12">
                                 <label for="inputName">Username :</label>
@@ -31,8 +40,8 @@
                                     class="form-control form-livedoc-contro @error('identity')
                     is-invalid
                     @enderror"
-                                    id="inputName" placeholder="Username" autocomplete="nope" name="identity" />
-                                @error('identity')
+                                    id="inputName" placeholder="Username" autocomplete="nope" name="username" />
+                                @error('username')
                                     <div class="invalid-feedback text-danger">
                                         {{ $message }}
                                     </div>
@@ -63,10 +72,10 @@
                             <h3>Demo : </h3>
 
                             <div class="col-md-4">
-                                <h5>Sebagai : Admin</h5>
-                                <label for="inputPhone">Username : admin</label>
+                                <h5>Sebagai : Kepala Sekolah</h5>
+                                <label for="inputPhone">Username : kepsek</label>
                                 <br>
-                                <label for="inputPhone">Password : admin</label>
+                                <label for="inputPhone">Password : kepsek</label>
                             </div>
 
                             {{-- <div class="col-md-4">

@@ -19,17 +19,18 @@ class twoSeeder extends Seeder
     public function run()
     {
 
+        DB::table('bendahara')->truncate();
         //Bendahara SEEDER
         DB::table('bendahara')->insert([
             'name' => 'Bendahara',
             'email' => 'bendahara@gmail.com',
             'password' => Hash::make('bendahara'),
             'nomerinduk' => '1',
-            'username' => 'bendaraha',
+            'username' => 'bendahara',
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now()
         ]);
-
+        DB::table('kepsek')->truncate();
         //ADMIN SEEDER
         DB::table('kepsek')->insert([
             'name' => 'Kepala Sekolah',

@@ -161,13 +161,16 @@ Route::group(['middleware' => ['auth:web', 'verified']], function () {
 
 
 Route::get('/bendahara/login', [bendaharaLandingController::class, 'index'])->name('bendahara.login');
+Route::post('/bendahara/login', [bendaharaLandingController::class, 'do_login'])->name('bendahara.login.do');
 // !menu bendahara
 Route::group(['middleware' => ['auth:bendahara', 'verified']], function () {
     // Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
-    Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
+    Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index'])->name('bendahara.test');
+    Route::get('/tes/guru', [admingurucontroller::class, 'index'])->name('bendahara.testing');
 });
 
 Route::get('/kepsek/login', [kepsekLandingController::class, 'index'])->name('kepsek.login');
+Route::post('/kepsek/login', [kepsekLandingController::class, 'do_login'])->name('kepsek.login.do');
 // !menu kepsek
 Route::group(['middleware' => ['auth:kepsek', 'verified']], function () {
     // Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);

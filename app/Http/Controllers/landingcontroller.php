@@ -16,10 +16,11 @@ use Illuminate\Support\Collection;
 
 class landingcontroller extends Controller
 {
-    public function index(){
-        $pages='beranda';
-    // return view('auth.login',compact('pages'));
-    return view('landing.pages.index',compact('pages'));
+    public function index()
+    {
+        $pages = 'beranda';
+        // return view('auth.login',compact('pages'));
+        return view('landing.pages.index', compact('pages'));
     }
 
     // public function pemain(){

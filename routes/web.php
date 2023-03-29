@@ -31,10 +31,12 @@ use App\Http\Controllers\adminsuratmasukcontroller;
 use App\Http\Controllers\admintahunpenilaiancontroller;
 use App\Http\Controllers\admintahunpenilaiandetailcontroller;
 use App\Http\Controllers\adminuserscontroller;
+use App\Http\Controllers\bendahara\bendaharaLandingController;
 use App\Http\Controllers\direksisuratkeluarcontroller;
 use App\Http\Controllers\direksisuratmasukcontroller;
 use App\Http\Controllers\divisisuratkeluarcontroller;
 use App\Http\Controllers\divisisuratmasukcontroller;
+use App\Http\Controllers\kepsek\kepsekLandingController;
 use App\Http\Controllers\landingcontroller;
 use App\Http\Controllers\pelatihtahunpenilaiancontroller;
 use App\Http\Controllers\pemaintahunpenilaiancontroller;
@@ -158,12 +160,14 @@ Route::group(['middleware' => ['auth:web', 'verified']], function () {
 
 
 
+Route::get('/bendahara/login', [bendaharaLandingController::class, 'index'])->name('bendahara.login');
 // !menu bendahara
 Route::group(['middleware' => ['auth:bendahara', 'verified']], function () {
     // Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
     Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
 });
 
+Route::get('/kepsek/login', [kepsekLandingController::class, 'index'])->name('kepsek.login');
 // !menu kepsek
 Route::group(['middleware' => ['auth:kepsek', 'verified']], function () {
     // Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);

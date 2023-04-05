@@ -29,8 +29,8 @@ class bendaharaLandingController extends Controller
         $credentials = $request->only('username', 'password');
         // dd($credentials);
         if (Auth::guard('bendahara')->attempt($credentials)) {
-            return redirect()->route('bendahara.testing')->with('status', 'login berhasil !')->with('tipe', 'success')->with('icon', 'fas fa-feather');
-            dd("login berhasil");
+            return redirect()->route('bendahara.gajiguru')->with('status', 'login berhasil !')->with('tipe', 'success')->with('icon', 'fas fa-feather');
+            // dd("login berhasil");
             // return redirect('/dashboard');
         } else {
             // return redirect()->back()->with('status', 'Login gagal!')->with('tipe', 'success')->with('icon', 'fas fa-feather');

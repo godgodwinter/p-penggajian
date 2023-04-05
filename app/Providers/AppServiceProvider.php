@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Carbon\Carbon;
 use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
@@ -26,11 +27,18 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Blade::if('bendahara', function () {
+            return Auth::guard('bendahara')->user();
+        });
 
-         Paginator::useBootstrap();
+        Blade::if('kepsek', function () {
+            return Auth::guard('kepsek')->user();
+        });
+
+        Paginator::useBootstrap();
 
         // Blade::directive('periksajurusan', function ($expression) {
-                   
+
         //     // $strex=[];
         //     $strex=explode(" ",$expression);
         //     dd($strex);
@@ -54,8 +62,8 @@ class AppServiceProvider extends ServiceProvider
             return "<?php echo number_format($expression, 0, ',', '.'); ?>";
         });
 
-          //Tanggal Indo
-          Blade::directive('tanggalindo', function ($expression) {
+        //Tanggal Indo
+        Blade::directive('tanggalindo', function ($expression) {
 
             //   return dd(Carbon::parse($expression)->translatedFormat('d F Y'));
             return Carbon::parse($expression)->translatedFormat('d F Y');

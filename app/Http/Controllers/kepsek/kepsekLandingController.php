@@ -28,10 +28,14 @@ class kepsekLandingController extends Controller
         $credentials = $request->only('username', 'password');
         // dd($credentials);
         if (Auth::guard('kepsek')->attempt($credentials)) {
-            dd("login berhasil");
+            return redirect()->route('kepsek.laporan')->with('status', 'login berhasil !')->with('tipe', 'success')->with('icon', 'fas fa-feather');
+            // dd("login berhasil");
             // return redirect('/dashboard');
         } else {
-            dd("login gagal");
+            return redirect()
+                ->back()
+                ->withErrors(['email' => 'Email atau password salah']);
+            // dd("login gagal");
             // return redirect('/login')->with('error', 'Invalid Email address or Password');
         }
     }

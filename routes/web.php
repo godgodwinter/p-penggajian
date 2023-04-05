@@ -31,12 +31,14 @@ use App\Http\Controllers\adminsuratmasukcontroller;
 use App\Http\Controllers\admintahunpenilaiancontroller;
 use App\Http\Controllers\admintahunpenilaiandetailcontroller;
 use App\Http\Controllers\adminuserscontroller;
+use App\Http\Controllers\bendahara\bendaharaGajiGuruController;
 use App\Http\Controllers\bendahara\bendaharaLandingController;
 use App\Http\Controllers\direksisuratkeluarcontroller;
 use App\Http\Controllers\direksisuratmasukcontroller;
 use App\Http\Controllers\divisisuratkeluarcontroller;
 use App\Http\Controllers\divisisuratmasukcontroller;
 use App\Http\Controllers\kepsek\kepsekLandingController;
+use App\Http\Controllers\kepsek\kepsekLaporanController;
 use App\Http\Controllers\landingcontroller;
 use App\Http\Controllers\pelatihtahunpenilaiancontroller;
 use App\Http\Controllers\pemaintahunpenilaiancontroller;
@@ -165,8 +167,10 @@ Route::post('/bendahara/login', [bendaharaLandingController::class, 'do_login'])
 // !menu bendahara
 Route::group(['middleware' => ['auth:bendahara', 'verified']], function () {
     // Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
-    Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index'])->name('bendahara.test');
-    Route::get('/tes/guru', [admingurucontroller::class, 'index'])->name('bendahara.testing');
+    // Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index'])->name('bendahara.test');
+    // Route::get('/tes/guru', [admingurucontroller::class, 'index'])->name('bendahara.testing');
+    // Route::get('/bendahara/gajiguru', [admingajigurucontroller::class, 'index'])->name('bendahara.gajiguru');
+    Route::get('/bendahara/gajiguru', [bendaharaGajiGuruController::class, 'index'])->name('bendahara.gajiguru');
 });
 
 Route::get('/kepsek/login', [kepsekLandingController::class, 'index'])->name('kepsek.login');
@@ -174,5 +178,6 @@ Route::post('/kepsek/login', [kepsekLandingController::class, 'do_login'])->name
 // !menu kepsek
 Route::group(['middleware' => ['auth:kepsek', 'verified']], function () {
     // Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
-    Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
+    // Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
+    Route::get('/kepsek/laporan', [kepsekLaporanController::class, 'index'])->name('kepsek.laporan');
 });

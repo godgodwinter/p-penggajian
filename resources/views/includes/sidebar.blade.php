@@ -22,11 +22,17 @@
             @endif
             {{-- @dd(Auth::guard('bendahara')->user()) --}}
             @bendahara()
-                <li><a href="{{ route('pegawai') }}"><i class="fas fa-user-tie"></i> Pegawai </a></li>
-                <li><a href="{{ route('gajipegawai') }}"><i class="far fa-money-bill-alt"></i> Penggajian Pegawai </a>
+                <li><a><i class="fas fa-cog"></i> Pengaturan<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{{ route('settingsgaji') }}">Gaji</a></li>
+                    </ul>
+                <li><a href="{{ route('bendahara.pegawai') }}"><i class="fas fa-user-tie"></i> Pegawai </a></li>
+                <li><a href="{{ route('bendahara.gajipegawai') }}"><i class="far fa-money-bill-alt"></i> Penggajian Pegawai
+                    </a>
                 </li>
-                <li><a href="{{ route('guru') }}"><i class="fas fa-user-graduate"></i> Guru </a></li>
-                <li><a href="{{ route('gajiguru') }}"><i class="far fa-money-bill-alt"></i> Penggajian Guru </a></li>
+                <li><a href="{{ route('bendahara.guru') }}"><i class="fas fa-user-graduate"></i> Guru </a></li>
+                <li><a href="{{ route('bendahara.gajiguru') }}"><i class="far fa-money-bill-alt"></i> Penggajian Guru </a>
+                </li>
             @endbendahara
 
             @kepsek()

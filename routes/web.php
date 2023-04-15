@@ -170,7 +170,12 @@ Route::group(['middleware' => ['auth:bendahara', 'verified']], function () {
     // Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index'])->name('bendahara.test');
     // Route::get('/tes/guru', [admingurucontroller::class, 'index'])->name('bendahara.testing');
     // Route::get('/bendahara/gajiguru', [admingajigurucontroller::class, 'index'])->name('bendahara.gajiguru');
+    //* menu fixed
+    Route::get('/bendahara/settingsgaji', [bendaharaGajiGuruController::class, 'index'])->name('bendahara.settingsgaji');
+    Route::get('/bendahara/guru', [bendaharaGajiGuruController::class, 'index'])->name('bendahara.guru');
     Route::get('/bendahara/gajiguru', [bendaharaGajiGuruController::class, 'index'])->name('bendahara.gajiguru');
+    Route::get('/bendahara/pegawai', [bendaharaGajiGuruController::class, 'index'])->name('bendahara.pegawai');
+    Route::get('/bendahara/gajipegawai', [bendaharaGajiGuruController::class, 'index'])->name('bendahara.gajipegawai');
 });
 
 Route::get('/kepsek/login', [kepsekLandingController::class, 'index'])->name('kepsek.login');
@@ -179,5 +184,8 @@ Route::post('/kepsek/login', [kepsekLandingController::class, 'do_login'])->name
 Route::group(['middleware' => ['auth:kepsek', 'verified']], function () {
     // Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
     // Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
-    Route::get('/kepsek/laporan', [kepsekLaporanController::class, 'index'])->name('kepsek.laporan');
+    //* menu fixed
+    Route::get('/kepsek/laporan/guru', [kepsekLaporanController::class, 'index'])->name('kepsek.laporan');
+    Route::get('/kepsek/laporan/guru', [kepsekLaporanController::class, 'index'])->name('kepsek.laporan.guru');
+    Route::get('/kepsek/laporan/pegawai', [kepsekLaporanController::class, 'index'])->name('kepsek.laporan.pegawai');
 });

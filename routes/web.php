@@ -32,6 +32,7 @@ use App\Http\Controllers\admintahunpenilaiancontroller;
 use App\Http\Controllers\admintahunpenilaiandetailcontroller;
 use App\Http\Controllers\adminuserscontroller;
 use App\Http\Controllers\bendahara\bendaharaGajiGuruController;
+use App\Http\Controllers\bendahara\bendaharaGajiPegawaiController;
 use App\Http\Controllers\bendahara\bendaharaLandingController;
 use App\Http\Controllers\bendahara\bendaharaGuruController;
 use App\Http\Controllers\bendahara\bendaharaPegawaiController;
@@ -200,7 +201,13 @@ Route::group(['middleware' => ['auth:bendahara', 'verified']], function () {
     Route::get('/bendahara/datapegawai/create', [bendaharaPegawaiController::class, 'create'])->name('bendahara.pegawai.create');
     Route::post('/bendahara/datapegawai', [bendaharaPegawaiController::class, 'store'])->name('bendahara.pegawai.store');
 
-    Route::get('/bendahara/gajipegawai', [bendaharaGajiGuruController::class, 'index'])->name('bendahara.gajipegawai');
+    Route::get('/bendahara/gajipegawai', [bendaharaGajiPegawaiController::class, 'index'])->name('bendahara.gajipegawai');
+    Route::get('/bendahara/gajipegawai/{id}', [bendaharaGajiPegawaiController::class, 'edit'])->name('bendahara.gajipegawai.edit');
+    Route::put('/bendahara/gajipegawai/{id}', [bendaharaGajiPegawaiController::class, 'update'])->name('bendahara.gajipegawai.update');
+    Route::delete('/bendahara/gajipegawai/{id}', [bendaharaGajiPegawaiController::class, 'destroy'])->name('bendahara.gajipegawai.destroy');
+    Route::post('/bendahara/datagajipegawai/generate', [bendaharaGajiPegawaiController::class, 'generate'])->name('bendahara.gajipegawai.generate');
+    Route::get('/bendahara/datagajipegawai/cetak', [bendaharaGajiPegawaiController::class, 'cetak'])->name('bendahara.gajipegawai.cetak');
+    Route::get('/bendahara/datagajipegawai/cetakperid/{id}', [bendaharaGajiPegawaiController::class, 'cetakperid'])->name('bendahara.gajipegawai.cetakperid');
 });
 
 Route::get('/kepsek/login', [kepsekLandingController::class, 'index'])->name('kepsek.login');

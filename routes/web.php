@@ -33,6 +33,7 @@ use App\Http\Controllers\admintahunpenilaiandetailcontroller;
 use App\Http\Controllers\adminuserscontroller;
 use App\Http\Controllers\bendahara\bendaharaGajiGuruController;
 use App\Http\Controllers\bendahara\bendaharaLandingController;
+use App\Http\Controllers\bendahara\bendaharaGuruController;
 use App\Http\Controllers\direksisuratkeluarcontroller;
 use App\Http\Controllers\direksisuratmasukcontroller;
 use App\Http\Controllers\divisisuratkeluarcontroller;
@@ -172,7 +173,15 @@ Route::group(['middleware' => ['auth:bendahara', 'verified']], function () {
     // Route::get('/bendahara/gajiguru', [admingajigurucontroller::class, 'index'])->name('bendahara.gajiguru');
     //* menu fixed
     Route::get('/bendahara/settingsgaji', [bendaharaGajiGuruController::class, 'index'])->name('bendahara.settingsgaji');
-    Route::get('/bendahara/guru', [bendaharaGajiGuruController::class, 'index'])->name('bendahara.guru');
+    Route::get('/bendahara/guru', [bendaharaGuruController::class, 'index'])->name('bendahara.guru');
+    Route::get('/bendahara/guru/{id}', [bendaharaGuruController::class, 'edit'])->name('bendahara.guru.edit');
+    Route::put('/bendahara/guru/{id}', [bendaharaGuruController::class, 'update'])->name('bendahara.guru.update');
+    Route::delete('/bendahara/guru/{id}', [bendaharaGuruController::class, 'destroy'])->name('bendahara.guru.destroy');
+    Route::get('/bendahara/dataguru/cari', [bendaharaGuruController::class, 'cari'])->name('bendahara.guru.cari');
+    Route::get('/bendahara/dataguru/create', [bendaharaGuruController::class, 'create'])->name('bendahara.guru.create');
+    Route::post('/bendahara/dataguru', [bendaharaGuruController::class, 'store'])->name('bendahara.guru.store');
+
+
     Route::get('/bendahara/gajiguru', [bendaharaGajiGuruController::class, 'index'])->name('bendahara.gajiguru');
     Route::post('/bendahara/datagajiguru/generate', [bendaharaGajiGuruController::class, 'generate'])->name('bendahara.gajiguru.generate');
     Route::get('/bendahara/gajiguru/{id}', [bendaharaGajiGuruController::class, 'edit'])->name('bendahara.gajiguru.edit');
@@ -180,7 +189,10 @@ Route::group(['middleware' => ['auth:bendahara', 'verified']], function () {
     Route::delete('/bendahara/gajiguru/{id}', [bendaharaGajiGuruController::class, 'destroy'])->name('bendahara.gajiguru.destroy');
     Route::get('/bendahara/datagajiguru/cetak', [bendaharaGajiGuruController::class, 'cetak'])->name('bendahara.gajiguru.cetak');
     Route::get('/bendahara/datagajiguru/cetakperid/{id}', [bendaharaGajiGuruController::class, 'cetakperid'])->name('bendahara.gajiguru.cetakperid');
+
+
     Route::get('/bendahara/pegawai', [bendaharaGajiGuruController::class, 'index'])->name('bendahara.pegawai');
+
     Route::get('/bendahara/gajipegawai', [bendaharaGajiGuruController::class, 'index'])->name('bendahara.gajipegawai');
 });
 

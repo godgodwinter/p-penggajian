@@ -34,6 +34,7 @@ use App\Http\Controllers\adminuserscontroller;
 use App\Http\Controllers\bendahara\bendaharaGajiGuruController;
 use App\Http\Controllers\bendahara\bendaharaLandingController;
 use App\Http\Controllers\bendahara\bendaharaGuruController;
+use App\Http\Controllers\bendahara\bendaharaPegawaiController;
 use App\Http\Controllers\direksisuratkeluarcontroller;
 use App\Http\Controllers\direksisuratmasukcontroller;
 use App\Http\Controllers\divisisuratkeluarcontroller;
@@ -191,7 +192,13 @@ Route::group(['middleware' => ['auth:bendahara', 'verified']], function () {
     Route::get('/bendahara/datagajiguru/cetakperid/{id}', [bendaharaGajiGuruController::class, 'cetakperid'])->name('bendahara.gajiguru.cetakperid');
 
 
-    Route::get('/bendahara/pegawai', [bendaharaGajiGuruController::class, 'index'])->name('bendahara.pegawai');
+    Route::get('/bendahara/pegawai', [bendaharaPegawaiController::class, 'index'])->name('bendahara.pegawai');
+    Route::get('/bendahara/pegawai/{id}', [bendaharaPegawaiController::class, 'edit'])->name('bendahara.pegawai.edit');
+    Route::put('/bendahara/pegawai/{id}', [bendaharaPegawaiController::class, 'update'])->name('bendahara.pegawai.update');
+    Route::delete('/bendahara/pegawai/{id}', [bendaharaPegawaiController::class, 'destroy'])->name('bendahara.pegawai.destroy');
+    Route::get('/bendahara/datapegawai/cari', [bendaharaPegawaiController::class, 'cari'])->name('bendahara.pegawai.cari');
+    Route::get('/bendahara/datapegawai/create', [bendaharaPegawaiController::class, 'create'])->name('bendahara.pegawai.create');
+    Route::post('/bendahara/datapegawai', [bendaharaPegawaiController::class, 'store'])->name('bendahara.pegawai.store');
 
     Route::get('/bendahara/gajipegawai', [bendaharaGajiGuruController::class, 'index'])->name('bendahara.gajipegawai');
 });

@@ -36,7 +36,7 @@
   <p align="center">
    SI Penggajian
     <br />
-    <a href="https://github.com/godgodwinter/p-penggajian"><strong>Explore the docs »</strong></a>
+    <a href="https://troubled-kick-222.notion.site/S-Penggajian-7c33810cf70c4fd38d3f69b7c559edd2"><strong>Explore the docs (Notion.so)»</strong></a>
     <br />
     <br />
     <a href="https://penggajian.baemon.web.id/">View Demo</a>

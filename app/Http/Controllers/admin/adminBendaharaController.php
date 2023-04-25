@@ -1,34 +1,32 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
-use App\Helpers\Fungsi;
-use App\Models\User;
+use App\Http\Controllers\Controller;
+use App\Models\Bendahara;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\URL;
 
-class adminuserscontroller extends Controller
+class adminBendaharaController extends Controller
 {
     public function index(Request $request)
     {
         #WAJIB
         $pages = 'Admin';
-        $datas = User::get();
+        $datas = Bendahara::get();
 
-        return view('pages.admin.users.index', compact('datas', 'request', 'pages'));
+        return view('pages.admin.bendahara.index', compact('datas', 'request', 'pages'));
     }
     public function create()
     {
         $pages = 'pegawai';
-        return view('pages.admin.users.create', compact('pages'));
+        return view('pages.admin.bendahara.create', compact('pages'));
     }
     public function store(Request $request)
     {
         // dd($request);
-        $cek = DB::table('users')
+        $cek = DB::table('bendahara')
             // ->whereNull('deleted_at')
             ->where('username', $request->username)
             ->orWhere('email', $request->email)
@@ -37,8 +35,8 @@ class adminuserscontroller extends Controller
         if ($cek > 0) {
             $request->validate(
                 [
-                    'username' => 'required|unique:users,username',
-                    'email' => 'required|unique:users,email',
+                    'username' => 'required|unique:bendahara,username',
+                    'email' => 'required|unique:bendahara,email',
                     'password' => 'min:3|required_with:password2|same:password2',
                     'password2' => 'min:3',
 
@@ -62,34 +60,32 @@ class adminuserscontroller extends Controller
             ]
         );
         $divisi = null;
-        DB::table('users')->insert(
+        DB::table('bendahara')->insert(
             array(
                 'name'     =>   $request->name,
                 'email'     =>   $request->email,
                 'username'     =>   $request->username,
                 'nomerinduk'     => date('YmdHis'),
                 'password' => Hash::make($request->password),
-                'tipeuser' => 'admin',
-                'divisi_id' => $divisi,
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
             )
         );
 
-        $datausers = DB::table('users')->where('username', $request->username)->first();
+        $datausers = DB::table('bendahara')->where('username', $request->username)->first();
 
 
-        return redirect()->route('users')->with('status', 'Data berhasil tambahkan!')->with('tipe', 'success')->with('icon', 'fas fa-feather');
+        return redirect()->route('bendahara')->with('status', 'Data berhasil tambahkan!')->with('tipe', 'success')->with('icon', 'fas fa-feather');
     }
 
-    public function edit(User $id)
+    public function edit(Bendahara $id)
     {
-        $pages = 'users';
-        $id = User::where('id', $id->id)
+        $pages = 'bendahara';
+        $id = Bendahara::where('id', $id->id)
             ->first();
-        return view('pages.admin.users.edit', compact('pages', 'id'));
+        return view('pages.admin.bendahara.edit', compact('pages', 'id'));
     }
-    public function update(User $id, Request $request)
+    public function update(Bendahara $id, Request $request)
     {
 
         if ($request->username !== $id->username) {
@@ -127,35 +123,31 @@ class adminuserscontroller extends Controller
                     'nama.required' => 'nama harus diisi',
                 ]
             );
-            User::where('id', $id->id)
+            Bendahara::where('id', $id->id)
                 ->update([
                     'name'     =>   $request->name,
                     'username'     =>   $request->username,
                     'email'     =>   $request->email,
                     'password' => Hash::make($request->password),
-                    'tipeuser'     =>   'admin',
-                    'divisi_id' => $divisi,
                     'updated_at' => date("Y-m-d H:i:s")
                 ]);
         } else {
-            User::where('id', $id->id)
+            Bendahara::where('id', $id->id)
                 ->update([
                     'name'     =>   $request->name,
                     'username'     =>   $request->username,
                     'email'     =>   $request->email,
-                    'tipeuser'     =>   'admin',
-                    'divisi_id' => $divisi,
                     'updated_at' => date("Y-m-d H:i:s")
                 ]);
         }
 
 
-        return redirect()->route('users')->with('status', 'Data berhasil diubah!')->with('tipe', 'success')->with('icon', 'fas fa-feather');
+        return redirect()->route('bendahara')->with('status', 'Data berhasil diubah!')->with('tipe', 'success')->with('icon', 'fas fa-feather');
     }
-    public function destroy(User $id)
+    public function destroy(Bendahara $id)
     {
 
-        User::destroy($id->id);
-        return redirect()->route('users')->with('status', 'Data berhasil dihapus!')->with('tipe', 'warning')->with('icon', 'fas fa-feather');
+        Bendahara::destroy($id->id);
+        return redirect()->route('bendahara')->with('status', 'Data berhasil dihapus!')->with('tipe', 'warning')->with('icon', 'fas fa-feather');
     }
 }

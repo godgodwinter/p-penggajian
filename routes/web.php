@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\admin\adminBendaharaController;
 use App\Http\Controllers\adminapicontroller;
 use App\Http\Controllers\admincetakcontroller;
 use App\Http\Controllers\admindashboardcontroller;
@@ -77,6 +78,14 @@ Route::group(['middleware' => ['auth:web', 'verified']], function () {
     Route::delete('/admin/users/{id}', [adminuserscontroller::class, 'destroy'])->name('users.destroy');
     Route::get('/admin/datausers/create', [adminuserscontroller::class, 'create'])->name('users.create');
     Route::post('/admin/datausers', [adminuserscontroller::class, 'store'])->name('users.store');
+
+    // bendahara
+    Route::get('/admin/bendahara', [adminBendaharaController::class, 'index'])->name('bendahara');
+    Route::get('/admin/bendahara/{id}', [adminBendaharaController::class, 'edit'])->name('bendahara.edit');
+    Route::put('/admin/bendahara/{id}', [adminBendaharaController::class, 'update'])->name('bendahara.update');
+    Route::delete('/admin/bendahara/{id}', [adminBendaharaController::class, 'destroy'])->name('bendahara.destroy');
+    Route::get('/admin/databendahara/create', [adminBendaharaController::class, 'create'])->name('bendahara.create');
+    Route::post('/admin/databendahara', [adminBendaharaController::class, 'store'])->name('bendahara.store');
 
 
     //kategori

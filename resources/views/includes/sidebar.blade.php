@@ -21,7 +21,7 @@
                 <li><a><i class="fas fa-cog"></i> Akun<span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                         <li><a href="{{ route('users') }}">Admin</a></li>
-                        <li><a href="{{ route('settingsgaji') }}">Bendahara</a></li>
+                        <li><a href="{{ route('bendahara') }}">Bendahara</a></li>
                         <li><a href="{{ route('jabatan') }}">Kepsek</a></li>
                     </ul>
                 </li>

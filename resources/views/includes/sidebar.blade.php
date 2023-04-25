@@ -32,7 +32,7 @@
                 @bendahara()
                     <li><a><i class="fas fa-cog"></i> Pengaturan<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
-                            <li><a href="{{ route('settingsgaji') }}">Gaji</a></li>
+                            <li><a href="{{ route('bendahara.settingsgaji') }}">Gaji</a></li>
                         </ul>
                     <li><a href="{{ route('bendahara.pegawai') }}"><i class="fas fa-user-tie"></i> Pegawai </a></li>
                     <li><a href="{{ route('bendahara.gajipegawai') }}"><i class="far fa-money-bill-alt"></i> Penggajian

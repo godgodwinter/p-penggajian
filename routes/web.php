@@ -194,7 +194,11 @@ Route::group(['middleware' => ['auth:bendahara', 'verified']], function () {
     // Route::get('/tes/guru', [admingurucontroller::class, 'index'])->name('bendahara.testing');
     // Route::get('/bendahara/gajiguru', [admingajigurucontroller::class, 'index'])->name('bendahara.gajiguru');
     //* menu fixed
-    Route::get('/bendahara/settingsgaji', [bendaharaGajiGuruController::class, 'index'])->name('bendahara.settingsgaji');
+    // Route::get('/bendahara/settingsgaji', [bendaharaGajiGuruController::class, 'settinggaji'])->name('bendahara.settingsgaji');
+    Route::get('/bendahara/settingsgaji', [bendaharaGajiGuruController::class, 'settingsgaji'])->name('bendahara.settingsgaji');
+    Route::post('/bendahara/datasettingsgaji', [bendaharaGajiGuruController::class, 'settingsgaji_store'])->name('bendahara.settingsgaji.store');
+
+
     Route::get('/bendahara/guru', [bendaharaGuruController::class, 'index'])->name('bendahara.guru');
     Route::get('/bendahara/guru/{id}', [bendaharaGuruController::class, 'edit'])->name('bendahara.guru.edit');
     Route::put('/bendahara/guru/{id}', [bendaharaGuruController::class, 'update'])->name('bendahara.guru.update');

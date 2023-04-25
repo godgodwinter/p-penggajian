@@ -68,7 +68,7 @@
                             </script>
                             <script src="{{ asset('/assets/js/babeng.js') }}"></script>
                         @endpush
-                        <form action="{{ route('settingsgaji.store') }}" method="post">
+                        <form action="{{ route('bendahara.settingsgaji.store') }}" method="post">
                             @csrf
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Transport<span

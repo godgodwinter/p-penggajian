@@ -18,6 +18,13 @@
                 </li>
                 <li><a href="{{ route('guru') }}"><i class="fas fa-user-graduate"></i> Guru </a></li>
                 <li><a href="{{ route('gajiguru') }}"><i class="far fa-money-bill-alt"></i> Penggajian Guru </a></li>
+                <li><a><i class="fas fa-cog"></i> Akun<span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{{ route('users') }}">Admin</a></li>
+                        <li><a href="{{ route('settingsgaji') }}">Bendahara</a></li>
+                        <li><a href="{{ route('jabatan') }}">Kepsek</a></li>
+                    </ul>
+                </li>
                 {{-- <li><a href="{{route('gajiguru')}}"><i class="fas fa-user-secret"></i> Rekap Penggajian </a></li> --}}
             @else
                 {{-- @dd(Auth::guard('bendahara')->user()) --}}

@@ -58,8 +58,8 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-    public function divisi()
-    {
-        return $this->belongsTo('App\Models\divisi');
-    }
+    // public function divisi()
+    // {
+    //     return $this->belongsTo('App\Models\divisi');
+    // }
 }

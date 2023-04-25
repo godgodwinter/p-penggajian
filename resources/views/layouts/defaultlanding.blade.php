@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-US" dir="ltr">
 
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,33 +9,38 @@
     <!-- ===============================================-->
     <!--    Document Title-->
     <!-- ===============================================-->
-    <title>{{Fungsi::app_namapendek()!=null?Fungsi::app_namapendek():'Baemon'}} | {{isset($pages)?$pages:'Beranda'}}</title>
+    <title>{{ Fungsi::app_namapendek() != null ? Fungsi::app_namapendek() : 'Baemon' }} |
+        {{ isset($pages) ? $pages : 'Beranda' }}
+    </title>
 
 
     <!-- ===============================================-->
     <!--    Favicons-->
     <!-- ===============================================-->
-    <link rel="apple-touch-icon" sizes="180x180" href="{{url('/')}}/assets/img/favicons/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{url('/')}}/assets/img/favicons/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{url('/')}}/assets/img/favicons/favicon-16x16.png">
-    <link rel="shortcut icon" type="image/x-icon" href="{{url('/')}}/assets/img/favicons/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url('/') }}/assets/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="{{ url('/') }}/assets/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="{{ url('/') }}/assets/img/favicons/favicon-16x16.png">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url('/') }}/assets/img/favicons/favicon.ico">
     {{-- <link rel="manifest" href="{{url('/')}}/assets/img/favicons/manifest.json"> --}}
-    <meta name="msapplication-TileImage" content="{{url('/')}}/assets/img/favicons/mstile-150x150.png">
+    <meta name="msapplication-TileImage" content="{{ url('/') }}/assets/img/favicons/mstile-150x150.png">
     <meta name="theme-color" content="#ffffff">
 
 
     <!-- ===============================================-->
     <!--    Stylesheets-->
     <!-- ===============================================-->
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="{{url('/')}}/assets/css/theme.css" rel="stylesheet" />
-    <link href="{{url('/')}}/assets/css/babeng.css" rel="stylesheet" />
+    {{-- <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"> --}}
+    <link src="{{ url('/') }}/assets/penggajian-file/aos.css" rel="stylesheet">
+    <link href="{{ url('/') }}/assets/css/theme.css" rel="stylesheet" />
+    <link href="{{ url('/') }}/assets/css/babeng.css" rel="stylesheet" />
 
 
-  </head>
+</head>
 
 
-  <body>
+<body>
 
     <!-- ===============================================-->
     <!--    Main Content-->
@@ -61,22 +66,27 @@
     <!-- ===============================================-->
     <!--    JavaScripts-->
     <!-- ===============================================-->
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-  <script>
-    AOS.init();
-  </script>
-  <script src="https://technext.github.io/arsha/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="{{url('/')}}/assets/vendor/@popperjs/popper.min.js"></script>
-    <script src="{{url('/')}}/assets/vendor/bootstrap/bootstrap.min.js"></script>
-    <script src="{{url('/')}}/assets/vendor/is/is.min.js"></script>
-    <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script>
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
-    <script src="{{url('/')}}/assets/vendor/fontawesome/all.min.js"></script>
-    <script src="{{url('/')}}/assets/js/theme.js"></script>
+    {{-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> --}}
+    <script src="{{ url('/') }}/assets/penggajian-file/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    {{-- <script src="https://technext.github.io/arsha/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script> --}}
+    <script src="{{ url('/') }}/assets/penggajian-file/bootstrap.bundle.min.js"></script>
+    <script src="{{ url('/') }}/assets/vendor/@popperjs/popper.min.js"></script>
+    <script src="{{ url('/') }}/assets/vendor/bootstrap/bootstrap.min.js"></script>
+    <script src="{{ url('/') }}/assets/vendor/is/is.min.js"></script>
+    {{-- <script src="https://scripts.sirv.com/sirvjs/v3/sirv.js"></script> --}}
+    <script src="{{ url('/') }}/assets/penggajian-file/sirv.js"></script>
+    {{-- <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script> --}}
+    <script src="{{ url('/') }}/assets/vendor/fontawesome/all.min.js"></script>
+    <script src="{{ url('/') }}/assets/js/theme.js"></script>
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100&amp;display=swap" rel="stylesheet">
-  </body>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fjalla+One&amp;family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100&amp;display=swap"
+        rel="stylesheet">
+</body>
 
 </html>

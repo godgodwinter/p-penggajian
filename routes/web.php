@@ -213,8 +213,6 @@ Route::group(['middleware' => ['auth:bendahara', 'verified']], function () {
     Route::get('/bendahara/gajiguru/{id}', [bendaharaGajiGuruController::class, 'edit'])->name('bendahara.gajiguru.edit');
     Route::put('/bendahara/gajiguru/{id}', [bendaharaGajiGuruController::class, 'update'])->name('bendahara.gajiguru.update');
     Route::delete('/bendahara/gajiguru/{id}', [bendaharaGajiGuruController::class, 'destroy'])->name('bendahara.gajiguru.destroy');
-    Route::get('/bendahara/datagajiguru/cetak', [bendaharaGajiGuruController::class, 'cetak'])->name('bendahara.gajiguru.cetak');
-    Route::get('/bendahara/datagajiguru/cetakperid/{id}', [bendaharaGajiGuruController::class, 'cetakperid'])->name('bendahara.gajiguru.cetakperid');
 
 
     Route::get('/bendahara/pegawai', [bendaharaPegawaiController::class, 'index'])->name('bendahara.pegawai');
@@ -230,9 +228,13 @@ Route::group(['middleware' => ['auth:bendahara', 'verified']], function () {
     Route::put('/bendahara/gajipegawai/{id}', [bendaharaGajiPegawaiController::class, 'update'])->name('bendahara.gajipegawai.update');
     Route::delete('/bendahara/gajipegawai/{id}', [bendaharaGajiPegawaiController::class, 'destroy'])->name('bendahara.gajipegawai.destroy');
     Route::post('/bendahara/datagajipegawai/generate', [bendaharaGajiPegawaiController::class, 'generate'])->name('bendahara.gajipegawai.generate');
-    Route::get('/bendahara/datagajipegawai/cetak', [bendaharaGajiPegawaiController::class, 'cetak'])->name('bendahara.gajipegawai.cetak');
-    Route::get('/bendahara/datagajipegawai/cetakperid/{id}', [bendaharaGajiPegawaiController::class, 'cetakperid'])->name('bendahara.gajipegawai.cetakperid');
 });
+
+
+Route::get('/bendahara/datagajiguru/cetak', [bendaharaGajiGuruController::class, 'cetak'])->name('bendahara.gajiguru.cetak');
+Route::get('/bendahara/datagajiguru/cetakperid/{id}', [bendaharaGajiGuruController::class, 'cetakperid'])->name('bendahara.gajiguru.cetakperid');
+Route::get('/bendahara/datagajipegawai/cetak', [bendaharaGajiPegawaiController::class, 'cetak'])->name('bendahara.gajipegawai.cetak');
+Route::get('/bendahara/datagajipegawai/cetakperid/{id}', [bendaharaGajiPegawaiController::class, 'cetakperid'])->name('bendahara.gajipegawai.cetakperid');
 
 Route::get('/kepsek/login', [kepsekLandingController::class, 'index'])->name('kepsek.login');
 Route::post('/kepsek/login', [kepsekLandingController::class, 'do_login'])->name('kepsek.login.do');
@@ -241,7 +243,7 @@ Route::group(['middleware' => ['auth:kepsek', 'verified']], function () {
     // Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
     // Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
     //* menu fixed
-    Route::get('/kepsek/laporan/guru', [kepsekLaporanController::class, 'index'])->name('kepsek.laporan');
+    Route::get('/kepsek/laporan', [kepsekLaporanController::class, 'index'])->name('kepsek.laporan');
     Route::get('/kepsek/laporan/guru', [kepsekLaporanController::class, 'index'])->name('kepsek.laporan.guru');
     Route::get('/kepsek/laporan/pegawai', [kepsekLaporanController::class, 'index'])->name('kepsek.laporan.pegawai');
 });

@@ -40,7 +40,7 @@
                 HADIR
             </th>
             <th>
-                JUMLAH
+                JUMLAH DITERIMA
             </th>
             <th>
                 SIM KOPERASI

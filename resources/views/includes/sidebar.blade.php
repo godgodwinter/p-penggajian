@@ -30,6 +30,7 @@
             @else
                 {{-- @dd(Auth::guard('bendahara')->user()) --}}
                 @bendahara()
+                    @yield('menu')
                     <li><a><i class="fas fa-cog"></i> Pengaturan<span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu">
                             <li><a href="{{ route('bendahara.settingsgaji') }}">Gaji</a></li>
@@ -46,7 +47,7 @@
                 @endbendahara
 
                 @kepsek()
-                    <li><a href="{{ route('pegawai') }}"><i class="fas fa-user-tie"></i> Laporan </a></li>
+                    <li><a href="{{ route('kepsek.laporan') }}"><i class="fas fa-user-tie"></i> Laporan </a></li>
                 @endkepsek
             @endif
 

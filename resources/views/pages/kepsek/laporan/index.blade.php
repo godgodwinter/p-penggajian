@@ -1,7 +1,7 @@
 @extends('layouts.gentella')
 
 @section('title')
-    Penggajian Pegawai
+    Penggajian Guru
 @endsection
 
 @push('before-script')
@@ -61,7 +61,7 @@
             <div class="col-md-12 col-sm-12 ">
                 <div class="x_panel">
                     <div class="x_title">
-                        <form action="{{ route('gajipegawai') }}" method="get" class="d-inline">
+                        <form action="{{ route('kepsek.laporan') }}" method="get" class="d-inline">
 
                             <input type="month" class="babeng babeng-select  ml-0" name="cari"
                                 value="{{ $cari !== null ? $cari : date('Y-m') }}">
@@ -70,8 +70,8 @@
 
                             <ul class="nav navbar-right panel_toolbox ">
                         </form>
-                        @if ($datas->count() > 0)
-                            <form action="{{ route('gajipegawai.generate') }}" method="post" class="d-inline">
+                        @if ($datas_gajiguru->count() > 0)
+                            {{-- <form action="{{ route('bendahara.gajiguru.generate') }}" method="post" class="d-inline">
                                 @csrf
                                 <input type="hidden" name="cari" value="{{ $cari }}">
                                 <input data-toggle="tooltip" data-placement="top"
@@ -79,8 +79,8 @@
                                     type="submit" id="babeng-submit"
                                     onclick="return  confirm('Anda yakin generate data bulan ini? Y/N')"
                                     data-toggle="tooltip" data-placement="top" value="Generate Gaji">
-                            </form>
-                            <form action="{{ route('gajipegawai.cetak') }}" method="get" class="d-inline">
+                            </form> --}}
+                            <form action="{{ route('bendahara.gajiguru.cetak') }}" method="get" class="d-inline">
                                 @csrf
                                 <input type="hidden" name="cari" value="{{ $cari }}">
                                 <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"
@@ -88,13 +88,174 @@
                                     data-toggle="tooltip" data-placement="top" value="Cetak">
                             </form>
                         @else
-                            <form action="{{ route('gajipegawai.generate') }}" method="post" class="d-inline">
+                            {{-- <form action="{{ route('bendahara.gajiguru.generate') }}" method="post" class="d-inline">
                                 @csrf
                                 <input type="hidden" name="cari" value="{{ $cari }}">
                                 <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"
                                     onclick="return  confirm('Anda yakin generate data bulan ini? Y/N')"
                                     data-toggle="tooltip" data-placement="top" value="Generate Gaji">
+                            </form> --}}
+                        @endif
+                        {{-- <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li> --}}
+                        {{-- <li><a class="close-link"><i class="fa fa-close"></i></a> --}}
+                        </li>
+                        </ul>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="x_content">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="card-box table-responsive">
+
+                                    {{-- <p class="text-muted font-13 m-b-30">
+                DataTables has most features enabled by default, so all you need to do to use it with your own tables is to call the construction function: <code>$().DataTable();</code>
+              </p> --}}
+                                    <table id="datatable" class="table table-striped table-bordered" style="width:100%">
+                                        <thead>
+                                            <tr>
+                                                <th class="babeng-min-row">No</th>
+                                                <th>Nama</th>
+                                                <th>Jabatan</th>
+                                                <th>Tunjangan Jabatan</th>
+                                                <th>Walikelas</th>
+                                                <th>Tunjangan Kerja</th>
+                                                <th>Jam</th>
+                                                <th data-toggle="tooltip" data-placement="top"
+                                                    title="jam * {{ Fungsi::rupiah($getsettingsgaji->gajipokok) }}">
+                                                    Gajipokok</th>
+                                                <th data-toggle="tooltip" data-placement="top" title="Kehadiran">Hadir</th>
+                                                <th data-toggle="tooltip" data-placement="top"
+                                                    title="hadir * {{ Fungsi::rupiah($getsettingsgaji->transport) }}">
+                                                    Transport</th>
+                                                <th data-toggle="tooltip" data-placement="top"
+                                                    title="Gajipokok + Tunjuangan + transport">Jumlah Diterima</th>
+                                                <th class="text-center" data-toggle="tooltip" data-placement="top"
+                                                    title="{{ Fungsi::rupiah($getsettingsgaji->simkoperasi) }}">Sim
+                                                    Koperasi</th>
+                                                <th class="text-center" data-toggle="tooltip" data-placement="top"
+                                                    title="{{ Fungsi::rupiah($getsettingsgaji->dansos) }}">Dansos</th>
+                                                <th class="text-center">Aksi</th>
+                                            </tr>
+                                        </thead>
+
+
+                                        <tbody>
+                                            @forelse ($datas_gajiguru as $data)
+                                                <tr>
+                                                    <td class="text-center">{{ $loop->index + 1 }}</td>
+                                                    <td>{{ $data->guru ? $data->guru->nama : 'Data guru tidak ditemukan' }}
+                                                    </td>
+                                                    <td>
+                                                        @if ($data->guru)
+                                                            @forelse ($data->guru->gurudetail as $item)
+                                                                <button
+                                                                    class="btn btn-sm btn-primary">{{ $item->jabatan ? $item->jabatan->nama : '' }}</button>
+                                                            @empty
+                                                            @endforelse
+                                                        @endif
+                                                    </td>
+                                                    <td>{{ Fungsi::rupiah($data->tunjanganjabatan) }}</td>
+                                                    <td>{{ $data->walikelas != 0 ? Fungsi::rupiah($data->walikelas) : '-' }}
+                                                    </td>
+                                                    {{-- <td>{{$data->walikelas!=0?Fungsi::rupiah($data->walikelas):'-'}}</td> --}}
+                                                    <td>{{ Fungsi::rupiah($data->tunjangankerja) }}</td>
+                                                    <td>{{ $data->jam }}</td>
+                                                    <td>{{ Fungsi::rupiah($data->gajipokok * $data->jam) }}</td>
+                                                    <td>{{ $data->hadir }}</td>
+                                                    <td>{{ Fungsi::rupiah($data->transport * $data->hadir) }}</td>
+                                                    @php
+                                                        $jumlah = 0;
+                                                        $jumlah = $data->tunjanganjabatan + $data->walikelas + $data->tunjangankerja + $data->gajipokok * $data->jam + $data->transport * $data->hadir;
+                                                    @endphp
+                                                    <td>{{ Fungsi::rupiah($jumlah) }}</td>
+                                                    <td class="text-center">
+                                                        @php
+                                                            $hasil = '-';
+                                                            $sim = $jumlah;
+                                                            if ($data->simkoperasi > 0) {
+                                                                $sim = $jumlah - $data->simkoperasi;
+                                                                $hasil = Fungsi::rupiah($sim);
+                                                            }
+                                                        @endphp
+                                                        {{ $hasil }}
+                                                    </td>
+                                                    <td class="text-center">
+                                                        @php
+                                                            $hasil = '-';
+                                                            if ($data->dansos > 0) {
+                                                                $hasil = Fungsi::rupiah($sim - $data->dansos);
+                                                            }
+                                                        @endphp
+                                                        {{ $hasil }}
+                                                    </td>
+                                                    <td class="babeng-min-row">
+                                                        <a href="{{ route('bendahara.gajiguru.cetakperid', $data->id) }}"
+                                                            class="btn btn-info btn-sm"data-toggle="tooltip"
+                                                            data-placement="top" title="Cetak PDF"><i
+                                                                class="far fa-file-pdf"></i></a>
+                                                        {{-- <x-button-edit
+                                                            link="{{ route('bendahara.gajiguru.edit', $data->id) }}" />
+                                                        <x-button-delete
+                                                            link="{{ route('bendahara.gajiguru.destroy', $data->id) }}" />
+                                                    </td> --}}
+                                                </tr>
+                                            @empty
+                                            @endforelse
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+
+                    <div class="x_title">
+                        <form action="{{ route('kepsek.laporan') }}" method="get" class="d-inline">
+                            {{--
+                            <input type="month" class="babeng babeng-select  ml-0" name="cari"
+                                value="{{ $cari !== null ? $cari : date('Y-m') }}">
+                            <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"
+                                value="Pilih Bulan"> --}}
+
+                            <ul class="nav navbar-right panel_toolbox ">
+                        </form>
+                        @if ($datas_gajipegawai->count() > 0)
+                            {{-- <form action="{{ route('gajipegawai.generate') }}" method="post" class="d-inline">
+                                @csrf
+                                <input type="hidden" name="cari" value="{{ $cari }}">
+                                <input data-toggle="tooltip" data-placement="top"
+                                    title="Data yang sudah di generate akan di skip!"
+                                    class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"
+                                    onclick="return  confirm('Anda yakin generate data bulan ini? Y/N')"
+                                    data-toggle="tooltip" data-placement="top" value="Generate Gaji">
+                            </form> --}}
+                            <form action="{{ route('bendahara.gajipegawai.cetak') }}" method="get" class="d-inline">
+                                @csrf
+                                <input type="hidden" name="cari" value="{{ $cari }}">
+                                <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"
+                                    onclick="return  confirm('Anda yakin mencetak data bulan ini? Y/N')"
+                                    data-toggle="tooltip" data-placement="top" value="Cetak">
                             </form>
+                        @else
+                            {{-- <form action="{{ route('gajipegawai.generate') }}" method="post" class="d-inline">
+                                @csrf
+                                <input type="hidden" name="cari" value="{{ $cari }}">
+                                <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"
+                                    onclick="return  confirm('Anda yakin generate data bulan ini? Y/N')"
+                                    data-toggle="tooltip" data-placement="top" value="Generate Gaji">
+                            </form> --}}
                         @endif
                         {{-- <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                 </li> --}}
@@ -122,7 +283,8 @@
                                                 <th data-toggle="tooltip" data-placement="top"
                                                     title="hadir * {{ Fungsi::rupiah($getsettingsgaji->transport) }}">
                                                     Transport</th>
-                                                <th data-toggle="tooltip" data-placement="top" title="Kehadiran">Hadir</th>
+                                                <th data-toggle="tooltip" data-placement="top" title="Kehadiran">Hadir
+                                                </th>
                                                 <th data-toggle="tooltip" data-placement="top"
                                                     title="Gajipokok + Tunjuangan + transport">Jumlah Diterima</th>
                                                 <th class="text-center" data-toggle="tooltip" data-placement="top"
@@ -136,7 +298,7 @@
 
 
                                         <tbody>
-                                            @forelse ($datas as $data)
+                                            @forelse ($datas_gajipegawai as $data)
                                                 <tr>
                                                     <td class="text-center">{{ $loop->index + 1 }}</td>
                                                     <td>{{ $data->pegawai ? $data->pegawai->nama : 'Data Pegawai tidak ditemukan' }}
@@ -188,14 +350,14 @@
                                                         {{ Fungsi::rupiah($jml_diterima) }}
                                                     </td> --}}
                                                     <td class="babeng-min-row">
-                                                        <a href="{{ route('gajipegawai.cetakperid', $data->id) }}"
+                                                        <a href="{{ route('bendahara.gajipegawai.cetakperid', $data->id) }}"
                                                             class="btn btn-info btn-sm"data-toggle="tooltip"
                                                             data-placement="top" title="Cetak PDF"><i
                                                                 class="far fa-file-pdf"></i></a>
-                                                        <x-button-edit
+                                                        {{-- <x-button-edit
                                                             link="{{ route('gajipegawai.edit', $data->id) }}" />
                                                         <x-button-delete
-                                                            link="{{ route('gajipegawai.destroy', $data->id) }}" />
+                                                            link="{{ route('gajipegawai.destroy', $data->id) }}" /> --}}
                                                     </td>
                                                 </tr>
                                             @empty

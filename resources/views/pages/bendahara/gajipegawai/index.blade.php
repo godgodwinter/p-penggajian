@@ -124,7 +124,7 @@
                                                     Transport</th>
                                                 <th data-toggle="tooltip" data-placement="top" title="Kehadiran">Hadir</th>
                                                 <th data-toggle="tooltip" data-placement="top"
-                                                    title="Gajipokok + Tunjuangan + transport">Jumlah</th>
+                                                    title="Gajipokok + Tunjuangan + transport">Jumlah Diterima</th>
                                                 <th class="text-center" data-toggle="tooltip" data-placement="top"
                                                     title="{{ Fungsi::rupiah($getsettingsgaji->simkoperasi) }}">Sim
                                                     Koperasi</th>

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\adminBendaharaController;
+use App\Http\Controllers\admin\adminKepsekController;
 use App\Http\Controllers\adminapicontroller;
 use App\Http\Controllers\admincetakcontroller;
 use App\Http\Controllers\admindashboardcontroller;
@@ -86,6 +87,16 @@ Route::group(['middleware' => ['auth:web', 'verified']], function () {
     Route::delete('/admin/bendahara/{id}', [adminBendaharaController::class, 'destroy'])->name('bendahara.destroy');
     Route::get('/admin/databendahara/create', [adminBendaharaController::class, 'create'])->name('bendahara.create');
     Route::post('/admin/databendahara', [adminBendaharaController::class, 'store'])->name('bendahara.store');
+
+
+
+    // bendahara
+    Route::get('/admin/kepsek', [adminKepsekController::class, 'index'])->name('kepsek');
+    Route::get('/admin/kepsek/{id}', [adminKepsekController::class, 'edit'])->name('kepsek.edit');
+    Route::put('/admin/kepsek/{id}', [adminKepsekController::class, 'update'])->name('kepsek.update');
+    Route::delete('/admin/kepsek/{id}', [adminKepsekController::class, 'destroy'])->name('kepsek.destroy');
+    Route::get('/admin/datakepsek/create', [adminKepsekController::class, 'create'])->name('kepsek.create');
+    Route::post('/admin/datakepsek', [adminKepsekController::class, 'store'])->name('kepsek.store');
 
 
     //kategori

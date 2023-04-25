@@ -22,7 +22,7 @@
                     <ul class="nav child_menu">
                         <li><a href="{{ route('users') }}">Admin</a></li>
                         <li><a href="{{ route('bendahara') }}">Bendahara</a></li>
-                        <li><a href="{{ route('jabatan') }}">Kepsek</a></li>
+                        <li><a href="{{ route('kepsek') }}">Kepsek</a></li>
                     </ul>
                 </li>
                 {{-- <li><a href="{{route('gajiguru')}}"><i class="fas fa-user-secret"></i> Rekap Penggajian </a></li> --}}

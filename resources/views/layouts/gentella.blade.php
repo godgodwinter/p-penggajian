@@ -86,7 +86,27 @@
                     </div>
                     <nav class="nav navbar-nav">
                         <ul class=" navbar-right">
-                            <li class="nav-item dropdown open" style="padding-left: 15px;">
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <li> <a href="{{ route('logout') }}" class="btn btn-primary btn-xs"
+                                        onclick="event.preventDefault();
+                                this.closest('form').submit();"><i
+                                            class="glyphicon glyphicon-off"></i> Logout
+                                    </a>
+                                </li>
+                            </form>
+                            {{-- <li class="nav-item dropdown open ">
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <a href="{{ route('logout') }}"
+                                        onclick="event.preventDefault();
+                          this.closest('form').submit();"><i
+                                            class="btn btn-primary btn-xs"></i>
+                                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                                        Logout</a>
+                                </form>
+                            </li> --}}
+                            {{-- <li class="nav-item dropdown open" style="padding-left: 15px;">
                                 <a href="javascript:;" class="user-profile dropdown-toggle" aria-haspopup="true"
                                     id="navbarDropdown" data-toggle="dropdown" aria-expanded="false">
                                     <img src="{{ asset('assets/img/avatar/avatar-1.png') }}"
@@ -97,12 +117,6 @@
                                     <a class="dropdown-item" href="{{ route('profile') }}">
                                         <span class="badge bg-red pull-right">Edit</span>Profile</a>
 
-                                    {{-- <a href="{{ route('logout') }}" class="dropdown-item has-icon text-danger"
-                    onclick="event.preventDefault();
-                                this.closest('form').submit();">
-                        <i class="fas fa-sign-out-alt">
-                        </i> Logout
-                      </a> --}}
 
                                     <form method="POST" action="{{ route('logout') }}">
                                         @csrf
@@ -112,7 +126,7 @@
                                                 class="fa fa-sign-out pull-right"></i> Log Out</a>
                                     </form>
                                 </div>
-                            </li>
+                            </li> --}}
 
                         </ul>
                     </nav>
@@ -141,19 +155,20 @@
                     // exec('git rev-parse --verify HEAD 2> /dev/null', $output);
                     // $hash = $output[0];
                     // dd($hash)
-
+                    
                     $commitHash = trim(exec('git log --pretty="%h" -n1 HEAD'));
-
+                    
                     $commitDate = new \DateTime(trim(exec('git log -n1 --pretty=%ci HEAD')));
                     $commitDate->setTimezone(new \DateTimeZone('UTC'));
-
+                    
                     // dd($commitDate);
                     // dd($commitDate->format('Y-m-d H:i:s'));
                     $versi = $commitDate->format('Ymd.H.i.s');
                 @endphp
                 <div class="pull-right">
-                    Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a> - BaemonTeam
-                    v.{{ $versi }}
+                    {{-- Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a> - BaemonTeam
+                    v.{{ $versi }} --}}
+                    {{-- Selamat datang --}}
                 </div>
                 <div class="clearfix"></div>
             </footer>

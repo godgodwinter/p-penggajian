@@ -67,7 +67,7 @@
                     </div>
 
 
-                    <div class="col-lg-12 z-index-2">
+                    {{-- <div class="col-lg-12 z-index-2">
                         <div class="row">
                             <h3>Demo : </h3>
 
@@ -77,24 +77,9 @@
                                 <br>
                                 <label for="inputPhone">Password : bendahara</label>
                             </div>
-
-                            {{-- <div class="col-md-4">
-            <h5>Sebagai : Divisi</h5>
-            <label  for="inputPhone">Username : personalia</label>
-            <br>
-            <label  for="inputPhone">Password : personalia</label>
-        </div>
-
-        <div class="col-md-4">
-            <h5>Sebagai : Direksi</h5>
-            <label  for="inputPhone">Username : Direksi</label>
-            <br>
-            <label  for="inputPhone">Password : Direksi</label>
-        </div> --}}
-
                         </div>
 
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="col-lg-6 order-1 order-lg-2 hero-img" data-aos="zoom-in" data-aos-delay="200">
                     <img src="{{ url('/') }}/assets/img/undraw/undraw_pay_online_b-1-hk__.svg"

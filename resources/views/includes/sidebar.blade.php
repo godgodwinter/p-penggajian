@@ -2,8 +2,8 @@
     <div class="menu_section">
         {{-- <h3>General</h3> --}}
         <ul class="nav side-menu">
-            <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i>Beranda</a></li>
             @if (Auth::user()->tipeuser == 'admin')
+                <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i>Beranda</a></li>
                 {{-- <li><a href="{{route('settings')}}"><i class="fas fa-cogs"></i> Pengaturan </a></li> --}}
 
                 <li><a><i class="fas fa-cog"></i> Pengaturan<span class="fa fa-chevron-down"></span></a>

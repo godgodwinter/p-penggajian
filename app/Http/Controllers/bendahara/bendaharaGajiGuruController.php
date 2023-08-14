@@ -194,7 +194,7 @@ class bendaharaGajiGuruController extends Controller
         $getsettingsgaji = settingsgaji::first();
         $tgl = date("YmdHis");
         $pdf = PDF::loadview('pages.admin.gajiguru.cetak', compact('datas', 'getsettingsgaji', 'tgl', 'year', 'month'))->setPaper('a4', 'landscape');
-        return $pdf->stream('hrguru' . $tgl . '-pdf');
+        return $pdf->stream('hrguru' . $tgl . '.pdf');
     }
     public function cetakperid(gajiguru $id, Request $request)
     {
@@ -213,7 +213,7 @@ class bendaharaGajiGuruController extends Controller
         $getsettingsgaji = settingsgaji::first();
         $tgl = date("YmdHis");
         $pdf = PDF::loadview('pages.admin.gajiguru.cetakperid', compact('datas', 'getsettingsgaji', 'tgl', 'year', 'month'))->setPaper('a4', 'landscape');
-        return $pdf->stream('hrguru' . $tgl . '-pdf');
+        return $pdf->stream('hrguru' . $tgl . '.pdf');
     }
     public function destroy(gajiguru $id)
     {

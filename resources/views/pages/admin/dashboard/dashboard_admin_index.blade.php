@@ -19,10 +19,8 @@
 @endif
 
 @section('content')
-    <div>
-        <span><img src="{{ url('/') }}/assets/upload/logo_smp.png" width="200px" alt="logo" />
-            {{-- <span>{{ Fungsi::app_nama() }}</span> --}}
-        </span>
-        <h2 class="underline">Selamat Datang {{ Auth::user()->name }} , anda masuk sebagai Admin</h2>
+    <div class="babeng-container">
+        <span><img src="{{ url('/') }}/assets/upload/logo_smp.png" width="300px" alt="logo" /></span>
+        <h1>Selamat Datang {{ Auth::user()->name }} , Anda masuk sebagai Admin.</h1>
     </div>
 @endsection

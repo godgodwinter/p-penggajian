@@ -142,7 +142,8 @@ Route::group(['middleware' => ['auth:web', 'verified']], function () {
     Route::delete('/admin/gajipegawai/{id}', [admingajipegawaicontroller::class, 'destroy'])->name('gajipegawai.destroy');
     Route::post('/admin/datagajipegawai/generate', [admingajipegawaicontroller::class, 'generate'])->name('gajipegawai.generate');
     Route::get('/admin/datagajipegawai/cetak', [admingajipegawaicontroller::class, 'cetak'])->name('gajipegawai.cetak');
-    Route::get('/admin/datagajipegawai/cetakperid/{id}', [admingajipegawaicontroller::class, 'cetakperid'])->name('gajipegawai.cetakperid');
+    Route::get('/admin/datagajipegawai/cetakperid/{id}/{cari?}', [admingajipegawaicontroller::class, 'cetakperid'])->name('gajipegawai.cetakperid');
+    Route::get('/admin/datagajipegawaicetakperid/cetakperid_all/{cari?}', [admingajipegawaicontroller::class, 'cetakperid_all'])->name('gajipegawai.cetakperid.all');
 
     //guru
     Route::get('/admin/guru', [admingurucontroller::class, 'index'])->name('guru');
@@ -160,7 +161,9 @@ Route::group(['middleware' => ['auth:web', 'verified']], function () {
     Route::delete('/admin/gajiguru/{id}', [admingajigurucontroller::class, 'destroy'])->name('gajiguru.destroy');
     Route::post('/admin/datagajiguru/generate', [admingajigurucontroller::class, 'generate'])->name('gajiguru.generate');
     Route::get('/admin/datagajiguru/cetak', [admingajigurucontroller::class, 'cetak'])->name('gajiguru.cetak');
-    Route::get('/admin/datagajiguru/cetakperid/{id}', [admingajigurucontroller::class, 'cetakperid'])->name('gajiguru.cetakperid');
+    Route::get('/admin/datagajiguru/cetakperid/{id}/{cari?}', [admingajigurucontroller::class, 'cetakperid'])->name('gajiguru.cetakperid');
+    Route::get('/admin/datagajiguru/cetakperid_all/{cari?}', [admingajigurucontroller::class, 'cetakperid_all'])->name('gajiguru.cetakperid.all');
+
 
     //API
     Route::get('/admin/api/kriteriadetail/{tahunpenilaian}', [admintahunpenilaiandetailcontroller::class, 'apikriteriadetail'])->name('api.kriteriadetail');
@@ -195,6 +198,7 @@ Route::group(['middleware' => ['auth:bendahara', 'verified']], function () {
     // Route::get('/bendahara/gajiguru', [admingajigurucontroller::class, 'index'])->name('bendahara.gajiguru');
     //* menu fixed
     // Route::get('/bendahara/settingsgaji', [bendaharaGajiGuruController::class, 'settinggaji'])->name('bendahara.settingsgaji');
+    Route::get('/bendahara/dashboard', [adminBendaharaController::class, 'dashboard'])->name('bendahara.dashboard');
     Route::get('/bendahara/settingsgaji', [bendaharaGajiGuruController::class, 'settingsgaji'])->name('bendahara.settingsgaji');
     Route::post('/bendahara/datasettingsgaji', [bendaharaGajiGuruController::class, 'settingsgaji_store'])->name('bendahara.settingsgaji.store');
 
@@ -232,9 +236,12 @@ Route::group(['middleware' => ['auth:bendahara', 'verified']], function () {
 
 
 Route::get('/bendahara/datagajiguru/cetak', [bendaharaGajiGuruController::class, 'cetak'])->name('bendahara.gajiguru.cetak');
-Route::get('/bendahara/datagajiguru/cetakperid/{id}', [bendaharaGajiGuruController::class, 'cetakperid'])->name('bendahara.gajiguru.cetakperid');
+// Route::get('/bendahara/datagajiguru/cetakperid_all', [bendaharaGajiGuruController::class, 'cetakperid_all'])->name('bendahara.gajiguru.cetakperid.all');
+Route::get('/bendahara/datagajiguru/cetakperid_all/{cari?}', [bendaharaGajiGuruController::class, 'cetakperid_all'])->name('bendahara.gajiguru.cetakperid.all');
+Route::get('/bendahara/datagajiguru/cetakperid/{id}/{cari?}', [bendaharaGajiGuruController::class, 'cetakperid'])->name('bendahara.gajiguru.cetakperid');
 Route::get('/bendahara/datagajipegawai/cetak', [bendaharaGajiPegawaiController::class, 'cetak'])->name('bendahara.gajipegawai.cetak');
-Route::get('/bendahara/datagajipegawai/cetakperid/{id}', [bendaharaGajiPegawaiController::class, 'cetakperid'])->name('bendahara.gajipegawai.cetakperid');
+Route::get('/bendahara/datagajipegawaicetakperid/cetakperid_all/{cari?}', [bendaharaGajiPegawaiController::class, 'cetakperid_all'])->name('bendahara.gajipegawai.cetakperid.all');
+Route::get('/bendahara/datagajipegawaicetakperid/{id}/{cari?}', [bendaharaGajiPegawaiController::class, 'cetakperid'])->name('bendahara.gajipegawai.cetakperid');
 
 Route::get('/kepsek/login', [kepsekLandingController::class, 'index'])->name('kepsek.login');
 Route::post('/kepsek/login', [kepsekLandingController::class, 'do_login'])->name('kepsek.login.do');
@@ -242,6 +249,7 @@ Route::post('/kepsek/login', [kepsekLandingController::class, 'do_login'])->name
 Route::group(['middleware' => ['auth:kepsek', 'verified']], function () {
     // Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
     // Route::get('/tes/gajiguru', [admingajigurucontroller::class, 'index']);
+    Route::get('/kepsek/dashboard', [adminKepsekController::class, 'dashboard'])->name('kepsek.dashboard');
     //* menu fixed
     Route::get('/kepsek/laporan', [kepsekLaporanController::class, 'index'])->name('kepsek.laporan');
     Route::get('/kepsek/laporan/guru', [kepsekLaporanController::class, 'index'])->name('kepsek.laporan.guru');

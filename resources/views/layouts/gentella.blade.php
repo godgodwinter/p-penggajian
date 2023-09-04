@@ -20,10 +20,36 @@
             <div class="col-md-3 left_col menu_fixed">
                 <div class="left_col scroll-view">
                     <div class="navbar nav_title" style="border: 0;">
-                        <a href="{{ route('dashboard') }}" class="site_title">
+                        {{-- <a href="{{ route('dashboard') }}" class="site_title">
                             <i class="fas fa-wallet"></i></i>
-                            <span>{{ Fungsi::app_nama() }}</span>
-                        </a>
+
+                        </a> --}}
+
+                        @if (Auth::user()->tipeuser == 'admin')
+                            <a class="navbar-brand" href="{{ route('dashboard') }}"><img
+                                    src="{{ url('/') }}/assets/upload/logo_smp.png" width="60px"
+                                    alt="logo" />
+
+                                <span>SI PENGGAJIAN</span></a>
+                        @else
+                            {{-- @dd(Auth::guard('bendahara')->user()) --}}
+                            @bendahara()
+                                <a class="navbar-brand" href="{{ route('bendahara.dashboard') }}"><img
+                                        src="{{ url('/') }}/assets/upload/logo_smp.png" width="60px"
+                                        alt="logo" />
+
+                                    <span>SI PENGGAJIAN</span></a>
+                            @endbendahara
+
+                            @kepsek()
+                                <a class="navbar-brand" href="{{ route('kepsek.dashboard') }}"><img
+                                        src="{{ url('/') }}/assets/upload/logo_smp.png" width="60px"
+                                        alt="logo" />
+
+                                    <span>SI PENGGAJIAN</span></a>
+                            @endkepsek
+                        @endif
+
                     </div>
 
                     <div class="clearfix"></div>
@@ -59,7 +85,8 @@
                                 title="Settings Gaji">
                                 <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
                             </a>
-                            <a href="{{ route('jabatan') }}" data-toggle="tooltip" data-placement="top" title="Jabatan">
+                            <a href="{{ route('jabatan') }}" data-toggle="tooltip" data-placement="top"
+                                title="Jabatan">
                                 <span class="glyphicon glyphicon-tags" aria-hidden="true"></span>
                             </a>
                         @endif

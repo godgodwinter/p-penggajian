@@ -9,13 +9,13 @@ use Illuminate\Support\Facades\Hash;
 
 class admindashboardcontroller extends Controller
 {
-    public function index(){
+    public function index()
+    {
 
-        $pages='dashboard';
-        if((Auth::user()->tipeuser)=='admin'){
-            return view('pages.admin.dashboard.blank',compact('pages'));
+        $pages = 'dashboard';
+        if ((Auth::user()->tipeuser) == 'admin') {
+            return view('pages.admin.dashboard.dashboard_admin_index', compact('pages'));
         }
-        return view('pages.admin.dashboard.blank',compact('pages'));
+        return view('pages.admin.dashboard.blank', compact('pages'));
     }
-
 }

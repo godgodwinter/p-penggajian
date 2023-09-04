@@ -10,6 +10,15 @@ use Illuminate\Support\Facades\Hash;
 
 class adminBendaharaController extends Controller
 {
+
+    public function dashboard(Request $request)
+    {
+        #WAJIB
+        $pages = 'Admin';
+        $datas = Bendahara::get();
+
+        return view('pages.admin.dashboard.dashboard_bendahara_index', compact('datas', 'request', 'pages'));
+    }
     public function index(Request $request)
     {
         #WAJIB

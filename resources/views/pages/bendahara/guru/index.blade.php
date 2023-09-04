@@ -104,8 +104,10 @@
                                                     <td>{{ $data->nama }}</td>
                                                     <td>
                                                         @forelse ($data->gurudetail as $item)
-                                                            <button
-                                                                class="btn btn-sm btn-primary">{{ $item->jabatan ? $item->jabatan->nama : '' }}</button>
+                                                            <span>{{ $item->jabatan ? $item->jabatan->nama : '' }} ,
+                                                            </span>
+                                                            {{-- <button
+                                                                class="btn btn-sm btn-primary">{{ $item->jabatan ? $item->jabatan->nama : '' }}</button> --}}
                                                         @empty
                                                         @endforelse
                                                     </td>
@@ -120,8 +122,7 @@
                                                                 $hasil = 'Tidak';
                                                             }
                                                         @endphp
-                                                        <button
-                                                            class="btn btn-sm btn-{{ $warna }}">{{ $hasil }}</button>
+                                                        <span>{{ $hasil }}</span>
                                                     </td>
                                                     <td>{{ Fungsi::rupiah($data->tunjangankerja) }}</td>
                                                     <td>{{ $data->jam }}</td>
@@ -137,8 +138,9 @@
                                                                 $hasil = 'Tidak';
                                                             }
                                                         @endphp
-                                                        <button
-                                                            class="btn btn-sm btn-{{ $warna }}">{{ $hasil }}</button>
+                                                        <span>{{ $hasil }}</span>
+                                                        {{-- <button
+                                                            class="btn btn-sm btn-{{ $warna }}">{{ $hasil }}</button> --}}
                                                     </td>
                                                     <td class="text-center">
                                                         @php
@@ -149,8 +151,7 @@
                                                                 $hasil = 'Tidak';
                                                             }
                                                         @endphp
-                                                        <button
-                                                            class="btn btn-sm btn-{{ $warna }}">{{ $hasil }}</button>
+                                                        <span>{{ $hasil }}</span>
                                                     </td>
                                                     <td class="babeng-min-row">
                                                         <x-button-edit

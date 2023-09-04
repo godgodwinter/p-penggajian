@@ -85,7 +85,15 @@
                                 <input type="hidden" name="cari" value="{{ $cari }}">
                                 <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"
                                     onclick="return  confirm('Anda yakin mencetak data bulan ini? Y/N')"
-                                    data-toggle="tooltip" data-placement="top" value="Cetak">
+                                    data-toggle="tooltip" data-placement="top" value="Cetak Rincian">
+                            </form>
+                            <form action="{{ route('gajiguru.cetakperid.all', ['cari' => $cari]) }}" method="get"
+                                class="d-inline">
+                                @csrf
+                                <input type="hidden" name="cari" value="{{ $cari }}">
+                                <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"
+                                    onclick="return  confirm('Anda yakin mencetak data bulan ini? Y/N')"
+                                    data-toggle="tooltip" data-placement="top" value="Cetak Slip Gaji">
                             </form>
                         @else
                             <form action="{{ route('gajiguru.generate') }}" method="post" class="d-inline">
@@ -152,8 +160,9 @@
                                                     <td>
                                                         @if ($data->guru)
                                                             @forelse ($data->guru->gurudetail as $item)
-                                                                <button
-                                                                    class="btn btn-sm btn-primary">{{ $item->jabatan ? $item->jabatan->nama : '' }}</button>
+                                                                <span>{{ $item->jabatan ? $item->jabatan->nama : '' }}</span>
+                                                                {{-- <button
+                                                                    class="btn btn-sm btn-primary">{{ $item->jabatan ? $item->jabatan->nama : '' }}</button> --}}
                                                             @empty
                                                             @endforelse
                                                         @endif
@@ -201,9 +210,9 @@
                                                         {{ Fungsi::rupiah($jml_diterima) }}
                                                     </td> --}}
                                                     <td class="babeng-min-row">
-                                                        <a href="{{ route('gajiguru.cetakperid', $data->id) }}"
+                                                        <a href="{{ route('gajiguru.cetakperid', ['id' => $data->id, 'cari' => $cari]) }}"
                                                             class="btn btn-info btn-sm"data-toggle="tooltip"
-                                                            data-placement="top" title="Cetak PDF"><i
+                                                            data-placement="top" title="Cetak PDF {{ $cari }}"><i
                                                                 class="far fa-file-pdf"></i></a>
                                                         <x-button-edit link="{{ route('gajiguru.edit', $data->id) }}" />
                                                         <x-button-delete

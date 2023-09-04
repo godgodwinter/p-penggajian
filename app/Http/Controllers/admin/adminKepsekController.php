@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Hash;
 
 class adminKepsekController extends Controller
 {
+    public function dashboard(Request $request)
+    {
+        #WAJIB
+        $pages = 'Admin';
+        $datas = Kepsek::get();
+
+        return view('pages.admin.dashboard.dashboard_kepsek_index', compact('datas', 'request', 'pages'));
+    }
     public function index(Request $request)
     {
         #WAJIB

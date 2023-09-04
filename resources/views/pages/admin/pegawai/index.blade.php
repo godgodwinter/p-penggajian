@@ -101,8 +101,10 @@
                                                     <td>{{ $data->nama }}</td>
                                                     <td>
                                                         @forelse ($data->pegawaidetail as $item)
-                                                            <span
-                                                                class="badge badge-primary">{{ $item->jabatan ? $item->jabatan->nama : '' }}</span>
+                                                            <span>{{ $item->jabatan ? $item->jabatan->nama : '' }}
+                                                                ,</span>
+                                                            {{-- <span
+                                                                class="badge badge-primary">{{ $item->jabatan ? $item->jabatan->nama : '' }}</span> --}}
                                                         @empty
                                                         @endforelse
                                                     </td>
@@ -119,8 +121,9 @@
                                                                 $hasil = 'Tidak';
                                                             }
                                                         @endphp
-                                                        <span
-                                                            class="badge badge-{{ $warna }}">{{ $hasil }}</span>
+                                                        <span>{{ $hasil }}</span>
+                                                        {{-- <span
+                                                            class="badge badge-{{ $warna }}">{{ $hasil }}</span> --}}
                                                     </td>
                                                     <td class="text-center">
                                                         @php
@@ -131,8 +134,9 @@
                                                                 $hasil = 'Tidak';
                                                             }
                                                         @endphp
-                                                        <span
-                                                            class="badge badge-{{ $warna }}">{{ $hasil }}</span>
+                                                        <span>{{ $hasil }}</span>
+                                                        {{-- <span
+                                                            class="badge badge-{{ $warna }}">{{ $hasil }}</span> --}}
                                                     </td>
                                                     <td class="babeng-min-row">
                                                         <x-button-edit link="{{ route('pegawai.edit', $data->id) }}" />

@@ -130,18 +130,47 @@ class bendaharaGajiPegawaiController extends Controller
         return $pdf->stream('hrpegawai' . $tgl . '-pdf');
     }
 
-    public function cetakperid(gajipegawai $id, Request $request)
+    public function cetakperid_all(Request $request, $cari = null)
     {
+        $tgl = date("YmdHis");
         $month = date("m");
         $year = date("Y");
-        $cari = $request->cari;
+
         if ($cari) {
+            // Jika $cari ada, gunakan nilainya untuk mengambil bulan dan tahun
+            $month = date("m", strtotime($cari));
+            $year = date("Y", strtotime($cari));
+        }
+
+        // Ambil data gaji guru untuk bulan dan tahun tertentu
+        $datasCetak = gajipegawai::with('pegawai')
+            ->whereMonth('tahunbulan', $month)
+            ->whereYear('tahunbulan', $year)
+            ->get();
+
+        $getsettingsgaji = settingsgaji::first();
+        // dd($datasCetak);
+        // Kode untuk mencetak PDF dengan data yang telah diambil
+        $pdf = PDF::loadview('pages.admin.gajipegawai.cetakperid_all', compact('datasCetak', 'getsettingsgaji', 'tgl', 'year', 'month'))->setPaper('a4', 'landscape');
+
+        return $pdf->stream('hrguru_all' . $tgl . '.pdf');
+    }
+    public function cetakperid(gajipegawai $id, Request $request, $cari = null)
+    {
+        $tgl = date("YmdHis");
+        $month = date("m");
+        $year = date("Y");
+
+        if ($cari) {
+            // Jika $cari ada, gunakan nilainya untuk mengambil bulan dan tahun
             $month = date("m", strtotime($cari));
             $year = date("Y", strtotime($cari));
         }
         $datas = gajipegawai::with('pegawai')
             ->where('id', $id->id)
             // whereMonth('tahunbulan',$month)->whereYear('tahunbulan',$year)
+            ->whereMonth('tahunbulan', $month)
+            ->whereYear('tahunbulan', $year)
             ->first();
         // dd($datas);
         $getsettingsgaji = settingsgaji::first();

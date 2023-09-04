@@ -28,7 +28,7 @@ class kepsekLandingController extends Controller
         $credentials = $request->only('username', 'password');
         // dd($credentials);
         if (Auth::guard('kepsek')->attempt($credentials)) {
-            return redirect()->route('kepsek.laporan')->with('status', 'login berhasil !')->with('tipe', 'success')->with('icon', 'fas fa-feather');
+            return redirect()->route('kepsek.dashboard')->with('status', 'login berhasil !')->with('tipe', 'success')->with('icon', 'fas fa-feather');
             // dd("login berhasil");
             // return redirect('/dashboard');
         } else {

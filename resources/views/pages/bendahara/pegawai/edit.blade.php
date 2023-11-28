@@ -49,7 +49,7 @@
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control" name="nama" id="nama" required="required"
-                                        value="{{ old('nama') ? old('nama') : $id->nama }}" />
+                                        value="{{ old('nama') ? old('nama') : $id->nama }}" readonly />
                                 </div>
                             </div>
                             <div class="field item form-group">
@@ -57,7 +57,7 @@
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control  @error('nomerinduk') is-invalid @enderror" name="nomerinduk"
-                                        id="nomerinduk" required="required"
+                                        readonly id="nomerinduk" required="required"
                                         value="{{ old('nomerinduk') ? old('nomerinduk') : $id->nomerinduk }}" />
                                     @error('nomerinduk')
                                         <div class="invalid-feedback"> {{ $message }}</div>
@@ -81,7 +81,7 @@
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <select id="heard" class="form-control @error('jk') is-invalid @enderror" required
-                                        name="jk">
+                                        readonly name="jk">
                                         <option selected>{{ $id->jk }}</option>
                                         <option>Laki-laki</option>
                                         <option>Perempuan</option>
@@ -96,7 +96,7 @@
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control  @error('alamat') is-invalid @enderror" name="alamat"
-                                        id="alamat" required="required"
+                                        readonly id="alamat" required="required"
                                         value="{{ old('alamat') ? old('alamat') : $id->alamat }}" />
                                     @error('alamat')
                                         <div class="invalid-feedback"> {{ $message }}</div>
@@ -107,7 +107,7 @@
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">No Telp<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <input class="form-control  @error('telp') is-invalid @enderror" name="telp"
+                                    <input class="form-control  @error('telp') is-invalid @enderror" name="telp" readonly
                                         id="telp" required="required"
                                         value="{{ old('telp') ? old('telp') : $id->telp }}" />
                                     @error('telp')
@@ -136,7 +136,7 @@
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Gaji Pokok<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <input class="form-control" name="gajipokok" id="gajipokok" required="required"
+                                    <input class="form-control" name="gajipokok" id="gajipokok" required="required" readonly
                                         value="{{ old('gajipokok') ? old('gajipokok') : Fungsi::rupiahtanpanol($id->gajipokok) }}" />
                                 </div>
                             </div>
@@ -144,7 +144,7 @@
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Tunjangan Kerja<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <input class="form-control" name="tunjangankerja" id="tunjangankerja"
+                                    <input class="form-control" name="tunjangankerja" id="tunjangankerja" readonly
                                         required="required"
                                         value="{{ old('tunjangankerja') ? old('tunjangankerja') : Fungsi::rupiahtanpanol($id->tunjangankerja) }}" />
                                 </div>
@@ -153,8 +153,8 @@
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Sim Koperasi<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <select id="heard" class="form-control @error('simkoperasi') is-invalid @enderror"
-                                        required name="simkoperasi">
+                                    <select id="heard" class="form-control @error('simkoperasi') is-invalid   @enderror"
+                                        readonly required name="simkoperasi">
                                         <option selected>{{ $id->simkoperasi }}</option>
                                         <option>Ya</option>
                                         <option>Tidak</option>
@@ -170,7 +170,7 @@
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <select id="heard" class="form-control @error('dansos') is-invalid @enderror"
-                                        required name="dansos">
+                                        readonly required name="dansos">
                                         <option selected>{{ $id->dansos }}</option>
                                         <option>Ya</option>
                                         <option>Tidak</option>
@@ -202,7 +202,7 @@
                                         class="js-example-basic-single form-control-sm @error('jabatan')
                                         is-invalid
                                     @enderror"
-                                        name="jabatan[]" style="width: 100%" multiple="multiple" required>
+                                        name="jabatan[]" style="width: 100%" multiple="multiple" required readonly>
                                         <option disabled value=""> Pilih Jabatan</option>
                                         @foreach ($items as $item)
                                             @php

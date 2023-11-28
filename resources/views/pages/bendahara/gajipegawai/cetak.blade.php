@@ -115,6 +115,29 @@
     </table>
 
 
+    <br>
+    <br>
+    <table width="100%" class="table table-light" id="tablettd">
+        <tr>
+            <th width="80%">
+                <!-- Content for the first column -->
+            </th>
+            <th width="20%" align="center">
+                <center>
+                    MENGETAHUI <br>
+                    KEPALA SEKOLAH SMP
+                    <br><br><br>
+                    <br>
+                    <br>
+                    <br>
+
+                    LENI AMALIA.SE
+                </center>
+            </th>
+            <th width="3%"></th>
+        </tr>
+        <!-- Add more rows and content as needed -->
+    </table>
 
 </body>
 

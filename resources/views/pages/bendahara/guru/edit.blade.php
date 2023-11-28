@@ -49,7 +49,7 @@
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control" name="nama" id="nama" required="required"
-                                        value="{{ old('nama') ? old('nama') : $id->nama }}" />
+                                        value="{{ old('nama') ? old('nama') : $id->nama }}" readonly />
                                 </div>
                             </div>
                             <div class="field item form-group">
@@ -58,7 +58,7 @@
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control  @error('nomerinduk') is-invalid @enderror" name="nomerinduk"
                                         id="nomerinduk" required="required"
-                                        value="{{ old('nomerinduk') ? old('nomerinduk') : $id->nomerinduk }}" />
+                                        value="{{ old('nomerinduk') ? old('nomerinduk') : $id->nomerinduk }}" readonly />
                                     @error('nomerinduk')
                                         <div class="invalid-feedback"> {{ $message }}</div>
                                     @enderror
@@ -81,7 +81,8 @@
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control  @error('jam') is-invalid @enderror" name="jam"
-                                        id="jam" required="required" value="{{ old('jam') ? old('jam') : $id->jam }}" />
+                                        id="jam" required="required" value="{{ old('jam') ? old('jam') : $id->jam }}"
+                                        readonly />
                                     @error('jam')
                                         <div class="invalid-feedback"> {{ $message }}</div>
                                     @enderror
@@ -92,7 +93,7 @@
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <select id="heard" class="form-control @error('jk') is-invalid @enderror" required
-                                        name="jk">
+                                        name="jk" readonly>
                                         <option selected>{{ $id->jk }}</option>
                                         <option>Laki-laki</option>
                                         <option>Perempuan</option>
@@ -108,7 +109,7 @@
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control  @error('alamat') is-invalid @enderror" name="alamat"
                                         id="alamat" required="required"
-                                        value="{{ old('alamat') ? old('alamat') : $id->alamat }}" />
+                                        value="{{ old('alamat') ? old('alamat') : $id->alamat }}" readonly />
                                     @error('alamat')
                                         <div class="invalid-feedback"> {{ $message }}</div>
                                     @enderror
@@ -120,7 +121,7 @@
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control  @error('telp') is-invalid @enderror" name="telp"
                                         id="telp" required="required"
-                                        value="{{ old('telp') ? old('telp') : $id->telp }}" />
+                                        value="{{ old('telp') ? old('telp') : $id->telp }}" readonly />
                                     @error('telp')
                                         <div class="invalid-feedback"> {{ $message }}</div>
                                     @enderror
@@ -160,7 +161,7 @@
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control" name="tunjangankerja" id="tunjangankerja"
-                                        required="required"
+                                        required="required" readonly
                                         value="{{ old('tunjangankerja') ? old('tunjangankerja') : Fungsi::rupiahtanpanol($id->tunjangankerja) }}" />
                                 </div>
                             </div>
@@ -169,7 +170,7 @@
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control" name="tunjanganjabatan" id="tunjanganjabatan"
-                                        required="required"
+                                        required="required" readonly
                                         value="{{ old('tunjanganjabatan') ? old('tunjanganjabatan') : Fungsi::rupiahtanpanol($id->tunjanganjabatan) }}" />
                                 </div>
                             </div>
@@ -178,7 +179,7 @@
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <select id="heard" class="form-control @error('simkoperasi') is-invalid @enderror"
-                                        required name="simkoperasi">
+                                        required name="simkoperasi" readonly>
                                         <option selected>{{ $id->simkoperasi }}</option>
                                         <option>Ya</option>
                                         <option>Tidak</option>
@@ -194,7 +195,7 @@
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <select id="heard" class="form-control @error('dansos') is-invalid @enderror"
-                                        required name="dansos">
+                                        required name="dansos" readonly>
                                         <option selected>{{ $id->dansos }}</option>
                                         <option>Ya</option>
                                         <option>Tidak</option>
@@ -226,7 +227,7 @@
                                         class="js-example-basic-single form-control-sm @error('jabatan')
                                         is-invalid
                                     @enderror"
-                                        name="jabatan[]" style="width: 100%" multiple="multiple" required>
+                                        name="jabatan[]" style="width: 100%" multiple="multiple" required readonly>
                                         <option disabled value=""> Pilih Jabatan</option>
                                         @foreach ($items as $item)
                                             @php

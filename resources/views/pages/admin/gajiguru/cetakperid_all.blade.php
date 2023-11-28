@@ -84,7 +84,7 @@
             </tr>
 
             <tr>
-                <td width="100px">KOPERASI ({{ Fungsi::rupiah($datas->simkoperasi) }})</td>
+                <td width="100px">KOPERASI : {{ Fungsi::rupiah($datas->simkoperasi) }}</td>
                 <td width="10px">:</td>
                 <td>
                     @php
@@ -102,7 +102,7 @@
             </tr>
 
             <tr>
-                <td width="100px">DANSOS ({{ Fungsi::rupiah($datas->dansos) }})</td>
+                <td width="100px">DANSOS : {{ Fungsi::rupiah($datas->dansos) }}</td>
                 <td width="10px">:</td>
                 <td>
                     @php
@@ -121,6 +121,29 @@
                 <td><strong>{{ $hasilakhir }}</strong></td>
             </tr>
         </table>
+
+        <table width="80%" class="table table-light" id="tablettd">
+            <tr>
+                <th width="60%">
+                    <!-- Content for the first column -->
+                </th>
+                <th width="20%" align="center">
+                    <center>
+                        MENGETAHUI <br>
+                        KEPALA SEKOLAH SMP
+                        <br><br><br>
+                        <br>
+                        <br>
+                        <br>
+
+                        LENI AMALIA.SE
+                    </center>
+                </th>
+                <th width="3%"></th>
+            </tr>
+            <!-- Add more rows and content as needed -->
+        </table>
+
 
         @if (!$loop->last)
             <div class="page-break"></div>

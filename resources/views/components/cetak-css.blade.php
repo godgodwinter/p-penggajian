@@ -1,14 +1,14 @@
-
 <html>
 
-    <head>
-        <title></title>
+<head>
+    <title></title>
     <style type="text/css">
-    @page {
-  /* size: 21cm 29.7cm; */
-  size: 29.7cm 21cm;
-  margin: 0;
-}
+        @page {
+            /* size: 21cm 29.7cm; */
+            size: 29.7cm 21cm;
+            margin: 0;
+        }
+
         table {
             border-spacing: 0;
             margin: 2px;
@@ -101,7 +101,8 @@
             margin-top: 0px;
             height: 30px;
         }
-        table#tableBiasa tr td{
+
+        table#tableBiasa tr td {
             border: 1px black solid;
             border-collapse: collapse;
             margin-top: 0px;
@@ -121,10 +122,30 @@
             margin: 0;
         }
 
-        .babeng-min-row{
-    width: 1%;
-    white-space: nowrap;
-}
+        .babeng-min-row {
+            width: 1%;
+            white-space: nowrap;
+        }
 
+        .page-break {
+            page-break-after: always;
+        }
+
+        #tablettd,
+        table#tablettd,
+        table#tablettd tr,
+        table#tablettd thead,
+        table#tablettd th {
+            border: 0px solid white;
+            border-collapse: collapse;
+            margin: 1px;
+            height: 1px;
+        }
+
+        #tablettd tr td {
+            border: 0px solid white;
+            border-collapse: collapse;
+            margin: 1px;
+        }
     </style>
-    </head>
+</head>

@@ -139,8 +139,8 @@
                                                     <td class="babeng-min-row">
                                                         <x-button-edit
                                                             link="{{ route('bendahara.pegawai.edit', $data->id) }}" />
-                                                        <x-button-delete
-                                                            link="{{ route('bendahara.pegawai.destroy', $data->id) }}" />
+                                                        {{-- <x-button-delete
+                                                            link="{{ route('bendahara.pegawai.destroy', $data->id) }}" /> --}}
                                                     </td>
                                                 </tr>
                                             @empty

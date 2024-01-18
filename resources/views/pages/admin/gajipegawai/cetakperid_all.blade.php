@@ -89,8 +89,24 @@
                 <td>{{ Fungsi::rupiah($jumlah) }}</td>
             </tr>
 
+
             <tr>
-                <td width="100px">KOPERASI : {{ Fungsi::rupiah($datas->simkoperasi) }}</td>
+                <td width="100px" style="color: red; width: 40px;">KOPERASI
+                    {{-- : {{ Fungsi::rupiah($datas->simkoperasi) }} --}}
+                </td>
+                <td width="10px">:</td>
+                <td>
+                    <span style="">
+                        <span style="border-bottom: 0px solid black; color: red; width: 40px;margin-top: 10px;">
+                            - {{ Fungsi::rupiah($datas->simkoperasi) }}
+                        </span>
+                </td>
+            </tr>
+            <tr>
+                <td width="100px">
+                    {{-- KOPERASI --}}
+                    {{-- : {{ Fungsi::rupiah($datas->simkoperasi) }} --}}
+                </td>
                 <td width="10px">:</td>
                 <td>
                     @php
@@ -106,9 +122,22 @@
                     {{ $hasil }}
                 </td>
             </tr>
-
             <tr>
-                <td width="100px">DANSOS : {{ Fungsi::rupiah($datas->dansos) }}</td>
+                <td width="100px" style="color: red; width: 40px;">DANSOS
+                    {{-- : {{ Fungsi::rupiah($datas->simkoperasi) }} --}}
+                </td>
+                <td width="10px">:</td>
+                <td>
+                    <span style="">
+                        <span style="border-bottom: 0px solid black; color: red; width: 40px;margin-top: 10px;">
+                            - {{ Fungsi::rupiah($datas->dansos) }}
+                        </span>
+                </td>
+            </tr>
+            <tr>
+                <td width="100px">
+                    {{-- DANSOS : {{ Fungsi::rupiah($datas->dansos) }} --}}
+                </td>
                 <td width="10px">:</td>
                 <td>
                     @php

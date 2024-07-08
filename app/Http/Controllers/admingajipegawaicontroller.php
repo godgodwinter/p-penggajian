@@ -45,7 +45,7 @@ class admingajipegawaicontroller extends Controller
         // 1.get data from settingsgaji
         $getsettingsgaji = settingsgaji::first();
         // 2.get data from pegawai where id
-        $getpegawai = pegawai::get();
+        $getpegawai = pegawai::with('pegawaidetail')->get();
         foreach ($getpegawai as $pegawai) {
             $periksa = gajipegawai::where('pegawai_id', $pegawai->id)
                 ->whereMonth('tahunbulan', $month)
@@ -74,10 +74,25 @@ class admingajipegawaicontroller extends Controller
 
                 $transport = $getsettingsgaji->transport;
                 //insert gajipegawai
+                // $data->gajipokok_total = $data->pegawaidetail->gajipokok;
+
+                $pegawai_detail = $pegawai->pegawaidetail;
+                $gajipokok_total = 0;
+                foreach ($pegawai_detail as $get_jabatan) {
+                    // dd($get_jabatan->jabatan_id);
+                    $get_gaji_perjabatan = jabatan::where('id', $get_jabatan->jabatan_id)->first();
+                    $nominal_gajipokok = $get_gaji_perjabatan->gajipokok ? $get_gaji_perjabatan->gajipokok : 0;
+                    $gajipokok_total += $nominal_gajipokok;
+                    // dd($get_gaji_perjabatan, $nominal_gajipokok);
+                }
+                // dd($pegawai_detail);
+                $pegawai->gajipokok_total = $gajipokok_total;
+                // dd($data->gajipokok_total);
                 gajipegawai::insert([
                     'pegawai_id' => $pegawai->id,
                     'tahunbulan' => $year . '-' . $month . '-01',
-                    'gajipokok' => $pegawai->gajipokok,
+                    'gajipokok' => $pegawai->gajipokok_total,
+                    // 'gajipokok' => $pegawai->gajipokok,
                     'tunjangankerja' => $pegawai->tunjangankerja,
                     'hadir' => $hadir,
                     'status' => 'belum',

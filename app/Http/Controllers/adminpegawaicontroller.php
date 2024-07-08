@@ -17,6 +17,25 @@ class adminpegawaicontroller extends Controller
         $pages = 'pegawai';
         $datas = pegawai::with('pegawaidetail')->get();
 
+        // looping $datas dan tambahkan tiap data dengan field gajipokok_total
+        foreach ($datas as $data) {
+            // $data->gajipokok_total = $data->pegawaidetail->gajipokok;
+
+            $pegawai_detail = $data->pegawaidetail;
+            $gajipokok_total = 0;
+            foreach ($pegawai_detail as $get_jabatan) {
+                // dd($get_jabatan->jabatan_id);
+                $get_gaji_perjabatan = jabatan::where('id', $get_jabatan->jabatan_id)->first();
+                $nominal_gajipokok = $get_gaji_perjabatan->gajipokok ? $get_gaji_perjabatan->gajipokok : 0;
+                $gajipokok_total += $nominal_gajipokok;
+                // dd($get_gaji_perjabatan, $nominal_gajipokok);
+            }
+            // dd($pegawai_detail);
+            $data->gajipokok_total = $gajipokok_total;
+            // dd($data->gajipokok_total);
+        }
+
+
         return view('pages.admin.pegawai.index', compact('datas', 'request', 'pages'));
     }
     public function cari(Request $request)
@@ -59,7 +78,7 @@ class adminpegawaicontroller extends Controller
                 'hadir'     =>   $request->hadir,
                 'telp'     =>   $request->telp,
                 'dansos'     =>   $request->dansos,
-                'gajipokok'     =>   Fungsi::angka($request->gajipokok),
+                'gajipokok'     =>  $request->gajipokok ? Fungsi::angka($request->gajipokok) : 0,
                 'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -111,7 +130,7 @@ class adminpegawaicontroller extends Controller
                 'telp'     =>   $request->telp,
                 'dansos'     =>   $request->dansos,
                 'hadir'     =>   $request->hadir,
-                'gajipokok'     =>   Fungsi::angka($request->gajipokok),
+                'gajipokok'     =>  $request->gajipokok ? Fungsi::angka($request->gajipokok) : 0,
                 'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
                 'updated_at' => date("Y-m-d H:i:s")
             ]);

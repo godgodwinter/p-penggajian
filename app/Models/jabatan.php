@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 
 class jabatan extends Model
 {
-        public $table = "jabatan";
+    public $table = "jabatan";
 
-        use SoftDeletes;
-        use HasFactory;
+    use SoftDeletes;
+    use HasFactory;
 
-        protected $fillable = [
-            'nama',
-        ];
-
+    protected $fillable = [
+        'nama',
+        'gajipokok'
+    ];
 }

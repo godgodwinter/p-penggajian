@@ -12,82 +12,95 @@ class adminjabatancontroller extends Controller
     public function index(Request $request)
     {
         #WAJIB
-        $pages='jabatan';
-        $datas=jabatan::get();
+        $pages = 'jabatan';
+        $datas = jabatan::get();
 
-        return view('pages.admin.jabatan.index',compact('datas','request','pages'));
+        return view('pages.admin.jabatan.index', compact('datas', 'request', 'pages'));
     }
     public function cari(Request $request)
     {
-        $cari=$request->cari;
+        $cari = $request->cari;
         #WAJIB
-        $pages='jabatan';
-        $datas=jabatan::where('nama','like',"%".$cari."%")
-        ->paginate(Fungsi::paginationjml());
+        $pages = 'jabatan';
+        $datas = jabatan::where('nama', 'like', "%" . $cari . "%")
+            ->paginate(Fungsi::paginationjml());
 
-        return view('pages.admin.jabatan.index',compact('datas','request','pages'));
+        return view('pages.admin.jabatan.index', compact('datas', 'request', 'pages'));
     }
     public function create()
     {
-        $pages='jabatan';
+        $pages = 'jabatan';
 
-        return view('pages.admin.jabatan.create',compact('pages'));
+        return view('pages.admin.jabatan.create', compact('pages'));
     }
 
     public function store(Request $request)
     {
 
         // dd($request);
-            $request->validate([
-                'nama'=>'required',
+        $request->validate(
+            [
+                'nama' => 'required',
+                'gajipokok' => 'required',
 
             ],
             [
-                'nama.nama'=>'Nama harus diisi',
-            ]);
+                'nama.nama' => 'Nama harus diisi',
+                'gajipokok.gajipokok' => 'Gaji pokok harus diisi',
+            ]
+        );
 
-            $getid=DB::table('jabatan')->insertGetId(
-                array(
-                       'nama'     =>   $request->nama,
-                       'created_at'=>date("Y-m-d H:i:s"),
-                       'updated_at'=>date("Y-m-d H:i:s")
-                ));
+        // dd($request->nama, $request->gajipokok);
+        $getid = DB::table('jabatan')->insertGetId(
+            array(
+                'nama'     =>   $request->nama,
+                'gajipokok'     =>   Fungsi::angka($request->gajipokok),
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            )
+        );
 
-    return redirect()->route('jabatan')->with('status','Data berhasil tambahkan!')->with('tipe','success')->with('icon','fas fa-feather');
-
+        return redirect()->route('jabatan')->with('status', 'Data berhasil tambahkan!')->with('tipe', 'success')->with('icon', 'fas fa-feather');
     }
 
     public function edit(jabatan $id)
     {
-        $pages='jabatan';
+        $pages = 'jabatan';
 
-        return view('pages.admin.jabatan.edit',compact('pages','id'));
+        return view('pages.admin.jabatan.edit', compact('pages', 'id'));
     }
-    public function update(jabatan $id,Request $request)
+    public function update(jabatan $id, Request $request)
     {
 
 
-        $request->validate([
-            'nama'=>'required',
-        ],
-        [
-            'nama.required'=>'name harus diisi',
-        ]);
+        $request->validate(
+            [
+                'nama' => 'required',
+                'gajipokok' => 'required',
+
+            ],
+            [
+                'nama.nama' => 'Nama harus diisi',
+                'gajipokok.gajipokok' => 'Gaji pokok harus diisi',
+            ]
+        );
 
 
-            jabatan::where('id',$id->id)
+
+        jabatan::where('id', $id->id)
             ->update([
                 'nama'     =>   $request->nama,
-               'updated_at'=>date("Y-m-d H:i:s")
+                'gajipokok'     =>   Fungsi::angka($request->gajipokok),
+                'updated_at' => date("Y-m-d H:i:s")
             ]);
 
 
-    return redirect()->route('jabatan')->with('status','Data berhasil diubah!')->with('tipe','success')->with('icon','fas fa-feather');
+        return redirect()->route('jabatan')->with('status', 'Data berhasil diubah!')->with('tipe', 'success')->with('icon', 'fas fa-feather');
     }
-    public function destroy(jabatan $id){
+    public function destroy(jabatan $id)
+    {
 
         jabatan::destroy($id->id);
-        return redirect()->route('jabatan')->with('status','Data berhasil dihapus!')->with('tipe','warning')->with('icon','fas fa-feather');
-
+        return redirect()->route('jabatan')->with('status', 'Data berhasil dihapus!')->with('tipe', 'warning')->with('icon', 'fas fa-feather');
     }
 }

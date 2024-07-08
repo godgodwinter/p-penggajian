@@ -81,7 +81,8 @@
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control  @error('jam') is-invalid @enderror" name="jam"
-                                        id="jam" required="required" value="{{ old('jam') ? old('jam') : $id->jam }}" />
+                                        id="jam" required="required"
+                                        value="{{ old('jam') ? old('jam') : $id->jam }}" />
                                     @error('jam')
                                         <div class="invalid-feedback"> {{ $message }}</div>
                                     @enderror

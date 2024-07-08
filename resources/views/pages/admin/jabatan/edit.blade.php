@@ -1,18 +1,17 @@
 @extends('layouts.gentella')
 
 @section('title')
-Jabatan
+    Jabatan
 @endsection
 
 @push('before-script')
-@if (session('status'))
-<x-sweetalertsession tipe="{{session('tipe')}}" status="{{session('status')}}" />
-@endif
+    @if (session('status'))
+        <x-sweetalertsession tipe="{{ session('tipe') }}" status="{{ session('status') }}" />
+    @endif
 @endpush
 
 
 @section('content')
-
     <div class="">
         <div class="page-title">
             <div class="title_left">
@@ -42,15 +41,38 @@ Jabatan
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
-                        <form  action="{{route('jabatan.update',$id->id)}}" method="post" >
+                        <form action="{{ route('jabatan.update', $id->id) }}" method="post">
                             @method('put')
                             @csrf
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Nama<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <input class="form-control"
-                                        name="nama" id="nama"  required="required" value="{{old('nama')?old('nama'):$id->nama}}" />
+                                    <input class="form-control" name="nama" id="nama" required="required"
+                                        value="{{ old('nama') ? old('nama') : $id->nama }}" />
+                                </div>
+                            </div>
+
+
+                            @push('before-script')
+                                <script>
+                                    $(function() {
+                                        let gajipokok = document.getElementById('gajipokok');
+                                        gajipokok.addEventListener('keyup', function(e) {
+                                            gajipokok.value = babengRupiah(this.value, 'Rp. ');
+                                        });
+                                    });
+                                </script>
+                                <script src="{{ asset('/assets/js/babeng.js') }}"></script>
+                            @endpush
+
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align">Gaji Pokok<span
+                                        class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control" name="gajipokok" id="gajipokok" required="required"
+                                        value="{{ old('gajipokok') ? old('gajipokok') : Fungsi::rupiahtanpanol($id->gajipokok) }}" />
+
                                 </div>
                             </div>
                             <div class="ln_solid">
@@ -66,5 +88,4 @@ Jabatan
             </div>
         </div>
     </div>
-
 @endsection

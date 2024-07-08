@@ -109,7 +109,7 @@
                                                         @endforelse
                                                     </td>
                                                     <td>{{ $data->telp }}</td>
-                                                    <td>{{ Fungsi::rupiah($data->gajipokok) }}</td>
+                                                    <td>{{ Fungsi::rupiah($data->gajipokok_total) }}</td>
                                                     <td>{{ $data->hadir }}</td>
                                                     <td>{{ Fungsi::rupiah($data->tunjangankerja) }}</td>
                                                     <td class="text-center">

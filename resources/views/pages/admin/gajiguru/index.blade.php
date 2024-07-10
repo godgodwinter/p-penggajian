@@ -132,7 +132,8 @@
                                                 <th data-toggle="tooltip" data-placement="top"
                                                     title="jam * {{ Fungsi::rupiah($getsettingsgaji->gajipokok) }}">
                                                     Gajipokok</th>
-                                                <th data-toggle="tooltip" data-placement="top" title="Kehadiran">Hadir</th>
+                                                <th data-toggle="tooltip" data-placement="top" title="Kehadiran">Hadir
+                                                </th>
                                                 <th data-toggle="tooltip" data-placement="top"
                                                     title="hadir * {{ Fungsi::rupiah($getsettingsgaji->transport) }}">
                                                     Transport</th>
@@ -158,14 +159,22 @@
                                                     <td>{{ $data->guru ? $data->guru->nama : 'Data guru tidak ditemukan' }}
                                                     </td>
                                                     <td>
-                                                        @if ($data->guru)
-                                                            @forelse ($data->guru->gurudetail as $item)
-                                                                <span>{{ $item->jabatan ? $item->jabatan->nama : '' }}</span>
-                                                                {{-- <button
-                                                                    class="btn btn-sm btn-primary">{{ $item->jabatan ? $item->jabatan->nama : '' }}</button> --}}
-                                                            @empty
-                                                            @endforelse
-                                                        @endif
+                                                        @php
+                                                            $jabatanList = $data->guru->gurudetail
+                                                                ->map(function ($item) {
+                                                                    return $item->jabatan ? $item->jabatan->nama : '';
+                                                                })
+                                                                ->filter()
+                                                                ->all();
+                                                        @endphp
+
+
+                                                        {{ implode(' , ', $jabatanList) }}
+                                                        {{-- @forelse ($data->guru->gurudetail as $item)
+                                                            <span>{{ $item->jabatan ? $item->jabatan->nama : '' }} ,</span>
+                                                        @empty
+                                                        @endforelse --}}
+
                                                     </td>
                                                     <td>{{ Fungsi::rupiah($data->tunjanganjabatan) }}</td>
                                                     <td>{{ $data->walikelas != 0 ? Fungsi::rupiah($data->walikelas) : '-' }}
@@ -178,7 +187,12 @@
                                                     <td>{{ Fungsi::rupiah($data->transport * $data->hadir) }}</td>
                                                     @php
                                                         $jumlah = 0;
-                                                        $jumlah = $data->tunjanganjabatan + $data->walikelas + $data->tunjangankerja + $data->gajipokok * $data->jam + $data->transport * $data->hadir;
+                                                        $jumlah =
+                                                            $data->tunjanganjabatan +
+                                                            $data->walikelas +
+                                                            $data->tunjangankerja +
+                                                            $data->gajipokok * $data->jam +
+                                                            $data->transport * $data->hadir;
                                                     @endphp
                                                     <td>{{ Fungsi::rupiah($jumlah) }}</td>
                                                     <td class="text-center">

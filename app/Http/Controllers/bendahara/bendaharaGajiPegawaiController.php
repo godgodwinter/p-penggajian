@@ -74,11 +74,23 @@ class bendaharaGajiPegawaiController extends Controller
 
 
                 $transport = $getsettingsgaji->transport;
+
+                $pegawai_detail = $pegawai->pegawaidetail;
+                $gajipokok_total = 0;
+                foreach ($pegawai_detail as $get_jabatan) {
+                    // dd($get_jabatan->jabatan_id);
+                    $get_gaji_perjabatan = jabatan::where('id', $get_jabatan->jabatan_id)->first();
+                    $nominal_gajipokok = $get_gaji_perjabatan->gajipokok ? $get_gaji_perjabatan->gajipokok : 0;
+                    $gajipokok_total += $nominal_gajipokok;
+                    // dd($get_gaji_perjabatan, $nominal_gajipokok);
+                }
+                // dd($pegawai_detail);
+                $pegawai->gajipokok_total = $gajipokok_total;
                 //insert gajipegawai
                 gajipegawai::insert([
                     'pegawai_id' => $pegawai->id,
                     'tahunbulan' => $year . '-' . $month . '-01',
-                    'gajipokok' => $pegawai->gajipokok,
+                    'gajipokok' => $pegawai->gajipokok_total,
                     'tunjangankerja' => $pegawai->tunjangankerja,
                     'hadir' => $hadir,
                     'status' => 'belum',

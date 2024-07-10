@@ -15,93 +15,116 @@ class admingurucontroller extends Controller
     public function index(Request $request)
     {
         #WAJIB
-        $pages='guru';
-        $datas=guru::with('gurudetail')->get();
-        $getsettingsgaji=settingsgaji::first();
+        $pages = 'guru';
+        $datas = guru::with('gurudetail')->get();
+        $getsettingsgaji = settingsgaji::first();
 
-        return view('pages.admin.guru.index',compact('datas','request','pages','getsettingsgaji'));
+
+        foreach ($datas as $data) {
+            // $data->gajipokok_total = $data->pegawaidetail->gajipokok;
+
+            $gurudetail = $data->gurudetail;
+            $gajipokok_total = 0;
+            foreach ($gurudetail as $get_jabatan) {
+                // dd($get_jabatan->jabatan_id);
+                $get_gaji_perjabatan = jabatan::where('id', $get_jabatan->jabatan_id)->first();
+                $nominal_gajipokok = $get_gaji_perjabatan->gajipokok ? $get_gaji_perjabatan->gajipokok : 0;
+                $gajipokok_total += $nominal_gajipokok;
+                // dd($get_gaji_perjabatan, $nominal_gajipokok);
+            }
+            // dd($pegawai_detail);
+            $data->tunjanganjabatan_total = $gajipokok_total;
+            // dd($data->gajipokok_total);
+        }
+
+        return view('pages.admin.guru.index', compact('datas', 'request', 'pages', 'getsettingsgaji'));
     }
     public function cari(Request $request)
     {
-        $cari=$request->cari;
+        $cari = $request->cari;
         #WAJIB
-        $pages='guru';
-        $datas=guru::where('nama','like',"%".$cari."%")
-        ->paginate(Fungsi::paginationjml());
+        $pages = 'guru';
+        $datas = guru::where('nama', 'like', "%" . $cari . "%")
+            ->paginate(Fungsi::paginationjml());
 
-        return view('pages.admin.guru.index',compact('datas','request','pages'));
+        return view('pages.admin.guru.index', compact('datas', 'request', 'pages'));
     }
     public function create()
     {
-        $pages='guru';
-        $items=jabatan::get();
-        return view('pages.admin.guru.create',compact('pages','items'));
+        $pages = 'guru';
+        $items = jabatan::get();
+        return view('pages.admin.guru.create', compact('pages', 'items'));
     }
 
     public function store(Request $request)
     {
         // dd($request,$request->jabatan[0]);
-            $request->validate([
-                'nama'=>'required',
+        $request->validate(
+            [
+                'nama' => 'required',
 
             ],
             [
-                'nama.require'=>'Nama harus diisi',
-            ]);
+                'nama.require' => 'Nama harus diisi',
+            ]
+        );
 
-            $id=DB::table('guru')->insertGetId(
+        $id = DB::table('guru')->insertGetId(
+            array(
+                'nama'     =>   $request->nama,
+                'jk'     =>   $request->jk,
+                'alamat'     =>   $request->alamat,
+                'nomerinduk'     =>   $request->nomerinduk,
+                'simkoperasi'     =>   $request->simkoperasi,
+                'hadir'     =>   $request->hadir,
+                'telp'     =>   $request->telp,
+                'dansos'     =>   $request->dansos,
+                'walikelas'     =>   $request->walikelas,
+                //    'gajipokok'     =>   Fungsi::angka($request->gajipokok),
+                'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
+                'tunjanganjabatan'     =>   Fungsi::angka($request->tunjanganjabatan),
+                'jam'     =>   Fungsi::angka($request->jam),
+                'created_at' => date("Y-m-d H:i:s"),
+                'updated_at' => date("Y-m-d H:i:s")
+            )
+        );
+
+        for ($i = 0; $i < count($request->jabatan); $i++) {
+            DB::table('gurudetail')->insert(
                 array(
-                       'nama'     =>   $request->nama,
-                       'jk'     =>   $request->jk,
-                       'alamat'     =>   $request->alamat,
-                       'nomerinduk'     =>   $request->nomerinduk,
-                       'simkoperasi'     =>   $request->simkoperasi,
-                       'hadir'     =>   $request->hadir,
-                       'telp'     =>   $request->telp,
-                       'dansos'     =>   $request->dansos,
-                       'walikelas'     =>   $request->walikelas,
-                    //    'gajipokok'     =>   Fungsi::angka($request->gajipokok),
-                       'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
-                       'tunjanganjabatan'     =>   Fungsi::angka($request->tunjanganjabatan),
-                       'jam'     =>   Fungsi::angka($request->jam),
-                       'created_at'=>date("Y-m-d H:i:s"),
-                       'updated_at'=>date("Y-m-d H:i:s")
-                ));
+                    'guru_id'     =>   $id,
+                    'jabatan_id'     =>   $request->jabatan[$i],
+                    'created_at' => date("Y-m-d H:i:s"),
+                    'updated_at' => date("Y-m-d H:i:s")
+                )
+            );
+        }
 
-            for($i=0;$i<count($request->jabatan);$i++){
-                DB::table('gurudetail')->insert(
-                    array(
-                           'guru_id'     =>   $id,
-                           'jabatan_id'     =>   $request->jabatan[$i],
-                           'created_at'=>date("Y-m-d H:i:s"),
-                           'updated_at'=>date("Y-m-d H:i:s")
-                    ));
-            }
-
-    return redirect()->route('guru')->with('status','Data berhasil tambahkan!')->with('tipe','success')->with('icon','fas fa-feather');
-
+        return redirect()->route('guru')->with('status', 'Data berhasil tambahkan!')->with('tipe', 'success')->with('icon', 'fas fa-feather');
     }
 
     public function edit(guru $id)
     {
-        $pages='guru';
-        $items=jabatan::get();
+        $pages = 'guru';
+        $items = jabatan::get();
 
-        return view('pages.admin.guru.edit',compact('pages','id','items'));
+        return view('pages.admin.guru.edit', compact('pages', 'id', 'items'));
     }
-    public function update(guru $id,Request $request)
+    public function update(guru $id, Request $request)
     {
 
 
-        $request->validate([
-            'nama'=>'required',
-        ],
-        [
-            'nama.required'=>'name harus diisi',
-        ]);
+        $request->validate(
+            [
+                'nama' => 'required',
+            ],
+            [
+                'nama.required' => 'name harus diisi',
+            ]
+        );
 
 
-            guru::where('id',$id->id)
+        guru::where('id', $id->id)
             ->update([
                 'nama'     =>   $request->nama,
                 'jk'     =>   $request->jk,
@@ -115,33 +138,34 @@ class admingurucontroller extends Controller
                 'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
                 'tunjanganjabatan'     =>   Fungsi::angka($request->tunjanganjabatan),
                 'jam'     =>   Fungsi::angka($request->jam),
-               'updated_at'=>date("Y-m-d H:i:s")
+                'updated_at' => date("Y-m-d H:i:s")
             ]);
 
-            //laravel destroy where id example
-            DB::table('gurudetail')->where('guru_id',$id->id)->delete();
+        //laravel destroy where id example
+        DB::table('gurudetail')->where('guru_id', $id->id)->delete();
 
-            for($i=0;$i<count($request->jabatan);$i++){
-                $periksa=gurudetail::where('jabatan_id',$request->jabatan[$i])->where('guru_id',$id->id)->count();
-                if($periksa==0){
+        for ($i = 0; $i < count($request->jabatan); $i++) {
+            $periksa = gurudetail::where('jabatan_id', $request->jabatan[$i])->where('guru_id', $id->id)->count();
+            if ($periksa == 0) {
                 DB::table('gurudetail')->insert(
                     array(
-                           'guru_id'     =>   $id->id,
-                           'jabatan_id'     =>   $request->jabatan[$i],
-                           'created_at'=>date("Y-m-d H:i:s"),
-                           'updated_at'=>date("Y-m-d H:i:s")
-                    ));
-                }
+                        'guru_id'     =>   $id->id,
+                        'jabatan_id'     =>   $request->jabatan[$i],
+                        'created_at' => date("Y-m-d H:i:s"),
+                        'updated_at' => date("Y-m-d H:i:s")
+                    )
+                );
             }
+        }
 
 
-    return redirect()->route('guru')->with('status','Data berhasil diubah!')->with('tipe','success')->with('icon','fas fa-feather');
+        return redirect()->route('guru')->with('status', 'Data berhasil diubah!')->with('tipe', 'success')->with('icon', 'fas fa-feather');
     }
-    public function destroy(guru $id){
+    public function destroy(guru $id)
+    {
 
         guru::destroy($id->id);
-        gurudetail::where('guru_id',$id->id)->delete();
-        return redirect()->route('guru')->with('status','Data berhasil dihapus!')->with('tipe','warning')->with('icon','fas fa-feather');
-
+        gurudetail::where('guru_id', $id->id)->delete();
+        return redirect()->route('guru')->with('status', 'Data berhasil dihapus!')->with('tipe', 'warning')->with('icon', 'fas fa-feather');
     }
 }

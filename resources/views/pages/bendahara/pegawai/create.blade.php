@@ -131,13 +131,13 @@
                                 <script src="{{ asset('/assets/js/babeng.js') }}"></script>
                             @endpush
 
-                            <div class="field item form-group">
+                            {{-- <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Gaji Pokok<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control" name="gajipokok" id="gajipokok" required="required" />
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Tunjangan Kerja<span
                                         class="required">*</span></label>

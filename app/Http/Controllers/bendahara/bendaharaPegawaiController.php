@@ -17,6 +17,22 @@ class bendaharaPegawaiController extends Controller
         #WAJIB
         $pages = 'pegawai';
         $datas = pegawai::with('pegawaidetail')->get();
+        foreach ($datas as $data) {
+            // $data->gajipokok_total = $data->pegawaidetail->gajipokok;
+
+            $pegawai_detail = $data->pegawaidetail;
+            $gajipokok_total = 0;
+            foreach ($pegawai_detail as $get_jabatan) {
+                // dd($get_jabatan->jabatan_id);
+                $get_gaji_perjabatan = jabatan::where('id', $get_jabatan->jabatan_id)->first();
+                $nominal_gajipokok = $get_gaji_perjabatan->gajipokok ? $get_gaji_perjabatan->gajipokok : 0;
+                $gajipokok_total += $nominal_gajipokok;
+                // dd($get_gaji_perjabatan, $nominal_gajipokok);
+            }
+            // dd($pegawai_detail);
+            $data->gajipokok_total = $gajipokok_total;
+            // dd($data->gajipokok_total);
+        }
 
         return view('pages.bendahara.pegawai.index', compact('datas', 'request', 'pages'));
     }

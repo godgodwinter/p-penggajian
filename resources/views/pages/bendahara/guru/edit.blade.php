@@ -165,7 +165,7 @@
                                         value="{{ old('tunjangankerja') ? old('tunjangankerja') : Fungsi::rupiahtanpanol($id->tunjangankerja) }}" />
                                 </div>
                             </div>
-                            <div class="field item form-group">
+                            {{-- <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Tunjangan Jabatan<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
@@ -173,7 +173,7 @@
                                         required="required" readonly
                                         value="{{ old('tunjanganjabatan') ? old('tunjanganjabatan') : Fungsi::rupiahtanpanol($id->tunjanganjabatan) }}" />
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Sim Koperasi<span
                                         class="required">*</span></label>

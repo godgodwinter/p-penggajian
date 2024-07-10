@@ -85,11 +85,23 @@ class admingajigurucontroller extends Controller
                 }
 
                 $transport = $getsettingsgaji->transport;
+
+                $guru_detail = $guru->gurudetail;
+                $tunjanganjabatan_guru = 0;
+                foreach ($guru_detail as $get_jabatan) {
+                    // dd($get_jabatan->jabatan_id);
+                    $get_gaji_perjabatan = jabatan::where('id', $get_jabatan->jabatan_id)->first();
+                    $nominal_gajipokok = $get_gaji_perjabatan->gajipokok ? $get_gaji_perjabatan->gajipokok : 0;
+                    $tunjanganjabatan_guru += $nominal_gajipokok;
+                    // dd($get_gaji_perjabatan, $nominal_gajipokok);
+                }
+                // dd($pegawai_detail);
+                $guru->tunjanganjabatan_guru = $tunjanganjabatan_guru;
                 //insert gajiguru
                 gajiguru::insert([
                     'guru_id' => $guru->id,
                     'tahunbulan' => $year . '-' . $month . '-01',
-                    'tunjanganjabatan' => $guru->tunjanganjabatan,
+                    'tunjanganjabatan' => $guru->tunjanganjabatan_guru,
                     'tunjangankerja' => $guru->tunjangankerja,
                     'hadir' => $hadir,
                     'status' => 'belum',

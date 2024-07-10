@@ -20,6 +20,23 @@ class bendaharaGuruController extends Controller
         $datas = guru::with('gurudetail')->get();
         $getsettingsgaji = settingsgaji::first();
 
+        foreach ($datas as $data) {
+            // $data->gajipokok_total = $data->pegawaidetail->gajipokok;
+
+            $gurudetail = $data->gurudetail;
+            $gajipokok_total = 0;
+            foreach ($gurudetail as $get_jabatan) {
+                // dd($get_jabatan->jabatan_id);
+                $get_gaji_perjabatan = jabatan::where('id', $get_jabatan->jabatan_id)->first();
+                $nominal_gajipokok = $get_gaji_perjabatan->gajipokok ? $get_gaji_perjabatan->gajipokok : 0;
+                $gajipokok_total += $nominal_gajipokok;
+                // dd($get_gaji_perjabatan, $nominal_gajipokok);
+            }
+            // dd($pegawai_detail);
+            $data->tunjanganjabatan_total = $gajipokok_total;
+            // dd($data->gajipokok_total);
+        }
+
         return view('pages.bendahara.guru.index', compact('datas', 'request', 'pages', 'getsettingsgaji'));
     }
     public function cari(Request $request)

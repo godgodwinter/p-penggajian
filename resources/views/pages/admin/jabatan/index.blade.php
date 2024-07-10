@@ -90,7 +90,7 @@
                                             <tr>
                                                 <th class="babeng-min-row">No</th>
                                                 <th>Nama</th>
-                                                <th>Gaji Pokok</th>
+                                                <th>Tunjangan Jabatan</th>
                                                 <th class="text-center">Aksi</th>
                                             </tr>
                                         </thead>

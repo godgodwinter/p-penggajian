@@ -103,16 +103,26 @@
                                                     <td class="text-center">{{ $loop->index + 1 }}</td>
                                                     <td>{{ $data->nama }}</td>
                                                     <td>
-                                                        @forelse ($data->gurudetail as $item)
+                                                        @php
+                                                            $jabatanList = $data->gurudetail
+                                                                ->map(function ($item) {
+                                                                    return $item->jabatan ? $item->jabatan->nama : '';
+                                                                })
+                                                                ->filter()
+                                                                ->all();
+                                                        @endphp
+                                                        {{ implode(' , ', $jabatanList) }}
+                                                        {{-- @forelse ($data->gurudetail as $item)
                                                             <span>{{ $item->jabatan ? $item->jabatan->nama : '' }} ,
                                                             </span>
-                                                            {{-- <button
-                                                                class="btn btn-sm btn-primary">{{ $item->jabatan ? $item->jabatan->nama : '' }}</button> --}}
                                                         @empty
-                                                        @endforelse
+                                                        @endforelse --}}
                                                     </td>
                                                     {{-- <td>{{$data->telp}}</td> --}}
-                                                    <td>{{ Fungsi::rupiah($data->tunjanganjabatan) }}</td>
+                                                    {{-- <td>{{ Fungsi::rupiah($data->tunjanganjabatan) }}</td> --}}
+                                                    <td>
+                                                        {{ Fungsi::rupiah($data->tunjanganjabatan_total) }}
+                                                    </td>
                                                     <td class="text-center">
                                                         @php
                                                             $warna = 'info';

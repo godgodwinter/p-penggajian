@@ -100,16 +100,24 @@
                                                     <td class="text-center">{{ $loop->index + 1 }}</td>
                                                     <td>{{ $data->nama }}</td>
                                                     <td>
-                                                        @forelse ($data->pegawaidetail as $item)
+
+                                                        @php
+                                                            $jabatanList = $data->pegawaidetail
+                                                                ->map(function ($item) {
+                                                                    return $item->jabatan ? $item->jabatan->nama : '';
+                                                                })
+                                                                ->filter()
+                                                                ->all();
+                                                        @endphp
+                                                        {{ implode(' , ', $jabatanList) }}
+                                                        {{-- @forelse ($data->pegawaidetail as $item)
                                                             <span>{{ $item->jabatan ? $item->jabatan->nama : '' }} ,
-                                                            </span>
-                                                            {{-- <button
-                                                                class="btn btn-sm btn-primary">{{ $item->jabatan ? $item->jabatan->nama : '' }}</button> --}}
-                                                        @empty
-                                                        @endforelse
+                                                        </span> @empty
+                                                        @endforelse --}}
                                                     </td>
                                                     <td>{{ $data->telp }}</td>
-                                                    <td>{{ Fungsi::rupiah($data->gajipokok) }}</td>
+                                                    {{-- <td>{{ Fungsi::rupiah($data->gajipokok) }}</td> --}}
+                                                    <td>{{ Fungsi::rupiah($data->gajipokok_total) }}</td>
                                                     <td>{{ $data->hadir }}</td>
                                                     <td>{{ Fungsi::rupiah($data->tunjangankerja) }}</td>
                                                     <td class="text-center">

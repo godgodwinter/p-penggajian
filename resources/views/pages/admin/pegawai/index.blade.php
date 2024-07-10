@@ -100,13 +100,20 @@
                                                     <td class="text-center">{{ $loop->index + 1 }}</td>
                                                     <td>{{ $data->nama }}</td>
                                                     <td>
-                                                        @forelse ($data->pegawaidetail as $item)
+                                                        @php
+                                                            $jabatanList = $data->pegawaidetail
+                                                                ->map(function ($item) {
+                                                                    return $item->jabatan ? $item->jabatan->nama : '';
+                                                                })
+                                                                ->filter()
+                                                                ->all();
+                                                        @endphp
+                                                        {{ implode(' , ', $jabatanList) }}
+                                                        {{-- @forelse ($data->pegawaidetail as $item)
                                                             <span>{{ $item->jabatan ? $item->jabatan->nama : '' }}
                                                                 ,</span>
-                                                            {{-- <span
-                                                                class="badge badge-primary">{{ $item->jabatan ? $item->jabatan->nama : '' }}</span> --}}
                                                         @empty
-                                                        @endforelse
+                                                        @endforelse --}}
                                                     </td>
                                                     <td>{{ $data->telp }}</td>
                                                     <td>{{ Fungsi::rupiah($data->gajipokok_total) }}</td>

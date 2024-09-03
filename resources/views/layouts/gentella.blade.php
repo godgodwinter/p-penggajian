@@ -75,7 +75,7 @@
                     <!-- /sidebar menu -->
 
                     <!-- /menu footer buttons -->
-                    <div class="sidebar-footer hidden-small text-white">
+                    {{-- <div class="sidebar-footer hidden-small text-white">
                         @if (Auth::user()->tipeuser == 'admin')
                             <a href="{{ route('settings') }}" data-toggle="tooltip" data-placement="top"
                                 title="Settings Aplikasi">
@@ -100,7 +100,7 @@
                                 <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                             </a>
                         </form>
-                    </div>
+                    </div> --}}
                     <!-- /menu footer buttons -->
                 </div>
             </div>
@@ -182,12 +182,12 @@
                     // exec('git rev-parse --verify HEAD 2> /dev/null', $output);
                     // $hash = $output[0];
                     // dd($hash)
-                    
+
                     $commitHash = trim(exec('git log --pretty="%h" -n1 HEAD'));
-                    
+
                     $commitDate = new \DateTime(trim(exec('git log -n1 --pretty=%ci HEAD')));
                     $commitDate->setTimezone(new \DateTimeZone('UTC'));
-                    
+
                     // dd($commitDate);
                     // dd($commitDate->format('Y-m-d H:i:s'));
                     $versi = $commitDate->format('Ymd.H.i.s');

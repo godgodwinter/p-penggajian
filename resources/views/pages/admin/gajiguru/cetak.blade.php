@@ -37,7 +37,7 @@
                 TUNJANGAN KERJA
             </th>
             <th>
-                JAM
+                JAM MENGAJAR
             </th>
             <th>
                 GAJI POKOK
@@ -86,7 +86,12 @@
                 <td align="center">{{ Fungsi::rupiah($data->transport * $data->hadir) }}</td>
                 @php
                     $jumlah = 0;
-                    $jumlah = $data->tunjanganjabatan + $data->walikelas + $data->tunjangankerja + $data->gajipokok * $data->jam + $data->transport * $data->hadir;
+                    $jumlah =
+                        $data->tunjanganjabatan +
+                        $data->walikelas +
+                        $data->tunjangankerja +
+                        $data->gajipokok * $data->jam +
+                        $data->transport * $data->hadir;
                     $total += $jumlah;
                 @endphp
                 <td>{{ Fungsi::rupiah($jumlah) }}</td>

@@ -68,13 +68,13 @@
 
 
         <tr>
-            <td width="100px" style="color: red; width: 40px;">KOPERASI
+            <td width="100px" style="color: black; width: 40px;">KOPERASI
                 {{-- : {{ Fungsi::rupiah($datas->simkoperasi) }} --}}
             </td>
             <td width="10px">:</td>
             <td>
                 <span style="">
-                    <span style="border-bottom: 0px solid black; color: red; width: 40px;margin-top: 10px;">
+                    <span style="border-bottom: 0px solid black; color: black; width: 40px;margin-top: 10px;">
                         - {{ Fungsi::rupiah($datas->simkoperasi) }}
                     </span>
             </td>
@@ -100,13 +100,13 @@
             </td>
         </tr>
         <tr>
-            <td width="100px" style="color: red; width: 40px;">DANSOS
+            <td width="100px" style="color: black; width: 40px;">DANSOS
                 {{-- : {{ Fungsi::rupiah($datas->simkoperasi) }} --}}
             </td>
             <td width="10px">:</td>
             <td>
                 <span style="">
-                    <span style="border-bottom: 0px solid black; color: red; width: 40px;margin-top: 10px;">
+                    <span style="border-bottom: 0px solid black; color: black; width: 40px;margin-top: 10px;">
                         - {{ Fungsi::rupiah($datas->dansos) }}
                     </span>
             </td>
@@ -130,7 +130,7 @@
         <tr>
             <td width="100px"><strong>DITERIMA</strong></td>
             <td width="10px"><strong>:</strong></td>
-            <td><strong>{{ $hasilakhir }}</strong></td>
+            <td><strong>{{ Fungsi::rupiah($hasilakhir) }}</strong></td>
         </tr>
     </table>
 

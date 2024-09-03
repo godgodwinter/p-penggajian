@@ -87,9 +87,9 @@
                                                 <th>Tunjangan Jabatan</th>
                                                 <th>Wali kellas</th>
                                                 <th>Tunjangan Kerja</th>
-                                                <th>Jam</th>
+                                                <th>Jam Mengajar</th>
                                                 <th>Gaji Pokok</th>
-                                                <th>Jadwal Kehadiran</th>
+                                                <th>Jumlah Kehadiran</th>
                                                 <th class="text-center">Sim Koperasi</th>
                                                 <th class="text-center">Dansos</th>
                                                 <th class="text-center">Aksi</th>

@@ -128,7 +128,7 @@
                                                 <th>Tunjangan Jabatan</th>
                                                 <th>Walikelas</th>
                                                 <th>Tunjangan Kerja</th>
-                                                <th>Jam</th>
+                                                <th>Jam Mengajar</th>
                                                 <th data-toggle="tooltip" data-placement="top"
                                                     title="jam * {{ Fungsi::rupiah($getsettingsgaji->gajipokok) }}">
                                                     Gajipokok</th>

@@ -85,7 +85,7 @@
                                                 <th>Jabatan</th>
                                                 <th>Telp</th>
                                                 <th>Gaji Pokok</th>
-                                                <th>Jadwal Kehadiran</th>
+                                                <th>Jumlah Kehadiran</th>
                                                 <th>Tunjangan Kerja</th>
                                                 <th class="text-center">Sim Koperasi</th>
                                                 <th class="text-center">Dansos</th>

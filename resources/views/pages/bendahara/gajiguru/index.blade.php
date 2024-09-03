@@ -129,11 +129,12 @@
                                                 <th>Tunjangan Jabatan</th>
                                                 <th>Walikelas</th>
                                                 <th>Tunjangan Kerja</th>
-                                                <th>Jam</th>
+                                                <th>Jam Mengajar</th>
                                                 <th data-toggle="tooltip" data-placement="top"
                                                     title="jam * {{ Fungsi::rupiah($getsettingsgaji->gajipokok) }}">
                                                     Gajipokok</th>
-                                                <th data-toggle="tooltip" data-placement="top" title="Kehadiran">Hadir</th>
+                                                <th data-toggle="tooltip" data-placement="top" title="Kehadiran">Hadir
+                                                </th>
                                                 <th data-toggle="tooltip" data-placement="top"
                                                     title="hadir * {{ Fungsi::rupiah($getsettingsgaji->transport) }}">
                                                     Transport</th>
@@ -177,7 +178,12 @@
                                                     <td>{{ Fungsi::rupiah($data->transport * $data->hadir) }}</td>
                                                     @php
                                                         $jumlah = 0;
-                                                        $jumlah = $data->tunjanganjabatan + $data->walikelas + $data->tunjangankerja + $data->gajipokok * $data->jam + $data->transport * $data->hadir;
+                                                        $jumlah =
+                                                            $data->tunjanganjabatan +
+                                                            $data->walikelas +
+                                                            $data->tunjangankerja +
+                                                            $data->gajipokok * $data->jam +
+                                                            $data->transport * $data->hadir;
                                                     @endphp
                                                     <td>{{ Fungsi::rupiah($jumlah) }}</td>
                                                     <td class="text-center">

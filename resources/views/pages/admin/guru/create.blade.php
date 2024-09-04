@@ -225,6 +225,7 @@
                                     // In your Javascript (external .js resource or <script> tag)
                                     $(document).ready(function() {
                                         $('.js-example-basic-single').select2({
+                                            placeholder: "Pilih Jabatan",
                                             // theme: "classic",
                                             // allowClear: true,
                                             width: "resolve"
@@ -237,11 +238,11 @@
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <select
-                                        class="js-example-basic-single form-control-sm @error('jabatan')
+                                        class="js-example-basic-single form-control-sm  select2-choices @error('jabatan')
                                         is-invalid
                                     @enderror"
                                         name="jabatan[]" style="width: 100%" multiple="multiple" required>
-                                        <option disabled value=""> Pilih Jabatan</option>
+                                        {{-- <option disabled value=""> Pilih Jabatan</option> --}}
                                         @foreach ($items as $item)
                                             <option value="{{ $item->id }}"> {{ $item->nama }}</option>
                                         @endforeach

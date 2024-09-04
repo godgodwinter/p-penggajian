@@ -25,6 +25,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
 <style>
+    .select2-selection--multiple:before {
+        content: "";
+        position: absolute;
+        right: 7px;
+        top: 42%;
+        border-top: 5px solid #888;
+        border-left: 4px solid transparent;
+        border-right: 4px solid transparent;
+    }
+
     babeng-body {
         display: flex;
         justify-content: center;

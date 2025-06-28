@@ -85,7 +85,7 @@
                                 <input type="hidden" name="cari" value="{{ $cari }}">
                                 <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"
                                     onclick="return  confirm('Anda yakin mencetak data bulan ini? Y/N')"
-                                    data-toggle="tooltip" data-placement="top" value="Cetak Rincian">
+                                    data-toggle="tooltip" data-placement="top" value="Cetak Laporan">
                             </form>
 
                             <form action="{{ route('bendahara.gajipegawai.cetakperid.all', ['cari' => $cari]) }}"
@@ -131,7 +131,8 @@
                                                 <th data-toggle="tooltip" data-placement="top"
                                                     title="hadir * {{ Fungsi::rupiah($getsettingsgaji->transport) }}">
                                                     Transport</th>
-                                                <th data-toggle="tooltip" data-placement="top" title="Kehadiran">Hadir</th>
+                                                <th data-toggle="tooltip" data-placement="top" title="Kehadiran">Hadir
+                                                </th>
                                                 <th data-toggle="tooltip" data-placement="top"
                                                     title="Gajipokok + Tunjuangan + transport">Jumlah Diterima</th>
                                                 <th class="text-center" data-toggle="tooltip" data-placement="top"
@@ -167,7 +168,10 @@
                                                     <td>{{ $data->hadir }}</td>
                                                     @php
                                                         $jumlah = 0;
-                                                        $jumlah = $data->gajipokok + $data->tunjangankerja + $data->transport * $data->hadir;
+                                                        $jumlah =
+                                                            $data->gajipokok +
+                                                            $data->tunjangankerja +
+                                                            $data->transport * $data->hadir;
                                                     @endphp
                                                     <td>{{ Fungsi::rupiah($jumlah) }}</td>
                                                     <td class="text-center">

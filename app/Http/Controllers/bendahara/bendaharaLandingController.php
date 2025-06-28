@@ -30,17 +30,10 @@ class bendaharaLandingController extends Controller
         // dd($credentials);
         if (Auth::guard('bendahara')->attempt($credentials)) {
             return redirect()->route('bendahara.dashboard')->with('status', 'login berhasil !')->with('tipe', 'success')->with('icon', 'fas fa-feather');
-            // dd("login berhasil");
-            // return redirect('/dashboard');
         } else {
-            // return redirect()->back()->with('status', 'Login gagal!')->with('tipe', 'success')->with('icon', 'fas fa-feather');
-
             return redirect()
                 ->back()
                 ->withErrors(['email' => 'Email atau password salah']);
-            // return Redirect::back()->with('msg', 'Login Gagal!');
-            // dd("login gagal");
-            // return redirect('/login')->with('error', 'Invalid Email address or Password');
         }
     }
 }

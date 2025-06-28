@@ -124,12 +124,9 @@
                 <center>
                     MENGETAHUI <br>
                     KEPALA SEKOLAH SMP
-                    <br><br><br>
                     <br>
-                    <br>
-                    <br>
-
-                    LENI AMALIA.SE
+                    <img src="{{ public_path('assets/img_ks_1_no_bg.png') }}" alt="Tanda Tangan" height="150">
+                    LENI AMALIA S.E.,M.M.
                 </center>
             </th>
             <th width="3%"></th>

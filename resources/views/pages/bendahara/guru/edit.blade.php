@@ -128,6 +128,19 @@
                                 </div>
                             </div>
 
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align"> Tanggal Mulai Bekerja<span
+                                        class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control  @error('tgl_mulai_bekerja') is-invalid @enderror"
+                                        name="tgl_mulai_bekerja" id="tgl_mulai_bekerja" required="required"
+                                        value="{{ old('tgl_mulai_bekerja') ? old('tgl_mulai_bekerja') : $id->tgl_mulai_bekerja }}"
+                                        type="date" />
+                                    @error('tgl_mulai_bekerja')
+                                        <div class="invalid-feedback"> {{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
                             @push('before-script')
                                 <script>
                                     $(function() {
@@ -156,7 +169,7 @@
                             name="gajipokok" id="gajipokok"  required="required" value="{{old('gajipokok')?old('gajipokok'):Fungsi::rupiahtanpanol($id->gajipokok)}}" />
                         </div>
                     </div> --}}
-                            <div class="field item form-group">
+                            {{-- <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Tunjangan Kerja<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
@@ -164,7 +177,7 @@
                                         required="required" readonly
                                         value="{{ old('tunjangankerja') ? old('tunjangankerja') : Fungsi::rupiahtanpanol($id->tunjangankerja) }}" />
                                 </div>
-                            </div>
+                            </div> --}}
                             {{-- <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Tunjangan Jabatan<span
                                         class="required">*</span></label>

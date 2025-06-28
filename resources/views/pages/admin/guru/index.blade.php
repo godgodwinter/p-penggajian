@@ -86,6 +86,7 @@
                                                 {{-- <th>Telp</th> --}}
                                                 <th>Tunjangan Jabatan</th>
                                                 <th>Wali kellas</th>
+                                                <th class="text-center">Tanggal Mulai Bekerja</th>
                                                 <th>Tunjangan Kerja</th>
                                                 <th>Jam Mengajar</th>
                                                 <th>Gaji Pokok</th>
@@ -136,7 +137,18 @@
                                                         {{-- <span
                                                             class="badge badge-{{ $warna }}">{{ $hasil }}</span> --}}
                                                     </td>
-                                                    <td>{{ Fungsi::rupiah($data->tunjangankerja) }}</td>
+
+                                                    <td>{{ \Carbon\Carbon::parse($data->tgl_mulai_bekerja)->translatedFormat('d F Y') }}
+                                                    </td>
+                                                    @php
+                                                        $tgl_mulai = \Carbon\Carbon::parse($data->tgl_mulai_bekerja);
+                                                        $tgl_sekarang = \Carbon\Carbon::now();
+                                                        $lama_kerja = $tgl_sekarang->diffInYears($tgl_mulai);
+                                                        $settings = \App\Models\settingsgaji::where('id', 1)->first();
+                                                        $nominal_tunjangan = $settings->tunjangankerja;
+                                                        $tunjangankerja = $lama_kerja * $nominal_tunjangan;
+                                                    @endphp
+                                                    <td>{{ Fungsi::rupiah($tunjangankerja) }}</td>
                                                     <td>{{ $data->jam }}</td>
                                                     <td>{{ Fungsi::rupiah(Fungsi::angka($data->jam * $getsettingsgaji->gajipokok)) }}
                                                     </td>

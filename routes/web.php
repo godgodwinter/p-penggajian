@@ -243,6 +243,9 @@ Route::get('/bendahara/datagajipegawai/cetak', [bendaharaGajiPegawaiController::
 Route::get('/bendahara/datagajipegawaicetakperid/cetakperid_all/{cari?}', [bendaharaGajiPegawaiController::class, 'cetakperid_all'])->name('bendahara.gajipegawai.cetakperid.all');
 Route::get('/bendahara/datagajipegawaicetakperid/{id}/{cari?}', [bendaharaGajiPegawaiController::class, 'cetakperid'])->name('bendahara.gajipegawai.cetakperid');
 
+
+Route::post('/campur/login', [kepsekLandingController::class, 'do_login_campur'])->name('campur.login.do');
+
 Route::get('/kepsek/login', [kepsekLandingController::class, 'index'])->name('kepsek.login');
 Route::post('/kepsek/login', [kepsekLandingController::class, 'do_login'])->name('kepsek.login.do');
 // !menu kepsek

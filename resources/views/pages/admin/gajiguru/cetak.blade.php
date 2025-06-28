@@ -133,28 +133,50 @@
 
     <br>
     <br>
-
+    {{--
     <table width="100%" class="table table-light" id="tablettd">
         <tr>
             <th width="60%">
-                <!-- Content for the first column -->
             </th>
-            <th width="20%" align="center">
+            <th width="30%" align="center">
                 <center>
                     MENGETAHUI <br>
                     KEPALA SEKOLAH SMP
-                    <br><br><br>
-                    <br>
-                    <br>
-                    <br>
-
-                    LENI AMALIA.SE
+                    <img src="{{ public_path('assets/img_ks_1_no_bg.png') }}" alt="Tanda Tangan" height="150">
                 </center>
             </th>
             <th width="3%"></th>
         </tr>
-        <!-- Add more rows and content as needed -->
+        <tr>
+            <th width="60%">
+            </th>
+            <th width="30%" align="center">
+                LENI AMALIA S.E.,M.M.
+            </th>
+        </tr>
+    </table> --}}
+    <table width="100%" class="table table-light" id="tablettd">
+        <tr>
+            <td width="70%"></td>
+            <td width="30%" align="center">
+                <div style="text-align: center;">
+                    <strong> MENGETAHUI <br>
+                        KEPALA SEKOLAH SMP
+                    </strong>
+                    <img src="{{ public_path('assets/img_ks_1_no_bg.png') }}" alt="Tanda Tangan" height="150">
+                </div>
+            </td>
+            <td width="10%"></td>
+        </tr>
+        <tr>
+            <td width="60%"></td>
+            <td width="30%" align="center">
+                <strong>LENI AMALIA S.E., M.M.</strong>
+            </td>
+            <td width="10%"></td>
+        </tr>
     </table>
+
 
 
 </body>

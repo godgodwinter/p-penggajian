@@ -82,6 +82,7 @@ class bendaharaGuruController extends Controller
                 'walikelas'     =>   $request->walikelas,
                 //    'gajipokok'     =>   Fungsi::angka($request->gajipokok),
                 'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
+                'tgl_mulai_bekerja'     =>   $request->tgl_mulai_bekerja,
                 'tunjanganjabatan'     =>   Fungsi::angka($request->tunjanganjabatan),
                 'jam'     =>   Fungsi::angka($request->jam),
                 'created_at' => date("Y-m-d H:i:s"),
@@ -135,7 +136,9 @@ class bendaharaGuruController extends Controller
                 'dansos'     =>   $request->dansos,
                 'hadir'     =>   $request->hadir,
                 // 'gajipokok'     =>   Fungsi::angka($request->gajipokok),
+
                 'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
+                'tgl_mulai_bekerja'     =>   $request->tgl_mulai_bekerja,
                 'tunjanganjabatan'     =>   Fungsi::angka($request->tunjanganjabatan),
                 'jam'     =>   Fungsi::angka($request->jam),
                 'updated_at' => date("Y-m-d H:i:s")

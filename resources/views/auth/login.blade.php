@@ -22,17 +22,18 @@
                     data-aos="fade-up" data-aos-delay="200">
 
                     <div class="col-lg-12 z-index-2">
-                        <h4>LOGIN ADMINISTRATOR</h4>
-                        <form class="row g-3" action="{{ route('login') }}" method="POST">
+                        <h4>Silakan masuk untuk melanjutkan : </h4>
+                        <form class="row g-3" action="{{ route('campur.login.do') }}" method="POST">
+                            {{-- <form class="row g-3" action="{{ route('login') }}" method="POST"> --}}
                             @csrf
                             <div class="col-md-12">
                                 <label for="inputName">Username :</label>
                                 <input
-                                    class="form-control form-livedoc-contro @error('identity')
+                                    class="form-control form-livedoc-contro @error('username')
                     is-invalid
                     @enderror"
-                                    id="inputName" placeholder="Username" autocomplete="nope" name="identity" />
-                                @error('identity')
+                                    id="inputName" placeholder="Username" autocomplete="nope" name="username" />
+                                @error('username')
                                     <div class="invalid-feedback text-danger">
                                         {{ $message }}
                                     </div>

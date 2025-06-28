@@ -85,7 +85,7 @@
                                 <input type="hidden" name="cari" value="{{ $cari }}">
                                 <input class="btn btn-info ml-1 mt-2 mt-sm-0" type="submit" id="babeng-submit"
                                     onclick="return  confirm('Anda yakin mencetak data bulan ini? Y/N')"
-                                    data-toggle="tooltip" data-placement="top" value="Cetak Rincian">
+                                    data-toggle="tooltip" data-placement="top" value="Cetak Laporan">
                             </form>
 
                             <form action="{{ route('gajipegawai.cetakperid.all', ['cari' => $cari]) }}" method="get"

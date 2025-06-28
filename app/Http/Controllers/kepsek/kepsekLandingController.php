@@ -11,7 +11,6 @@ class kepsekLandingController extends Controller
     public function index()
     {
         $pages = 'beranda';
-        // return view('auth.login',compact('pages'));
         return view('landing.pages.KepsekLogin', compact('pages'));
     }
     // public function do_login(Request $request)
@@ -29,7 +28,6 @@ class kepsekLandingController extends Controller
         // dd($credentials);
         if (Auth::guard('kepsek')->attempt($credentials)) {
             return redirect()->route('kepsek.dashboard')->with('status', 'login berhasil !')->with('tipe', 'success')->with('icon', 'fas fa-feather');
-            // dd("login berhasil");
             // return redirect('/dashboard');
         } else {
             return redirect()
@@ -38,5 +36,21 @@ class kepsekLandingController extends Controller
             // dd("login gagal");
             // return redirect('/login')->with('error', 'Invalid Email address or Password');
         }
+    }
+
+
+    public function do_login_campur(Request $request)
+    {
+        $credentials = $request->only('username', 'password');
+        if (Auth::guard('web')->attempt(['username' => $credentials['username'], 'password' => $credentials['password']])) {
+            return redirect()->route('dashboard')->with('status', 'Login sebagai Admin!');
+        }
+        if (Auth::guard('kepsek')->attempt(['username' => $credentials['username'], 'password' => $credentials['password']])) {
+            return redirect()->route('kepsek.dashboard')->with('status', 'Login sebagai Kepala Sekolah berhasil!');
+        }
+        if (Auth::guard('bendahara')->attempt(['username' => $credentials['username'], 'password' => $credentials['password']])) {
+            return redirect()->route('bendahara.dashboard')->with('status', 'Login sebagai Bendahara berhasil!');
+        }
+        return back()->withErrors(['username' => 'Username atau password tidak cocok dengan akun manapun.']);
     }
 }

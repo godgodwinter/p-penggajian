@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Helpers\Fungsi;
 use App\Models\guru;
 use App\Models\gurudetail;
+use App\Models\settings;
 use App\Models\jabatan;
 use App\Models\settingsgaji;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -77,6 +79,7 @@ class admingurucontroller extends Controller
                 'nomerinduk'     =>   $request->nomerinduk,
                 'simkoperasi'     =>   $request->simkoperasi,
                 'hadir'     =>   $request->hadir,
+                'tgl_mulai_bekerja'     =>   $request->tgl_mulai_bekerja,
                 'telp'     =>   $request->telp,
                 'dansos'     =>   $request->dansos,
                 'walikelas'     =>   $request->walikelas,
@@ -123,6 +126,13 @@ class admingurucontroller extends Controller
             ]
         );
 
+        $tgl_mulai = Carbon::parse($request->tgl_mulai_bekerja);
+        $tgl_sekarang = Carbon::now();
+        $lama_kerja = $tgl_sekarang->diffInYears($tgl_mulai);
+        $settings = settingsgaji::where('id', 1)->first();
+        $nominal_tunjangan = $settings->tunjangankerja;
+        $tunjangankerja = $lama_kerja * $nominal_tunjangan;
+        // dd($lama_kerja, $tunjangankerja);
 
         guru::where('id', $id->id)
             ->update([
@@ -134,8 +144,11 @@ class admingurucontroller extends Controller
                 'telp'     =>   $request->telp,
                 'dansos'     =>   $request->dansos,
                 'hadir'     =>   $request->hadir,
+                'tgl_mulai_bekerja'     =>   $request->tgl_mulai_bekerja,
                 // 'gajipokok'     =>   Fungsi::angka($request->gajipokok),
-                'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
+                'tunjangankerja'     =>    $tunjangankerja,
+                // 'tunjangankerja'     =>    $tunjangankerja,
+                // 'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja) || $tunjangankerja,
                 'tunjanganjabatan'     =>   Fungsi::angka($request->tunjanganjabatan),
                 'jam'     =>   Fungsi::angka($request->jam),
                 'updated_at' => date("Y-m-d H:i:s")

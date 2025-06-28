@@ -86,6 +86,7 @@
                                                 <th>Telp</th>
                                                 <th>Gaji Pokok</th>
                                                 <th>Jumlah Kehadiran</th>
+                                                <th class="text-center">Tanggal Mulai Bekerja</th>
                                                 <th>Tunjangan Kerja</th>
                                                 <th class="text-center">Sim Koperasi</th>
                                                 <th class="text-center">Dansos</th>
@@ -119,7 +120,17 @@
                                                     {{-- <td>{{ Fungsi::rupiah($data->gajipokok) }}</td> --}}
                                                     <td>{{ Fungsi::rupiah($data->gajipokok_total) }}</td>
                                                     <td>{{ $data->hadir }}</td>
-                                                    <td>{{ Fungsi::rupiah($data->tunjangankerja) }}</td>
+                                                    <td>{{ \Carbon\Carbon::parse($data->tgl_mulai_bekerja)->translatedFormat('d F Y') }}
+                                                    </td>
+                                                    @php
+                                                        $tgl_mulai = \Carbon\Carbon::parse($data->tgl_mulai_bekerja);
+                                                        $tgl_sekarang = \Carbon\Carbon::now();
+                                                        $lama_kerja = $tgl_sekarang->diffInYears($tgl_mulai);
+                                                        $settings = \App\Models\settingsgaji::where('id', 1)->first();
+                                                        $nominal_tunjangan = $settings->tunjangankerja;
+                                                        $tunjangankerja = $lama_kerja * $nominal_tunjangan;
+                                                    @endphp
+                                                    <td>{{ Fungsi::rupiah($tunjangankerja) }}</td>
                                                     <td class="text-center">
                                                         @php
                                                             $warna = 'info';

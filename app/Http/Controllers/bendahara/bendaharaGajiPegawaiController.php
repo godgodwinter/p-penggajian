@@ -12,6 +12,7 @@ use App\Models\settingsgaji;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use PDF;
+use Carbon\Carbon;
 
 class bendaharaGajiPegawaiController extends Controller
 {
@@ -87,11 +88,19 @@ class bendaharaGajiPegawaiController extends Controller
                 // dd($pegawai_detail);
                 $pegawai->gajipokok_total = $gajipokok_total;
                 //insert gajipegawai
+                $tgl_sekarang = Carbon::createFromDate($year, $month, 1);
+                $tgl_mulai = Carbon::parse($pegawai->tgl_mulai_bekerja);
+                $lama_kerja = $tgl_sekarang->diffInYears($tgl_mulai);
+                $settings = settingsgaji::where('id', 1)->first();
+                $nominal_tunjangan = $settings->tunjangankerja ?? 0;
+                $tunjangankerja = $lama_kerja * $nominal_tunjangan;
                 gajipegawai::insert([
                     'pegawai_id' => $pegawai->id,
                     'tahunbulan' => $year . '-' . $month . '-01',
                     'gajipokok' => $pegawai->gajipokok_total,
-                    'tunjangankerja' => $pegawai->tunjangankerja,
+                    'tunjangankerja' => $tunjangankerja,
+                    'lamakerja' => $lama_kerja,
+                    // 'tunjangankerja' => $pegawai->tunjangankerja,
                     'hadir' => $hadir,
                     'status' => 'belum',
                     'transport' => $transport,

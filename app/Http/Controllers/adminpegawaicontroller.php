@@ -79,6 +79,7 @@ class adminpegawaicontroller extends Controller
                 'telp'     =>   $request->telp,
                 'dansos'     =>   $request->dansos,
                 'gajipokok'     =>  $request->gajipokok ? Fungsi::angka($request->gajipokok) : 0,
+                'tgl_mulai_bekerja'     =>   $request->tgl_mulai_bekerja,
                 'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
                 'created_at' => date("Y-m-d H:i:s"),
                 'updated_at' => date("Y-m-d H:i:s")
@@ -131,6 +132,7 @@ class adminpegawaicontroller extends Controller
                 'dansos'     =>   $request->dansos,
                 'hadir'     =>   $request->hadir,
                 'gajipokok'     =>  $request->gajipokok ? Fungsi::angka($request->gajipokok) : 0,
+                'tgl_mulai_bekerja'     =>   $request->tgl_mulai_bekerja,
                 'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
                 'updated_at' => date("Y-m-d H:i:s")
             ]);

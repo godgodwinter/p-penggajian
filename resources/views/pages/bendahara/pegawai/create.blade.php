@@ -115,6 +115,18 @@
                                 </div>
                             </div>
 
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align"> Tanggal Mulai Bekerja<span
+                                        class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control  @error('tgl_mulai_bekerja') is-invalid @enderror"
+                                        name="tgl_mulai_bekerja" id="tgl_mulai_bekerja" required="required"
+                                        value="2022-02-02" type="date" />
+                                    @error('tgl_mulai_bekerja')
+                                        <div class="invalid-feedback"> {{ $message }}</div>
+                                    @enderror
+                                </div>
+                            </div>
                             @push('before-script')
                                 <script>
                                     $(function() {
@@ -138,14 +150,14 @@
                                     <input class="form-control" name="gajipokok" id="gajipokok" required="required" />
                                 </div>
                             </div> --}}
-                            <div class="field item form-group">
+                            {{-- <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Tunjangan Kerja<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
                                     <input class="form-control" name="tunjangankerja" id="tunjangankerja"
                                         required="required" />
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="field item form-group">
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Sim Koperasi<span
                                         class="required">*</span></label>

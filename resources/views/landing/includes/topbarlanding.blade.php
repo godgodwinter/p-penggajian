@@ -13,11 +13,11 @@
               <li class="nav-item px-2"><a class="nav-link" href="{{route('landing.pemain')}}">Pemain</a></li>
               <li class="nav-item px-2"><a class="nav-link" href="{{route('landing.pelatih')}}">Pelatih</a></li> --}}
                 <a class="btn btn-sm btn-outline-primary rounded-pill order-1 order-lg-0 ms-lg-4"
-                    href="{{ route('login') }}">Administrator</a>
-                <a class="btn btn-sm btn-outline-primary rounded-pill order-1 order-lg-0 ms-lg-4"
+                    href="{{ route('login') }}">Login</a>
+                {{-- <a class="btn btn-sm btn-outline-primary rounded-pill order-1 order-lg-0 ms-lg-4"
                     href="{{ route('bendahara.login') }}">Bendahara</a>
                 <a class="btn btn-sm btn-outline-primary rounded-pill order-1 order-lg-0 ms-lg-4"
-                    href="{{ route('kepsek.login') }}">Kepala Sekolah</a>
+                    href="{{ route('kepsek.login') }}">Kepala Sekolah</a> --}}
             </ul>
         </div>
     </div>

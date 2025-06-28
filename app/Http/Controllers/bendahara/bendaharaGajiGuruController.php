@@ -11,6 +11,7 @@ use Illuminate\Http\Request;
 use App\Helpers\Fungsi;
 use Illuminate\Support\Facades\DB;
 use PDF;
+use Carbon\Carbon;
 
 class bendaharaGajiGuruController extends Controller
 {
@@ -153,11 +154,19 @@ class bendaharaGajiGuruController extends Controller
                 // dd($pegawai_detail);
                 $guru->tunjanganjabatan_guru = $tunjanganjabatan_guru;
                 //insert gajiguru
+
+                $tgl_sekarang = Carbon::createFromDate($year, $month, 1);
+                $tgl_mulai = Carbon::parse($guru->tgl_mulai_bekerja);
+                $lama_kerja = $tgl_sekarang->diffInYears($tgl_mulai);
+                $settings = settingsgaji::where('id', 1)->first();
+                $nominal_tunjangan = $settings->tunjangankerja ?? 0;
+                $tunjangankerja = $lama_kerja * $nominal_tunjangan;
                 gajiguru::insert([
                     'guru_id' => $guru->id,
                     'tahunbulan' => $year . '-' . $month . '-01',
                     'tunjanganjabatan' => $guru->tunjanganjabatan_guru,
-                    'tunjangankerja' => $guru->tunjangankerja,
+                    'tunjangankerja' => $tunjangankerja,
+                    'lamakerja' => $lama_kerja,
                     'hadir' => $hadir,
                     'status' => 'belum',
                     'jam' => $jam,

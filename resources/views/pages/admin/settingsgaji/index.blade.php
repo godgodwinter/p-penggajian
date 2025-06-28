@@ -91,8 +91,7 @@
                                 <label class="col-form-label col-md-3 col-sm-3  label-align">Dana Sosial<span
                                         class="required">*</span></label>
                                 <div class="col-md-6 col-sm-6">
-                                    <input class="form-control" name="dansos" id="dansos"type="text"
-                                        required="required"
+                                    <input class="form-control" name="dansos" id="dansos"type="text" required="required"
                                         value="{{ $id->dansos ? Fungsi::rupiahtanpanol($id->dansos) : '' }}" />
                                 </div>
                             </div>
@@ -112,6 +111,15 @@
                                     <input class="form-control" name="gajipokok" id="gajipokok"type="text"
                                         required="required"
                                         value="{{ $id->gajipokok ? Fungsi::rupiahtanpanol($id->gajipokok) : '' }}" />
+                                </div>
+                            </div>
+                            <div class="field item form-group">
+                                <label class="col-form-label col-md-3 col-sm-3  label-align">Tunjangan Kerja (Pertahun)<span
+                                        class="required">*</span></label>
+                                <div class="col-md-6 col-sm-6">
+                                    <input class="form-control" name="tunjangankerja" id="tunjangankerja"type="text"
+                                        required="required"
+                                        value="{{ $id->tunjangankerja ? Fungsi::rupiahtanpanol($id->tunjangankerja) : '' }}" />
                                 </div>
                             </div>
                             <div class="ln_solid">

@@ -43,6 +43,7 @@ class adminsettingsgajicontroller extends Controller
                     'dansos'     =>   Fungsi::angka($request->dansos),
                     'walikelas'     =>   Fungsi::angka($request->walikelas),
                     'gajipokok'     =>   Fungsi::angka($request->gajipokok),
+                    'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
                     'updated_at' => date("Y-m-d H:i:s")
                 ]);
         } else {
@@ -55,6 +56,7 @@ class adminsettingsgajicontroller extends Controller
                     'dansos'     =>   Fungsi::angka($request->dansos),
                     'walikelas'     =>   Fungsi::angka($request->walikelas),
                     'gajipokok'     =>   Fungsi::angka($request->gajipokok),
+                    'tunjangankerja'     =>   Fungsi::angka($request->tunjangankerja),
                     'created_at' => date("Y-m-d H:i:s"),
                     'updated_at' => date("Y-m-d H:i:s")
                 )
